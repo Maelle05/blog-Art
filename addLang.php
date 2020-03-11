@@ -107,13 +107,13 @@
         <input type="hidden" name="id" value="">
 
         <label for="">Libellé cour :</label>
-        <input type="text" name="Lib1Lang" id=""><br>
+        <input type="text" name="Lib1Lang" maxlength="25" id="" placeholder="25 char."><br>
 
         <label for="">Libellé long :</label>
-        <input type="text" name="Lib2Lang" id=""><br>
+        <input type="text" name="Lib2Lang" maxlength="25" id="" placeholder="25 char."><br>
 
         <label for="">Quel Pays :</label>
-        <input type="text" name="NumPays" id=""><br>
+        <input type="text" name="NumPays" maxlength="4" id="" placeholder="4 char."><br>
 
         <input type="submit" name="Submit" value="Validé">
     </form>
