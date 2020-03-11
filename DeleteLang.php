@@ -32,7 +32,7 @@
   echo "Requete <b>préparée</b> : La langue <i>" . $NumLang . "</i> a bien été supprimée !";
   echo "<br>";
   $bdPDO = NULL;
-  echo "<h2>Closed connection !</h2>";
+  // echo "<h2>Closed connection !</h2>";
   
 ?>
 <a href="vewLang.php">Retour</a>

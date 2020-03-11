@@ -112,7 +112,7 @@
         
         ?>
     
-            <h2>Modifier la Langue <?= $Lib1Lang ?> | <?= $NumPays?> </h2>
+            <h2>Modifier la Langue | <?= $NumLang?> </h2>
                 <form action="editLang.php" name="formLangue" method="get">
                     <input type="hidden" name="id" value="<?= $NumLang ?>">
 
