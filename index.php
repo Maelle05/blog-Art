@@ -8,7 +8,8 @@
 <body>
     <h1>Gavé Bleu Admin</h1>
     <h3>Les Langues</h3>
-    <a href="addLang.php">Nouvelle Langue</a>
+    <a href="addLang.php">Nouvelle Langue</a> <br>
+    <a href="vewLang.php">Voir toutes les Langues</a> <br>
     
 </body>
 </html>
