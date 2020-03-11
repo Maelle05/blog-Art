@@ -1,4 +1,4 @@
 <?php 
  $dbPdo = NULL;
-  //   echo'Deconection !';
+   //  echo'Deconection !';
 ?>

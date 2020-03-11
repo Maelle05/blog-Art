@@ -103,7 +103,7 @@
 
 
     <h2>Ajoutez une langue...</h2>
-    <form action="index.php" name="formLangue" method="post">
+    <form action="addLang.php" name="formLangue" method="post">
         <input type="hidden" name="id" value="">
 
         <label for="">Libellé cour :</label>
