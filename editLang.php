@@ -106,7 +106,7 @@
                     $query->closeCursor();
                 
                     // affichage des messsages d'erreur et/ou d'envoie
-                    echo"Requete <b>update</b> a remplacé " . $Lib1Lang . " et " . $NumLang . "!";
+                    echo"Requete <b>update</b> a remplacé les valeurs de " . $NumLang . "!";
                     echo"<br />";
                     echo $NumLang;
                 
