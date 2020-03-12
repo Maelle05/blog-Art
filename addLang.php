@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog'Art</title>
+    <title>Add Langue</title>
 </head>
 <body>
 
@@ -12,6 +12,8 @@
     ini_set('display_errors','on');
 
     include 'conect.php';
+
+    $SelectPays = $bdPdo ->query('SELECT * FROM Pays');
 
             $NumLang ="";
             $Lib1Lang ="";
@@ -113,7 +115,11 @@
         <input type="text" name="Lib2Lang" maxlength="25" id="" placeholder="25 char."><br>
 
         <label for="">Quel Pays :</label>
-        <input type="text" name="NumPays" maxlength="4" id="" placeholder="4 char."><br>
+        <select name="NumPays" >            
+            <?php while($v = $SelectPays->fetch()){ ?>
+                    <option value="<?= $v['numPays']?>" > <?= $v['numPays']?> <?= $v['frPays']?> </option>
+            <?php }?>               
+        </select>
 
         <input type="submit" name="Submit" value="Validé">
     </form>

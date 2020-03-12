@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Supr Lang</title>
 </head>
 <body>
     <?php
@@ -29,7 +29,7 @@
   }
 
   $query->closeCursor();
-  echo "Requete <b>préparée</b> : La langue <i>" . $NumLang . "</i> a bien été supprimée !";
+  echo "La langue <i>" . $NumLang . "</i> a bien été supprimée !";
   echo "<br>";
   $bdPDO = NULL;
   // echo "<h2>Closed connection !</h2>";

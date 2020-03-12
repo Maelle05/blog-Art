@@ -20,7 +20,7 @@
             ?>
             <ul>
                 <?php while($v = $Langues->fetch()){ ?>
-                    <li><?= $v['NumLang']?> <a href="editLang.php? id=<?=$v['NumLang']?> "> Modifier </a> | <a href="DeleteLang.php?NumLang=<?php echo $v['NumLang'] ?>">Supprimer</a> </li>
+                    <li><?= $v['NumLang']?> <?= $v['Lib1Lang']?> <?= $v['Lib2Lang']?> <?= $v['NumPays']?> <a href="editLang.php? id=<?=$v['NumLang']?> "> Modifier </a> | <a href="DeleteLang.php?NumLang=<?php echo $v['NumLang'] ?>">Supprimer</a> </li>
                     
                 <?php }?>
             <ul>

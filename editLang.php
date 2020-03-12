@@ -10,6 +10,8 @@
         
        include 'conect.php';
 
+       $SelectPays = $bdPdo ->query('SELECT * FROM Pays');
+
         if(isset($_GET['id']) AND !empty($_GET['id'])){
             $get_id= htmlspecialchars($_GET['id']);
 
@@ -35,7 +37,10 @@
               
 				if (((isset($_GET['Lib1Lang'])) AND !empty($_GET['Lib1Lang']))
                 AND ((isset($_GET['Lib2Lang'])) AND !empty($_GET['Lib2Lang']))
-                AND ((isset($_GET['NumPays'])) AND !empty($_GET['NumPays']))) {
+                AND ((isset($_GET['NumPays'])) AND !empty($_GET['NumPays'])))
+               {
+                    
+    
 
                     
                     $NumLang = 0;
@@ -43,6 +48,7 @@
 				    $Lib1Lang = htmlspecialchars($_GET['Lib1Lang']);
                     $Lib2Lang = htmlspecialchars($_GET['Lib2Lang']);
                     $NumPays = htmlspecialchars($_GET['NumPays']);
+                   
 
                     $numPaysSelect = $NumPays;
                     $parmNumlang = $numPaysSelect . '%';
@@ -107,6 +113,7 @@
 
                 }
             }
+        
 
                 include 'disconect.php';
         
@@ -123,7 +130,16 @@
                     <input type="text" name="Lib2Lang" id="" maxlength="25"  value="<?= $Lib2Lang ?>"><br>
 
                     <label for="">Quel Pays :</label>
-                    <input type="text" name="NumPays" id="" maxlength="4" value="<?= $NumPays ?>"><br>
+                    <select name="NumPays" >
+                                <option value="<?= $NumPays ?>"><?= $NumPays ?></option>
+                                <?php while($v = $SelectPays->fetch()){ ?>
+                                        <option value="<?= $v['numPays']?>" > <?= $v['numPays']?> <?= $v['frPays']?> </option>
+                                <?php }?>
+                                
+                    </select>
+
+                        <br>
+
 
                     <input type="submit" name="Submit" value="Validé">
                 </form>
