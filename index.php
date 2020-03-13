@@ -18,7 +18,10 @@
     <a href="vewUser.php">Voir toutes les Users</a> <br>
     <h3>Les Angles</h3>
     <a href="addAngle.php">Nouveaux Angles</a> <br>
-    <a href="vewAngle.php">Voir toutes les Angles</a> <br>
+    <a href="vewAngle.php">Voir tout les Angles</a> <br>
+    <h3>Les Thématiques</h3>
+    <a href="addThem.php">Nouvelles Thématiques</a> <br>
+    <a href="vewThem.php">Voir toutes les Thématiques</a> <br>
     
 </body>
 <footer>
