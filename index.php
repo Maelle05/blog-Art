@@ -7,6 +7,9 @@
 </head>
 <body>
     <h1>Gavé Bleu Admin</h1>
+    <h3>Les Articles</h3>
+    <a href="addArti.php">Ecrire un nouvel Article</a> <br>
+    <a href="vewArti.php">Voir tout les Articles </a> <br>
     <h3>Les Langues</h3>
     <a href="addLang.php">Nouvelle Langue</a> <br>
     <a href="vewLang.php">Voir toutes les Langues</a> <br>

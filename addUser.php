@@ -89,7 +89,7 @@
         <input type="text" name="FirstName" maxlength="25" id="" ><br>
 
         <label for="">Mail</label>
-        <input type="text" name="EMail" id="" ><br>
+        <input type="mail" name="EMail" id="" ><br>
 
         
 

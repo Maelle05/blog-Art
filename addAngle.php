@@ -14,6 +14,8 @@
     include 'conect.php';
 
     $SelectLang = $bdPdo ->query('SELECT * FROM Langue');
+    $SelectLang2 = $bdPdo ->query('SELECT * FROM Langue');
+    $SelectAngle = $bdPdo ->query('SELECT * FROM Angle');
 
             $NumLang ="";
             $NumAngl ="";
@@ -43,8 +45,11 @@
                 AND ((isset($_POST['LibAngl'])) AND !empty($_POST['LibAngl']))
                 AND ((isset($_POST['NumLang'])) AND !empty($_POST['NumLang']))) {
                     $erreur = false;
-				
-                    $NumAngl = ctrlSaisies($_POST['NumAngl']);
+                             
+
+
+
+                    $NumAngl =$_POST['NumAngl'];
                     $LibAngl = ctrlSaisies($_POST['LibAngl']);
                     $NumLang = ctrlSaisies($_POST['NumLang']);
                       
@@ -61,17 +66,17 @@
                         }
                     }
                 }
+    
             
    
         
 ?>
 
 
-    <h2>Ajoutez une Angle</h2>
+    <h2>Ajoutez un Angle Nouveau</h2>
     <form action="addAngle.php" name="formAngle" method="post">
 
-        <label for="">Numero Angle </label>
-        <input type="text" name="NumAngl" maxlength="25" id=""  ><br>
+        <input  type="text" name="NumAngl" maxlength="25" id="" value="ANGL"  ><br>
 
         <label for="">Angle</label>
         <input type="text" name="LibAngl" maxlength="25" id="" ><br>
@@ -82,9 +87,36 @@
                     <option value="<?= $v['NumLang']?>" > <?= $v['NumLang']?> <?= $v['Lib2Lang']?> </option>
             <?php }?>               
         </select>
-
+                <br>
         <input type="submit" name="Submit" value="Validé">
     </form>
+
+
+    <p>Ajoutez une Langue à un Angle <strong> Ca va pas fonctioner N'essayer pas j'attend le code de martine </strong></p>
+    <form action="addAngle.php" name="formAngle" method="Get">
+        
+        <label for="">En quelle Angle ?</label>
+            <select name="NumLang" >            
+                <?php while($a = $SelectAngle->fetch()){ ?>
+                        <option value="<?= $a['NumAngl']?>" > <?= $a['LibAngl']?> </option>
+                <?php }?>               
+            </select>
+            <br>
+
+        <label for="">Angle Sous une nouvelle Langue </label>
+        <input type="text" name="LibAngl" maxlength="25" id="" ><br>
+
+        <label for="">En quelle langue ?</label>
+        <select name="NumLang" >            
+            <?php while($l = $SelectLang2->fetch()){ ?>
+                    <option value="<?= $l['NumLang']?>" > <?= $l['NumLang']?> <?= $l['Lib2Lang']?> </option>
+            <?php }?>               
+        </select>
+                <br>
+        <input type="submit" name="Submit" value="Validé">
+    </form>
+
+
     <a href="index.php">Retour</a>
 
 
