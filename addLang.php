@@ -123,7 +123,7 @@
 
         <input type="submit" name="Submit" value="Validé">
     </form>
-    <a href="index.php">Retour</a>
+    <a href="admin.php">Retour</a>
 
 
 <?php include 'disconect.php';?>

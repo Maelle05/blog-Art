@@ -160,7 +160,7 @@
         <label for="">L'angle de L'article</label>
         <select name="NumAngl" >            
             <?php while($v = $SelectAngle->fetch()){ ?>
-                    <option value="<?= $v['NumAngl']?>" > <?= $v['LibAngl']?> </option>
+                    <option value="<?= $v['NumAngl']?>" ><?= $v['NumLang']?> <?= $v['LibAngl']?> </option>
             <?php }?>               
         </select><br>
 

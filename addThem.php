@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Angles</title>
+    <title>Add Thematiques</title>
 </head>
 <body>
 
@@ -73,7 +73,7 @@
 ?>
 
 
-    <h2>Ajoutez un Angle Nouveau</h2>
+    <h2>Ajoutez une Nouvelle Thématique</h2>
     <form action="addThem.php" name="formThem" method="post">
 
         <input  type="hidden" name="NumThem" maxlength="25" id="" value="THEM"  ><br>
@@ -96,7 +96,7 @@
     <form action="addThem.php" name="formThem" method="Get">
         
         <label for="">En quelle Thématique ?</label>
-            <select name="NumLang" >            
+            <select name="NumThem" >            
                 <?php while($a = $SelectThem->fetch()){ ?>
                         <option value="<?= $a['NumThem']?>" > <?= $a['LibThem']?> </option>
                 <?php }?>               
@@ -117,7 +117,7 @@
     </form>
 
 
-    <a href="index.php">Retour</a>
+    <a href="admin.php">Retour</a>
 
 
 <?php include 'disconect.php';?>

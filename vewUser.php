@@ -47,6 +47,6 @@
                     if(isset($erreur)){ echo $erreur;}
                 ?>
 
-        <a href="index.php">Retour</a>
+        <a href="admin.php">Retour</a>
   </body>
   </html>     
