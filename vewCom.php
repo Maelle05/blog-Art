@@ -27,9 +27,13 @@
   catch (PDOException $e) {
     $bdPdo->rollBack();
   }  
+
+  if($NumArt == NULL){
+    echo "Cette article n'existe pas";
+  }else{
 ?>
 
-<h1>Les comentaires de l'articles numéro <?= $NumArt ?> </h1>
+<h1>Les comentaires de l'article numéro <?= $NumArt ?> </h1>
 <ul>
     <?php while($v = $query->fetch()){ ?>
         <li>"<?= $v['LibCom']?>" de <?= $v['PseudoAuteur']?> .  Contacter via cette address Mail :  <?=$v['EmailAuteur']?> | <a href="DeleteCom.php?NumCom=<?php echo $v['NumCom'] ?>">Supprimer</a> </li>               
@@ -39,7 +43,7 @@
 <br>
 <p>Si il y a rien qui s'affiche c'est qu'il y a pas de commentaires !</p>
 
-
+    <?php } ?>
 
 <a href="admin.php?mot_de_passe=MMI21">Retour</a>
 </body>

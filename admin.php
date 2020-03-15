@@ -38,6 +38,7 @@
     <a href="vewMot.php">Voir tout les mots clés</a> <br>
     <a href="motArt.php">Lier les mots aux articles</a> <br>
     <h3>Voir les Commentaires par Article</h3>
+    <a href="addCom.php">Ajouter un commentaire</a>
     <ul>
     <?php while($v = $Articles->fetch()){ ?>
             <li><a href="vewCom.php? id=<?=$v['NumArt']?> "> Pour l'Article "<?= $v['LibTitrA']?>" </a></li>                   
