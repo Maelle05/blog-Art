@@ -95,7 +95,7 @@
 
         <input type="submit" name="Submit" value="Validé">
     </form>
-    <a href="admin.php">Retour</a>
+    <a href="admin.php?mot_de_passe=MMI21">Retour</a>
 
 
 <?php include 'disconect.php';?>

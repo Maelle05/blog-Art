@@ -13,6 +13,107 @@
 
     include 'conect.php';
 
+    function getNextNumThem($NumLang) {
+
+        // Connexion à la BDD 
+        include 'conect.php';
+  
+        // Découpage FK LANGUE 
+        $LibLangSelect = substr($NumLang, 0, 4); 
+        $parmNumLang = $LibLangSelect . '%';
+  
+        $requete = "SELECT MAX(NumLang) AS NumLang FROM THEMATIQUE WHERE NumLang LIKE '$parmNumLang';";
+        $result = $bdPdo->query($requete);
+  
+        if ($result) {
+            $tuple = $result->fetch();
+            $NumLang = $tuple["NumLang"];
+            if (is_null($NumLang)) {    // New lang dans THEMATIQUE
+                // Récup dernière PK utilisée
+                $requete = "SELECT MAX(NumThem) AS NumThem FROM THEMATIQUE;";
+                $result = $bdPdo->query($requete);
+                $tuple = $result->fetch();
+                $NumThem = $tuple["NumThem"];
+  
+                $NumThemSelect = (int)substr($NumThem, 3, 2);
+                // No séquence suivant LANGUE
+                $numSeq1Them = $NumThemSelect + 1;
+                // Init no séquence THEMATIQUE pour nouvelle lang
+                $numSeq2Them = 1;
+            }
+            else {
+                // Récup dernière PK pour FK sélectionnée
+                $requete = "SELECT MAX(NumThem) AS NumThem FROM THEMATIQUE WHERE NumLang LIKE '$parmNumLang' ;";
+                $result = $bdPdo->query($requete);
+                $tuple = $result->fetch();
+                $NumThem = $tuple["NumThem"];
+  
+                // No séquence actuel LANGUE
+                $numSeq1Them = (int)substr($NumThem, 3, 2);
+                // No séquence actuel THEMATIQUE
+                $numSeq2Them = (int)substr($NumThem, 5, 2); 
+                // No séquence suivant THEMATIQUE
+                $numSeq2Them++;
+            }
+  
+            $LibThemSelect = "THE";
+            // PK reconstituée : THE + no seq langue
+            if ($numSeq1Them < 10) {
+                $NumThem = $LibThemSelect . "0" . $numSeq1Them;
+            }
+            else {
+                $NumThem = $LibThemSelect . $numSeq1Them;
+            }
+            // PK reconstituée : THE + no seq langue + no seq thématique
+            if ($numSeq2Them < 10) {
+                $NumThem = $NumThem . "0" . $numSeq2Them;
+            }
+            else {
+                $NumThem = $NumThem . $numSeq2Them;
+            }
+        }   // End of if ($result) / no seq LANGUE
+        return $NumThem;
+      }
+
+      function getNextNumThem1($NumThem) {
+
+        include 'conect.php';
+
+        $numThemSelect = $NumThem;
+        $parmNumThem = $numThemSelect . '%';
+        $requete = "SELECT MAX(NumThem) AS NumThem FROM THEMATIQUE WHERE NumThem LIKE '$parmNumThem';";
+
+        $result = $bdPdo->query($requete);
+
+        $numSeqThem = 0;
+        if ($result){
+            $tuple = $result->fetch();
+            $NumThem = $tuple["NumThem"];
+            if(is_null($NumThem)){
+                $NumThem =0;
+                $StrThem =$numThemSelect;
+
+            }else{
+                $NumThem = $tuple["NumThem"];
+                $StrThem = substr($NumThem, 0,4);
+                $numSeqThem = (int)substr($NumThem,4);
+            }
+            $numSeqThem++;
+
+            if ($numSeqThem < 10){
+                $NumThem = $StrThem . "0" . $numSeqThem;
+            }else{
+                $NumThem = $StrThem . $numSeqThem;
+            }
+
+        }
+
+        return $NumThem;
+      }
+
+
+
+
     $SelectLang = $bdPdo ->query('SELECT * FROM Langue');
     $SelectLang2 = $bdPdo ->query('SELECT * FROM Langue');
     $SelectThem = $bdPdo ->query('SELECT * FROM thematique');
@@ -47,11 +148,10 @@
                     $erreur = false;
                              
 
-
-
-                    $NumThem =$_POST['NumThem'];
-                    $LibThem = ctrlSaisies($_POST['LibThem']);
                     $NumLang = ctrlSaisies($_POST['NumLang']);
+                    $NumThem =getNextNumThem($NumLang);
+                    $LibThem = ctrlSaisies($_POST['LibThem']);
+                    
                       
 
                         try {
@@ -66,6 +166,38 @@
                         }
                     }
                 }
+
+                if($_SERVER["REQUEST_METHOD"] == "GET"){
+
+                    $Submit = isset($_GET['Submit']) ? $_GET['Submit'] : '';
+                      
+                        if (((isset($_GET['NumThem'])) AND !empty($_GET['NumThem']))
+                        AND ((isset($_GET['LibThem'])) AND !empty($_GET['LibThem']))
+                        AND ((isset($_GET['NumLang'])) AND !empty($_GET['NumLang']))) {
+                            $erreur = false;
+                                     
+        
+        
+        
+                            $NumThem1 =$_GET['NumThem'];
+                            $NumThem = getNextNumThem1($NumThem1);
+                            echo $NumThem;
+                            $LibThem = ctrlSaisies($_GET['LibThem']);
+                            $NumLang = ctrlSaisies($_GET['NumLang']);
+                              
+        
+                                try {
+                                    $stmt = $bdPdo->prepare("INSERT INTO thematique (NumLang, NumThem, LibThem) VALUES (:NumLang, :NumThem, :LibThem)");
+                                    $stmt->bindParam(':NumLang', $NumLang);
+                                    $stmt->bindParam(':NumThem', $NumThem);
+                                    $stmt->bindParam(':LibThem', $LibThem);
+        
+                                    $stmt->execute();
+                                } catch (\Throwable $th) {
+                                    throw $th;
+                                }
+                            }
+                        }
     
             
    
@@ -76,7 +208,7 @@
     <h2>Ajoutez une Nouvelle Thématique</h2>
     <form action="addThem.php" name="formThem" method="post">
 
-        <input  type="hidden" name="NumThem" maxlength="25" id="" value="THEM"  ><br>
+        <input  type="hidden" name="NumThem" maxlength="25" id="" value="THEM"  >
 
         <label for="">Thématique</label>
         <input type="text" name="LibThem" maxlength="25" id="" ><br>
@@ -92,19 +224,19 @@
     </form>
 
 
-    <p>Ajoutez une Langue à une Thématique <strong> Ca va pas fonctioner N'essayer pas j'attend le code de martine </strong></p>
-    <form action="addThem.php" name="formThem" method="Get">
+    <h2>Ajoutez une nouvelle Langue à une Thématique </strong></h2>
+    <form action="addThem.php" name="formThem" method="get">
         
-        <label for="">En quelle Thématique ?</label>
+        <label for="">Pour quelle Thématique ?</label>
             <select name="NumThem" >            
                 <?php while($a = $SelectThem->fetch()){ ?>
-                        <option value="<?= $a['NumThem']?>" > <?= $a['LibThem']?> </option>
+                        <option value="<?= $a['NumThem']?>" ><?= $a['NumLang']?><?= $a['LibThem']?> </option>
                 <?php }?>               
             </select>
             <br>
 
         <label for="">Thématique Sous une nouvelle Langue </label>
-        <input type="text" name="LibAngl" maxlength="25" id="" ><br>
+        <input type="text" name="LibThem" maxlength="25" id="" ><br>
 
         <label for="">En quelle langue ?</label>
         <select name="NumLang" >            
@@ -117,7 +249,7 @@
     </form>
 
 
-    <a href="admin.php">Retour</a>
+    <a href="admin.php?mot_de_passe=MMI21">Retour</a>
 
 
 <?php include 'disconect.php';?>

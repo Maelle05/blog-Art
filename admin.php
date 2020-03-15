@@ -6,7 +6,7 @@
     <title>Gavé Bleu Admin</title>
 </head>
             <?php
-        if (isset($_POST['mot_de_passe']) AND $_POST['mot_de_passe'] ==  "MMI21") // Si le mot de passe est bon
+        if (isset($_POST['mot_de_passe']) AND $_POST['mot_de_passe'] ==  "MMI21" OR $_GET['mot_de_passe'] == "MMI21") // Si le mot de passe est bon
         {
         // On affiche les codes
         ?>
@@ -26,16 +26,17 @@
     <a href="vewLang.php">Voir toutes les Langues</a> <br>
     <h3>Les Users</h3>
     <a href="addUser.php">Nouveaux Users</a> <br>
-    <a href="vewUser.php">Voir toutes les Users</a> <br>
+    <a href="vewUser.php">Voir tout les Users</a> <br>
     <h3>Les Angles</h3>
     <a href="addAngle.php">Nouveaux Angles</a> <br>
     <a href="vewAngle.php">Voir tout les Angles</a> <br>
     <h3>Les Thématiques</h3>
     <a href="addThem.php">Nouvelles Thématiques</a> <br>
     <a href="vewThem.php">Voir toutes les Thématiques</a> <br>
-    <h3>Les Mots clé</h3>
-    <a href="addMot.php">Nouveau mot</a> <br>
-    <a href="vewmot.php">Lier les mots aux articles</a> <br>
+    <h3>Les Mots clés</h3>
+    <a href="addMot.php">Nouveau mot clé</a> <br>
+    <a href="vewMot.php">Voir tout les mots clés</a> <br>
+    <a href="motArt.php">Lier les mots aux articles</a> <br>
     <h3>Voir les Commentaires par Article</h3>
     <ul>
     <?php while($v = $Articles->fetch()){ ?>
@@ -58,7 +59,7 @@
         }
         else // Sinon, on affiche un message d'erreur
         {
-            echo '<p>Mot de passe incorrect</p> <a href="editmdp.php"> Retour</a>';
+            echo '<p>Mot de passe incorrect</p> <a href="mdp.php"> Retour</a>';
         }
         ?>
 </html>

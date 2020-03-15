@@ -39,13 +39,11 @@
               
 				if (((isset($_GET['NumAngl'])) AND !empty($_GET['NumAngl']))
                 AND ((isset($_GET['LibAngl'])) AND !empty($_GET['LibAngl']))
-                AND ((isset($_GET['NumLang'])) AND !empty($_GET['NumLang']))
              ) {
                     $erreur = false;
                  				
                     $NumAngl = htmlspecialchars($_GET['NumAngl']);
                     $LibAngl = htmlspecialchars($_GET['LibAngl']);
-                    $NumLang = htmlspecialchars($_GET['NumLang']);
                    
 
                     try{
@@ -53,13 +51,12 @@
                         $bdPdo->beginTransaction();
                         // preparation de la requete Preparee dans une chane de caractere
                         // instruction incert Preparation
-                        $query = $bdPdo->prepare('UPDATE angle SET NumAngl = :NumAngl, LibAngl = :LibAngl, NumLang = :NumLang WHERE  NumAngl ="'.$get_id.'"');
+                        $query = $bdPdo->prepare('UPDATE angle SET NumAngl = :NumAngl, LibAngl = :LibAngl WHERE  NumAngl ="'.$get_id.'"');
                         // Execution du prepare lancement
                         $query->execute(
                             array(
                                 ':NumAngl'=> $NumAngl,
                                 ':LibAngl'=> $LibAngl,
-                                ':NumLang'=> $NumLang
                             )
                         );
 
@@ -91,19 +88,13 @@
             <form action="editAngle.php" name="formAngle" method="Get">
 
             <input type="hidden" name="id" value="<?= $NumAngl ?>">
-        <label for="">Numero de l'Angle</label>
-        <input type="text" name="NumAngl" maxlength="25" id="" value="<?= $NumAngl ?>" ><br>
+    
+        <input type="hidden" name="NumAngl" maxlength="25" id="" value="<?= $NumAngl ?>" ><br>
 
         <label for="">Angle</label>
         <input type="text" name="LibAngl" maxlength="25" id="" value="<?= $LibAngl ?>" ><br>
 
-        <label for="">Quelle langue ?</label>
-        <select name="NumLang" >   
-                    <option value="<?= $NumLang ?>"><?= $NumLang ?></option>         
-            <?php while($v = $SelectLang->fetch()){ ?>
-                    <option value="<?= $v['NumLang']?>" > <?= $v['NumLang']?> <?= $v['Lib2Lang']?> </option>
-            <?php }?>               
-        </select>
+        <p>Dans la langue :<?= $NumLang ?></p>
 
         
 

@@ -13,6 +13,98 @@
 
     include 'conect.php';
 
+    function getNextNumAngl($NumLang) {
+
+        include 'conect.php';
+        $numSeq2Angl="0";
+        // Découpage FK LANGUE 
+        $LibLangSelect = substr($NumLang, 0, 4); 
+        $parmNumLang = $LibLangSelect . '%';
+        $requete = "SELECT MAX(NumLang) AS NumLang FROM ANGLE WHERE NumLang LIKE '$parmNumLang';";
+        $result = $bdPdo->query($requete);
+  
+        if ($result) {
+            $tuple = $result->fetch();
+            $NumLang = $tuple["NumLang"];
+
+            if (is_null($NumLang)) {    // New lang dans ANGLE
+                $numSeq2Angl = 0;  
+            }
+            // No séquence suivant LANGUE
+            $numSeq2Angl++;
+            // No séquence ANGLE
+            $numSeq1Angl = 0;
+  
+            // No séquence ANGLE : Récup dernière PK utilisée
+            $requete = "SELECT MAX(NumAngl) AS NumAngl FROM ANGLE;";
+  
+            $result = $bdPdo->query($requete);
+            $tuple = $result->fetch();
+            $NumAngl = $tuple["NumAngl"];
+  
+            $NumAnglSelect = (int)substr($NumAngl, 4, 2);
+            $numSeq1Angl = $NumAnglSelect + 1;
+  
+            $LibAnglSelect = "ANGL";
+            // PK reconstituée : ANGL + no seq angle
+            if ($numSeq1Angl < 10) {
+                $NumAngl = $LibAnglSelect . "0" . $numSeq1Angl;
+            }
+            else {
+                $NumAngl = $LibAnglSelect . $numSeq1Angl;
+            }
+            // PK reconstituée : ANGL + no seq angle + no seq langue
+            if ($numSeq2Angl < 10) {
+                $NumAngl = $NumAngl . "0" . $numSeq2Angl;
+            }
+            else {
+                $NumAngl = $NumAngl . $numSeq2Angl;
+            }
+        }   // End of if ($result) / no seq angle
+        return $NumAngl;
+      }
+
+      function getNextNumAngl1($NumAngl) {
+
+        include 'conect.php';
+
+        $numAnglSelect = $NumAngl;
+        $parmNumAngl = $numAnglSelect . '%';
+        $requete = "SELECT MAX(NumAngl) AS NumAngl FROM ANGLE WHERE NumAngl LIKE '$parmNumAngl';";
+
+        $result = $bdPdo->query($requete);
+
+        $numSeqAngl = 0;
+        if ($result){
+            $tuple = $result->fetch();
+            $NumAngl = $tuple["NumAngl"];
+            if(is_null($NumAngl)){
+                $NumAngl =0;
+                $StrAngl =$numAnglSelect;
+
+            }else{
+                $NumAngl = $tuple["NumAngl"];
+                $StrAngl = substr($NumAngl, 0,4);
+                $numSeqAngl = (int)substr($NumAngl,4);
+            }
+            $numSeqAngl++;
+
+            if ($numSeqAngl < 10){
+                $NumAngl = $StrAngl . "0" . $numSeqAngl;
+            }else{
+                $NumAngl = $StrAngl . $numSeqAngl;
+            }
+
+        }
+
+        return $NumAngl;
+      }
+
+
+
+
+
+
     $SelectLang = $bdPdo ->query('SELECT * FROM Langue');
     $SelectLang2 = $bdPdo ->query('SELECT * FROM Langue');
     $SelectAngle = $bdPdo ->query('SELECT * FROM Angle');
@@ -46,12 +138,10 @@
                 AND ((isset($_POST['NumLang'])) AND !empty($_POST['NumLang']))) {
                     $erreur = false;
                              
-
-
-
-                    $NumAngl =$_POST['NumAngl'];
-                    $LibAngl = ctrlSaisies($_POST['LibAngl']);
                     $NumLang = ctrlSaisies($_POST['NumLang']);
+                    $NumAngl = getNextNumAngl($NumLang);
+                    $LibAngl = ctrlSaisies($_POST['LibAngl']);
+                   
                       
 
                         try {
@@ -66,6 +156,33 @@
                         }
                     }
                 }
+       
+
+                      
+                if (((isset($_GET['NumAngl'])) AND !empty($_GET['NumAngl']))
+                AND ((isset($_GET['LibAngl'])) AND !empty($_GET['LibAngl']))
+                AND ((isset($_GET['NumLang'])) AND !empty($_GET['NumLang']))) {
+                    $erreur = false;
+                                
+                    $NumLang = ctrlSaisies($_GET['NumLang']);
+                    $NumAngl1 = ctrlSaisies($_GET['NumAngl']);
+                    $NumAngl = getNextNumAngl1($NumAngl1);
+                    $LibAngl = ctrlSaisies($_GET['LibAngl']);
+                    
+                        
+
+                        try {
+                            $stmt = $bdPdo->prepare("INSERT INTO ANGLE (NumLang, NumAngl, LibAngl) VALUES (:NumLang, :NumAngl, :LibAngl)");
+                            $stmt->bindParam(':NumLang', $NumLang);
+                            $stmt->bindParam(':NumAngl', $NumAngl);
+                            $stmt->bindParam(':LibAngl', $LibAngl);
+
+                            $stmt->execute();
+                        } catch (\Throwable $th) {
+                            throw $th;
+                        }
+                    }
+                 
     
             
    
@@ -76,7 +193,7 @@
     <h2>Ajoutez un Angle Nouveau</h2>
     <form action="addAngle.php" name="formAngle" method="post">
 
-        <input  type="text" name="NumAngl" maxlength="25" id="" value="ANGL"  ><br>
+        <input  type="hidden" name="NumAngl" value="ANGL"  >
 
         <label for="">Angle</label>
         <input type="text" name="LibAngl" maxlength="25" id="" ><br>
@@ -92,13 +209,13 @@
     </form>
 
 
-    <p>Ajoutez une Langue à un Angle <strong> Ca va pas fonctioner N'essayer pas j'attend le code de martine </strong></p>
-    <form action="addAngle.php" name="formAngle" method="Get">
+    <h2>Ajoutez une Langue à un Angle existent </h2>
+    <form action="addAngle.php" name="formAngle" method="get">
         
-        <label for="">En quelle Angle ?</label>
-            <select name="NumLang" >            
+        <label for="">Pour quel Angle ?</label>
+            <select name="NumAngl" >            
                 <?php while($a = $SelectAngle->fetch()){ ?>
-                        <option value="<?= $a['NumAngl']?>" > <?= $a['LibAngl']?> </option>
+                        <option value="<?= $a['NumAngl']?>" > <?= $a['NumLang']?> <?= $a['LibAngl']?> </option>
                 <?php }?>               
             </select>
             <br>
@@ -117,7 +234,7 @@
     </form>
 
 
-    <a href="admin.php">Retour</a>
+    <a href="admin.php?mot_de_passe=MMI21">Retour</a>
 
 
 <?php include 'disconect.php';?>

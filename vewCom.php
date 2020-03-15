@@ -41,7 +41,7 @@
 
 
 
-<a href="admin.php">Retour</a>
+<a href="admin.php?mot_de_passe=MMI21">Retour</a>
 </body>
 </html>
 

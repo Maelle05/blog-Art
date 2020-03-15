@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Thématique</title>
+    <title>Edit Mot Clé</title>
 </head>
 <body>
     <?php 
@@ -15,34 +15,34 @@
         if(isset($_GET['id']) AND !empty($_GET['id'])){
             $get_id= htmlspecialchars($_GET['id']);
 
-            $Thematique = $bdPdo->prepare('SELECT * FROM thematique WHERE NumThem ="'.$get_id.'"');
-            $Thematique->execute(
+            $motcle = $bdPdo->prepare('SELECT * FROM MOTCLE WHERE NumMoCle ="'.$get_id.'"');
+            $motcle->execute(
                 array($get_id)
             );
 
-            if($Thematique->rowCount() == 1){
-                $Thematique =$Thematique->fetch();
-                $NumThem = $Thematique['NumThem'];
-                $LibThem = $Thematique['LibThem'];
-                $NumLang = $Thematique['NumLang'];
+            if($motcle->rowCount() == 1){
+                $motcle =$motcle->fetch();
+                $NumMoCle = $motcle['NumMoCle'];
+                $LibMoCle = $motcle['LibMoCle'];
+                $NumLang = $motcle['NumLang'];
 
             }else{
-                die('Cette Thématique n\'existe pas !');
+                die('Ce mot clé n\'existe pas !');
             }
         }else{
-            echo('<a href="vewThem.php">Retour</a>'); 
+            echo('<a href="vewMot.php">Retour</a>'); 
             die('ERREUR');
         }
 
-        
+		
               
-        if (((isset($_GET['NumThem'])) AND !empty($_GET['NumThem']))
-        AND ((isset($_GET['LibThem'])) AND !empty($_GET['LibThem']))
+        if (((isset($_GET['NumMoCle'])) AND !empty($_GET['NumMoCle']))
+        AND ((isset($_GET['LibMoCle'])) AND !empty($_GET['LibMoCle']))
         ) {
             $erreur = false;
-                        
-            $NumThem = htmlspecialchars($_GET['NumThem']);
-            $LibThem = htmlspecialchars($_GET['LibThem']);
+
+            $NumMoCle = htmlspecialchars($_GET['NumMoCle']);
+            $LibMoCle = htmlspecialchars($_GET['LibMoCle']);
             
 
             try{
@@ -50,12 +50,12 @@
                 $bdPdo->beginTransaction();
                 // preparation de la requete Preparee dans une chane de caractere
                 // instruction incert Preparation
-                $query = $bdPdo->prepare('UPDATE thematique SET NumThem = :NumThem, LibThem = :LibThem WHERE  NumThem ="'.$get_id.'"');
+                $query = $bdPdo->prepare('UPDATE motcle SET NumMoCle = :NumMoCle, LibMoCle = :LibMoCle WHERE  NumMoCle ="'.$get_id.'"');
                 // Execution du prepare lancement
                 $query->execute(
                     array(
-                        ':NumThem'=> $NumThem,
-                        ':LibThem'=> $LibThem,
+                        ':NumMoCle'=> $NumMoCle,
+                        ':LibMoCle'=> $LibMoCle,
                     )
                 );
 
@@ -71,33 +71,34 @@
             $query->closeCursor();
         
             // affichage des messsages d'erreur et/ou d'envoie
-            echo"Requete <b>update</b> a remplacé les valeurs de" . $NumThem . "!";
+            echo"Requete <b>update</b> a remplacé les valeurs de" . $NumMoCle . "!";
             echo"<br />";
         
 
         }
-            
+
                    
 
                 include 'disconect.php';
         
         ?>
     
-            <h2>Modifier la thématique <?= $NumThem?> </h2>
-            <form action="editThem.php" name="formThem" method="Get">
-            
-            <input type="hidden" name="id" value="<?= $NumThem ?>">
-            <input type="hidden" name="NumThem" value="<?= $NumThem ?>">
-            
+            <h2>Modifier le Mot clé numéro :<?= $NumMoCle?> </h2>
+            <form action="editMoCle.php" name="formMoCle" method="get">
 
-        <label for="">Thématique</label>
-        <input type="text" name="LibThem" maxlength="25" id="" value="<?= $LibThem ?>" ><br>
+            <input type="hidden"  name="id" value="<?= $NumMoCle ?>">
+            <input type="hidden"  name="NumMoCle" value="<?= $NumMoCle ?>">
+
+        <label for="">Mot Clé</label>
+        <input type="text" name="LibMoCle" maxlength="25" id="" value="<?= $LibMoCle ?>" ><br>
 
         <p>Dans la langue : <?= $NumLang ?></p>
 
+        
+
         <input type="submit" name="Submit" value="Validé">
     </form>
-            <a href="vewThem.php">Retour</a>
+            <a href="vewMot.php">Retour</a>
         </div>
 
 </body>
