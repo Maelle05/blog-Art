@@ -10,11 +10,11 @@
   include 'conect.php';
 
   $NumArt = $_GET['NumArt'];
-
+  
   try {
     $bdPdo->beginTransaction();
 
-    $query = $bdPdo->prepare('DELETE FROM ARTICLE WHERE NumArt=:NumArt;');
+    $query = $bdPdo->prepare('DELETE FROM article WHERE NumArt=:NumArt');
 
     $query->execute(
       array(

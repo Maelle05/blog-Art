@@ -52,21 +52,33 @@
                     $LastName = ctrlSaisies($_POST['LastName']);
                     $FirstName = ctrlSaisies($_POST['FirstName']);
                     $EMail = ctrlSaisies($_POST['EMail']);
-                   
 
-                        try {
-                            $stmt = $bdPdo->prepare("INSERT INTO User (Login, Pass, LastName, FirstName, EMail) VALUES (:Login, :Pass, :LastName, :FirstName, :EMail)");
-                            $stmt->bindParam(':Login', $Login);
-                            $stmt->bindParam(':Pass', $Pass);
-                            $stmt->bindParam(':LastName', $LastName);
-                            $stmt->bindParam(':FirstName', $FirstName);
-                            $stmt->bindParam(':EMail', $EMail);
-        
-                            $stmt->execute();
-                        } catch (\Throwable $th) {
-                            //throw $th;
+                    $reqmail = $bdPdo->prepare("SELECT * FROM User WHERE EMail = ?");
+                    $reqmail->execute(array($EMail));
+                    $mailexist = $reqmail->rowCount();
+
+                   
+                        if( $mailexist == 0){
+                            try {
+                                $stmt = $bdPdo->prepare("INSERT INTO User (Login, Pass, LastName, FirstName, EMail) VALUES (:Login, :Pass, :LastName, :FirstName, :EMail)");
+                                $stmt->bindParam(':Login', $Login);
+                                $stmt->bindParam(':Pass', $Pass);
+                                $stmt->bindParam(':LastName', $LastName);
+                                $stmt->bindParam(':FirstName', $FirstName);
+                                $stmt->bindParam(':EMail', $EMail);
+            
+                                $stmt->execute();
+                                echo "Le nouvel Utilisateur est bien Enregistré";
+                            } catch (\Throwable $th) {
+                                //throw $th;
+                            }
+                        }else{
+                           echo "Adresse Mail déja utilisée !"; 
                         }
-                    }                
+                        
+                    }else{
+                        echo "Vous devez commpleter tous les champs !";
+                    }               
             }
     
    
@@ -77,16 +89,16 @@
     <h2>Ajoutez un Utilisateur</h2>
     <form action="addUser.php" name="formUser" method="post">
         <label for="">Login</label>
-        <input type="text" name="Login" maxlength="25" id="" ><br>
+        <input type="text" name="Login" placeholder="max 25 char ." maxlength="25" id="" ><br>
 
         <label for="">Password</label>
-        <input type="text" name="Pass" maxlength="25" id="" ><br>
+        <input type="text" name="Pass" placeholder="max 25 char ." maxlength="25" id="" ><br>
 
         <label for="">Nom</label>
-        <input type="text" name="LastName" maxlength="25" id="" ><br>
+        <input type="text" name="LastName" placeholder="max 25 char ." maxlength="25" id="" ><br>
 
         <label for="">Prénom</label>
-        <input type="text" name="FirstName" maxlength="25" id="" ><br>
+        <input type="text" name="FirstName" placeholder="max 25 char ." maxlength="25" id="" ><br>
 
         <label for="">Mail</label>
         <input type="mail" name="EMail" id="" ><br>
