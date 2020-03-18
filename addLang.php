@@ -108,7 +108,7 @@
     <form action="addLang.php" name="formLangue" method="post">
         <input type="hidden" name="id" value="">
 
-        <label for="">Libellé cour :</label>
+        <label for="">Libellé court :</label>
         <input type="text" name="Lib1Lang" maxlength="25" id="" placeholder="25 char."><br>
 
         <label for="">Libellé long :</label>

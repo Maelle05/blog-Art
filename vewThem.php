@@ -12,7 +12,7 @@
 
     ?>
 
-    <h1>Toutes les Thématiques entré dans la base de données</h1>
+    <h1>Toutes les Thématiques entrés dans la base de données</h1>
 
     <?php  
               $thematique = $bdPdo ->query('SELECT * FROM `thematique`');

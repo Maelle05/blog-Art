@@ -86,10 +86,10 @@ function ctrlSaisies($saisie) {
 
 <h2>Nouvel Utilisateur</h2>
 <form action="InscriptionUser.php" name="formUser" method="post">
-    <label for="">Psedo</label>
+    <label for="">Pseudonyme</label>
     <input type="text" name="Login" placeholder="max 25 char ." maxlength="25" id="" ><br>
 
-    <label for="">Password</label>
+    <label for="">Mot de Passe</label>
     <input type="text" name="Pass" placeholder="max 25 char ." maxlength="25" id="" ><br>
 
     <label for="">Nom</label>
@@ -98,7 +98,7 @@ function ctrlSaisies($saisie) {
     <label for="">Prénom</label>
     <input type="text" name="FirstName" maxlength="25" id="" ><br>
 
-    <label for="">Mail</label>
+    <label for="">Adresse Mail</label>
     <input type="mail" name="EMail" id="" ><br>
 
     

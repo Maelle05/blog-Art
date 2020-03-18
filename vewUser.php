@@ -12,7 +12,7 @@
 
     ?>
 
-    <h1>Tout les Users entré dans la base de données</h1>
+    <h1>Tous les utilisateurs entrés dans la base de données</h1>
 
     <?php  
               $User = $bdPdo ->query('SELECT * FROM User');

@@ -12,7 +12,7 @@
 
     ?>
 
-    <h1>Toutes les langues entré dans la base de donnes</h1>
+    <h1>Toutes les langues entrées dans la base de données</h1>
 
     <?php  
               $Langues = $bdPdo ->query('SELECT * FROM langue');
@@ -20,8 +20,8 @@
             <table>
                 <tr>
                     <th>Numéro Langue</th>
-                    <th>Libélé Cout</th>
-                    <th>Libélé Long</th>
+                    <th>Libellé Court</th>
+                    <th>Libellé Long</th>
                     <th>Nom Du Pays</th>
                     <th>Modifier</th>
                     <th>Supprimer</th>

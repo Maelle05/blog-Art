@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Bienvenue sur Gavé Bleu</h1>
-    <a href="ConnectionUser.php">Connection</a>
+    <a href="ConnectionUser.php">Connexion</a>
     <a href="InscriptionUser.php">Inscription</a>
     <h2>Nos Articles</h2>
 
@@ -38,7 +38,7 @@
                     if(isset($erreur)){ echo $erreur;}
                 ?>
 
-    <a href="mdp.php">Partie adminstration</a>
+    <a href="mdp.php">Partie administration</a>
 
     <footer>
         <p class="copyright" style="text-align: center;">

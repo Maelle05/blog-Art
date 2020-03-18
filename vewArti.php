@@ -12,7 +12,7 @@
 
     ?>
 
-    <h1>Tout les Articles entré dans la base de données</h1>
+    <h1>Tout les articles entrés dans la base de données</h1>
 
     <?php  
               $Article = $bdPdo ->query('SELECT * FROM Article');
@@ -52,7 +52,7 @@
                         <td> <?= $v['LibSsTitr2']?></td>
                         <td> <?= $v['Parag3A']?></td>
                         <td> <?= $v['LibConclA']?></td>
-                        <td> <?= $v['UrlPhotA']?></td>
+                        <td> <img src="<?=$v['UrlPhotA']?>" alt=""> </td>
                         <td> <?= $v['Likes']?></td>
                         <td> <?= $v['NumAngl']?></td>
                         <td> <?= $v['NumThem']?></td>

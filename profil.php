@@ -21,7 +21,7 @@ if(isset($_GET['EMail'])){
 </head>
 <body>
     <h1>Profil de <?= $userInfo['FirstName'] ?></h1>
-    <p>Pseaudo = <?= $userInfo['Login'] ?></p>
+    <p>Pseudo = <?= $userInfo['Login'] ?></p>
     <?php
     if(isset($_SESSION['EMail']) AND $userInfo['EMail'] == $_SESSION['EMail']){
     ?>

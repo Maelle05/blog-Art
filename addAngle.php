@@ -190,7 +190,7 @@
 ?>
 
 
-    <h2>Ajoutez un Angle Nouveau</h2>
+    <h2>Ajouter un Angle nouveau</h2>
     <form action="addAngle.php" name="formAngle" method="post">
 
         <input  type="hidden" name="NumAngl" value="ANGL"  >
@@ -209,7 +209,7 @@
     </form>
 
 
-    <h2>Ajoutez une Langue à un Angle existent </h2>
+    <h2>Ajouter une Langue à un Angle existant </h2>
     <form action="addAngle.php" name="formAngle" method="get">
         
         <label for="">Pour quel Angle ?</label>
@@ -220,7 +220,7 @@
             </select>
             <br>
 
-        <label for="">Angle Sous une nouvelle Langue </label>
+        <label for="">Angle sous une nouvelle Langue </label>
         <input type="text" name="LibAngl" maxlength="25" id="" ><br>
 
         <label for="">En quelle langue ?</label>

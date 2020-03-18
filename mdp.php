@@ -5,7 +5,7 @@
     </head>
     <body>
         <div class="center">
-            <p>Veuillez entrer le mot de passe pour obtenir l'accès à l'Admin</p>
+            <p>Veuillez entrer le mot de passe pour obtenir l'accès à l'administration .</p>
             <form action="admin.php" method="post">
                 <p>
                 <input type="password" name="mot_de_passe" />

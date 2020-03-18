@@ -205,7 +205,7 @@
 ?>
 
 
-    <h2>Ajoutez une Nouvelle Thématique</h2>
+    <h2>Ajouter une Nouvelle Thématique</h2>
     <form action="addThem.php" name="formThem" method="post">
 
         <input  type="hidden" name="NumThem" maxlength="25" id="" value="THEM"  >
@@ -220,11 +220,11 @@
             <?php }?>               
         </select>
                 <br>
-        <input type="submit" name="Submit" value="Validé">
+        <input type="submit" name="Submit" value="Valider">
     </form>
 
 
-    <h2>Ajoutez une nouvelle Langue à une Thématique </strong></h2>
+    <h2>Ajouter une nouvelle Langue à une Thématique </strong></h2>
     <form action="addThem.php" name="formThem" method="get">
         
         <label for="">Pour quelle Thématique ?</label>
@@ -235,7 +235,7 @@
             </select>
             <br>
 
-        <label for="">Thématique Sous une nouvelle Langue </label>
+        <label for="">Thématique sous une nouvelle Langue </label>
         <input type="text" name="LibThem" maxlength="25" id="" ><br>
 
         <label for="">En quelle langue ?</label>
@@ -245,7 +245,7 @@
             <?php }?>               
         </select>
                 <br>
-        <input type="submit" name="Submit" value="Validé">
+        <input type="submit" name="Submit" value="Valider">
     </form>
 
 

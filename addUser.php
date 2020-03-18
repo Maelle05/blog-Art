@@ -88,10 +88,10 @@
 
     <h2>Ajoutez un Utilisateur</h2>
     <form action="addUser.php" name="formUser" method="post">
-        <label for="">Login</label>
+        <label for="">Pseudonyme</label>
         <input type="text" name="Login" placeholder="max 25 char ." maxlength="25" id="" ><br>
 
-        <label for="">Password</label>
+        <label for="">Mot de passe</label>
         <input type="text" name="Pass" placeholder="max 25 char ." maxlength="25" id="" ><br>
 
         <label for="">Nom</label>
@@ -100,7 +100,7 @@
         <label for="">Prénom</label>
         <input type="text" name="FirstName" placeholder="max 25 char ." maxlength="25" id="" ><br>
 
-        <label for="">Mail</label>
+        <label for="">Adresse mail</label>
         <input type="mail" name="EMail" id="" ><br>
 
         

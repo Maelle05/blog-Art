@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gavé Bleu Admin</title>
 </head>
+
             <?php
         if (isset($_POST['mot_de_passe']) AND $_POST['mot_de_passe'] ==  "MMI21" OR $_GET['mot_de_passe'] == "MMI21") // Si le mot de passe est bon
         {
@@ -17,16 +18,16 @@
      $Articles = $bdPdo ->query('SELECT * FROM Article');
  ?> 
 <body>
-    <h1>Gavé Bleu Admin</h1>
+    <h1>Gavé Bleu Administrastion</h1>
     <h3>Les Articles</h3>
     <a href="addArti.php">Ecrire un nouvel Article</a> <br>
     <a href="vewArti.php">Voir tout les Articles </a> <br>
     <h3>Les Langues</h3>
     <a href="addLang.php">Nouvelle Langue</a> <br>
     <a href="vewLang.php">Voir toutes les Langues</a> <br>
-    <h3>Les Users</h3>
-    <a href="addUser.php">Nouveaux Users</a> <br>
-    <a href="vewUser.php">Voir tout les Users</a> <br>
+    <h3>Les Utilisateurs</h3>
+    <a href="addUser.php">Nouveaux Utilisateurs</a> <br>
+    <a href="vewUser.php">Voir tout les Utilisateurs</a> <br>
     <h3>Les Angles</h3>
     <a href="addAngle.php">Nouveaux Angles</a> <br>
     <a href="vewAngle.php">Voir tout les Angles</a> <br>

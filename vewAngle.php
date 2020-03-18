@@ -12,7 +12,7 @@
 
     ?>
 
-    <h1>Tout les Angles entré dans la base de données</h1>
+    <h1>Tous les Angles entrés dans la base de données</h1>
 
     <?php  
               $Angle = $bdPdo ->query('SELECT * FROM Angle');

@@ -41,17 +41,17 @@ session_start();
 
 ?>
 
-<h2>Connection </h2>
+<h2>Connexion </h2>
 <form action="ConnectionUser.php" name="formUser" method="post">
 
-    <label for="">Ton Mail</label>
+    <label for="">Adresse Mail</label>
     <input type="mail" name="EMail" id="" ><br>
     
 
-    <label for="">Password</label>
+    <label for="">Mot de passe</label>
     <input type="text" name="Pass" placeholder="max 25 char ." maxlength="25" id="" ><br>
      
-    <input type="submit" name="formC" value="Se conecter">
+    <input type="submit" name="formC" value="Se connecter">
 
 </form>
 <p>Pas encore de compte ? Inscrivez-vous <a href="InscriptionUser.php">ICI</a> </p>
