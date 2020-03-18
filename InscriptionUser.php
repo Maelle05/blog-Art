@@ -67,6 +67,7 @@ function ctrlSaisies($saisie) {
                             $stmt->bindParam(':EMail', $EMail);
         
                             $stmt->execute();
+                            echo "Vous vous êtes bien inscrit ! <br>  <a href=\"ConnectionUser.php\">Conectez - vous !</a>";
                         } catch (\Throwable $th) {
                             //throw $th;
                         }

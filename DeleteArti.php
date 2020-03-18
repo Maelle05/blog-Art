@@ -31,6 +31,8 @@
   $query->closeCursor();
   echo "L'Article numéro <i>" . $NumArt . "</i> a bien été supprimée !";
   echo "<br>";
+  echo "Si ton article ne se supprime pas, c'est qu'il a des mots clée et/ou des commentaires, supprime les et recommence !";
+  echo "<br>";
   $bdPDO = NULL;
   // echo "<h2>Closed connection !</h2>";
   

@@ -9,10 +9,6 @@
     <h1>Bienvenue sur Gavé Bleu</h1>
     <a href="ConnectionUser.php">Connection</a>
     <a href="InscriptionUser.php">Inscription</a>
-<p style="background-color: red">
-    Nous sommes sur la partie ouverte au public, Pour accédé à la partie administration cliquer <a href="mdp.php">ICI</a><br>
-    Le mdp est : MMI21 
-</p>
     <h2>Nos Articles</h2>
 
     <?php  
@@ -23,29 +19,15 @@
 
                 <?php while($v = $Article->fetch()){ ?>
                     <div>
+                        <?php
+                         $image = $v['UrlPhotA'];
+                         ?>
+                        <img src="<?= $v['UrlPhotA'] ?>"/>
                         <h3>Article num <?= $v['NumArt']?> : <?= $v['LibTitrA']?></h3>
                         <p><?= $v['LibChapoA']?></p>
+                        <p><?= $v['DtCreA']?></p>
                         <p> <?= $v['Likes']?> likes</p>
-                        <p>Commentaires :</p>
-                        <?php 
-                            $NumArt = $v['NumArt'];
-                            $bdPdo->beginTransaction();
-
-                            $query = $bdPdo->prepare('SELECT * FROM COMMENT WHERE NumArt=:NumArt;');
-                        
-                            $query->execute(
-                              array(
-                                ':NumArt' => $NumArt
-                              )
-                            );
-                        
-                            $bdPdo->commit();
-                        ?>
-                        <ul>
-                            <?php while($v = $query->fetch()){ ?>
-                                <li>"<?= $v['LibCom']?>" de <?= $v['PseudoAuteur']?> </li>               
-                            <?php }?>
-                        </ul>
+                        <a href="article.php?id=<?= $v['NumArt']?>">Lire -></a>
                     </div>
                 <?php }
                 include "disconect.php";
@@ -57,6 +39,15 @@
                 ?>
 
     <a href="mdp.php">Partie adminstration</a>
+
+    <footer>
+        <p class="copyright" style="text-align: center;">
+            &copy; 2020 <span>Gavé Bleu</span>. All Rights Reserved.
+            <br>
+            <a href="https://icons8.com/icon/">Icons by Icons8</a>
+		  </p>
+    
+    </footer>
     
 </body>
 </html>

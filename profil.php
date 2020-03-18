@@ -28,6 +28,8 @@ if(isset($_GET['EMail'])){
     <a href="editUserProfil.php">Editer mon Profil</a>
     <a href="disconnectUser.php">Se déconnecter</a>
 
+ <h2>Nos Articles</h2>
+
     <?php  
         include "conect.php";
               $Article = $bdPdo ->query('SELECT * FROM Article');
@@ -36,29 +38,15 @@ if(isset($_GET['EMail'])){
 
                 <?php while($v = $Article->fetch()){ ?>
                     <div>
+                        <?php
+                         $image = $v['UrlPhotA'];
+                         ?>
+                        <img src="<?= $v['UrlPhotA'] ?>"/>
                         <h3>Article num <?= $v['NumArt']?> : <?= $v['LibTitrA']?></h3>
                         <p><?= $v['LibChapoA']?></p>
+                        <p><?= $v['DtCreA']?></p>
                         <p> <?= $v['Likes']?> likes</p>
-                        <p>Commentaires :</p>
-                        <?php 
-                            $NumArt = $v['NumArt'];
-                            $bdPdo->beginTransaction();
-
-                            $query = $bdPdo->prepare('SELECT * FROM COMMENT WHERE NumArt=:NumArt;');
-                        
-                            $query->execute(
-                              array(
-                                ':NumArt' => $NumArt
-                              )
-                            );
-                        
-                            $bdPdo->commit();
-                        ?>
-                        <ul>
-                            <?php while($v = $query->fetch()){ ?>
-                                <li>"<?= $v['LibCom']?>" de <?= $v['PseudoAuteur']?> </li>               
-                            <?php }?>
-                        </ul>
+                        <a href="articleC.php?id=<?= $v['NumArt']?>&amp;EMail=<?= $_SESSION['EMail']?>&amp;l=0">Lire -></a>
                     </div>
                 <?php }
                 include "disconect.php";
@@ -69,10 +57,7 @@ if(isset($_GET['EMail'])){
                     if(isset($erreur)){ echo $erreur;}
                 ?>
 
-
-
-
-
+    <a href="mdp.php">Partie adminstration</a>
 
     <?php
     }
