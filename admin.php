@@ -12,13 +12,13 @@
         // On affiche les codes
         ?>
 
-            
-<?php 
+
+<?php
     include "conect.php";
      $Articles = $bdPdo ->query('SELECT * FROM Article');
- ?> 
+ ?>
 <body>
-    <h1>Gavé Bleu Administrastion</h1>
+    <h1>Gavé Bleu Administration</h1>
     <h3>Les Articles</h3>
     <a href="addArti.php">Ecrire un nouvel Article</a> <br>
     <a href="vewArti.php">Voir tout les Articles </a> <br>
@@ -26,25 +26,25 @@
     <a href="addLang.php">Nouvelle Langue</a> <br>
     <a href="vewLang.php">Voir toutes les Langues</a> <br>
     <h3>Les Utilisateurs</h3>
-    <a href="addUser.php">Nouveaux Utilisateurs</a> <br>
+    <a href="addUser.php">  Ajouter un nouvel Utilisateur</a> <br>
     <a href="vewUser.php">Voir tout les Utilisateurs</a> <br>
     <h3>Les Angles</h3>
-    <a href="addAngle.php">Nouveaux Angles</a> <br>
+    <a href="addAngle.php">Ajouter un nouvel Angle</a> <br>
     <a href="vewAngle.php">Voir tout les Angles</a> <br>
     <h3>Les Thématiques</h3>
-    <a href="addThem.php">Nouvelles Thématiques</a> <br>
+    <a href="addThem.php">Ajouter une nouvelle Thématique</a> <br>
     <a href="vewThem.php">Voir toutes les Thématiques</a> <br>
     <h3>Les Mots clés</h3>
-    <a href="addMot.php">Nouveau mot clé</a> <br>
+    <a href="addMot.php"> Ajouter un nouveau mot clé</a> <br>
     <a href="vewMot.php">Voir tout les mots clés</a> <br>
     <a href="motArt.php">Lier les mots aux articles</a> <br>
     <h3>Voir les Commentaires par Article</h3>
-    <a href="addCom.php">Ajouter un commentaire</a>
+    <a href="addCom.php">Ajouter un nouveau commentaire</a>
     <ul>
     <?php while($v = $Articles->fetch()){ ?>
-            <li><a href="vewCom.php? id=<?=$v['NumArt']?> "> Pour l'Article "<?= $v['LibTitrA']?>" </a></li>                   
+            <li><a href="vewCom.php? id=<?=$v['NumArt']?> "> Pour l'Article "<?= $v['LibTitrA']?>" </a></li>
     <?php }?>
-    </ul> 
+    </ul>
 
     <h4><a href="index.php">Voir la partie pour les visiteurs du site </a></h4>
     <footer>
@@ -53,10 +53,10 @@
             <br>
             <a href="https://icons8.com/icon/">Icons by Icons8</a>
 		  </p>
-    
+
     </footer>
 </body>
-    
+
         <?php
         }
         else // Sinon, on affiche un message d'erreur
