@@ -30,10 +30,10 @@ if(isset($_GET['EMail'])){
 
  <h2>Nos Articles</h2>
 
-    <?php  
+    <?php
         include "conect.php";
               $Article = $bdPdo ->query('SELECT * FROM Article');
-            
+
             ?>
 
                 <?php while($v = $Article->fetch()){ ?>
@@ -53,7 +53,7 @@ if(isset($_GET['EMail'])){
                 ?>
 
            <br />
-                <?php 
+                <?php
                     if(isset($erreur)){ echo $erreur;}
                 ?>
 
@@ -61,7 +61,7 @@ if(isset($_GET['EMail'])){
 
     <?php
     }
-    ?>  
+    ?>
 </body>
 </html>
 

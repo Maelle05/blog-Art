@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Supr Article </title>
+    <title>Supprimer Article </title>
 </head>
 <body>
     <?php
   include 'conect.php';
 
   $NumArt = $_GET['NumArt'];
-  
+
   try {
     $bdPdo->beginTransaction();
 
@@ -29,15 +29,14 @@
   }
 
   $query->closeCursor();
-  echo "L'Article numéro <i>" . $NumArt . "</i> a bien été supprimée !";
+  echo "L'Article numéro <i>" . $NumArt . "</i> a bien été supprimé !";
   echo "<br>";
-  echo "Si ton article ne se supprime pas, c'est qu'il a des mots clée et/ou des commentaires, supprime les et recommence !";
+  echo "Si ton article ne se supprime pas, c'est qu'il a des mots clés et/ou des commentaires, supprime les et recommence !";
   echo "<br>";
   $bdPDO = NULL;
   // echo "<h2>Closed connection !</h2>";
-  
+
 ?>
 <a href="vewArti.php">Retour</a>
 </body>
 </html>
-

@@ -1,11 +1,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
     <head>
         <meta charset="utf-8" />
-        <title>Page protégée par mot de passe</title>
+        <title>Page protégée par un mot de passe</title>
     </head>
     <body>
         <div class="center">
-            <p>Veuillez entrer le mot de passe pour obtenir l'accès à l'administration .</p>
+            <p>Veuillez entrer le mot de passe pour avoir accès à l'administration .</p>
             <form action="admin.php" method="post">
                 <p>
                 <input type="password" name="mot_de_passe" />

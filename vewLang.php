@@ -6,15 +6,15 @@
       <title>All Langues</title>
   </head>
   <body>
-    <?php 
-        
+    <?php
+
     include "conect.php";
 
     ?>
 
     <h1>Toutes les langues entrées dans la base de données</h1>
 
-    <?php  
+    <?php
               $Langues = $bdPdo ->query('SELECT * FROM langue');
             ?>
             <table>
@@ -34,17 +34,14 @@
                         <td><?= $v['NumPays']?></td>
                         <td><a href="editLang.php? id=<?=$v['NumLang']?> "> <img src="https://img.icons8.com/cute-clipart/64/000000/edit.png"/> </a></td>
                         <td><a href="DeleteLang.php?NumLang=<?php echo $v['NumLang'] ?>"><img src="https://img.icons8.com/cute-clipart/64/000000/delete-forever.png"/></a></td>
-                    </tr>                    
+                    </tr>
                 <?php }?>
             </table>
         <br />
-                <?php 
+                <?php
                     if(isset($erreur)){ echo $erreur;}
                 ?>
 
         <a href="admin.php?mot_de_passe=MMI21">Retour</a>
   </body>
-  </html>     
-       
-       
-      
+  </html>

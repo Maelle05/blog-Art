@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Mot Clé</title>
+    <title>Editer Mot Clé</title>
 </head>
 <body>
-    <?php 
-        
+    <?php
+
        include 'conect.php';
 
        $SelectLang = $bdPdo ->query('SELECT * FROM Langue');
@@ -30,12 +30,12 @@
                 die('Ce mot clé n\'existe pas !');
             }
         }else{
-            echo('<a href="vewMot.php">Retour</a>'); 
+            echo('<a href="vewMot.php">Retour</a>');
             die('ERREUR');
         }
 
-		
-              
+
+
         if (((isset($_GET['NumMoCle'])) AND !empty($_GET['NumMoCle']))
         AND ((isset($_GET['LibMoCle'])) AND !empty($_GET['LibMoCle']))
         ) {
@@ -43,7 +43,7 @@
 
             $NumMoCle = htmlspecialchars($_GET['NumMoCle']);
             $LibMoCle = htmlspecialchars($_GET['LibMoCle']);
-            
+
 
             try{
                 //Début transaction
@@ -61,28 +61,28 @@
 
                 // commite de la transaction (confirm insert)
                 $bdPdo->commit();
-        
+
             }catch( PDOException $e ){
                 //rollBack  (annule Insert)
             $bdPdo->rollBack();
             }
-        
-            //liberer le curseur 
+
+            //liberer le curseur
             $query->closeCursor();
-        
+
             // affichage des messsages d'erreur et/ou d'envoie
-            echo"Requete <b>update</b> a remplacé les valeurs de" . $NumMoCle . "!";
+            echo"Requête <b>update</b> a remplacé les valeurs de" . $NumMoCle . "!";
             echo"<br />";
-        
+
 
         }
 
-                   
+
 
                 include 'disconect.php';
-        
+
         ?>
-    
+
             <h2>Modifier le Mot clé numéro :<?= $NumMoCle?> </h2>
             <form action="editMoCle.php" name="formMoCle" method="get">
 
@@ -94,7 +94,7 @@
 
         <p>Dans la langue : <?= $NumLang ?></p>
 
-        
+
 
         <input type="submit" name="Submit" value="Validé">
     </form>

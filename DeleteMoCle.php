@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Supr Mot Clé</title>
+    <title>Supprimer Mot Clé</title>
 </head>
 <body>
     <?php
@@ -22,7 +22,7 @@
     );
 
     $query->closeCursor();
-    echo "La Thématique <i>" . $NumMoCle . "</i> a bien été supprimée !";
+    echo "La Thématique <i>" . $NumMoCle . "</i> a bien été supprimé !";
     echo "<br>";
     $bdPDO = NULL;
     // echo "<h2>Closed connection !</h2>";
@@ -33,8 +33,8 @@
     $bdPdo->rollBack();
   }
 
- 
-  
+
+
 ?>
 <a href="vewMot.php">Retour</a>
 </body>

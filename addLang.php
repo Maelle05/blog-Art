@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Langue</title>
+    <title>Ajouter Langue</title>
 </head>
 <body>
 
-<?php   
+<?php
 
     ini_set('display_errors','on');
 
@@ -20,7 +20,7 @@
             $Lib2Lang ="";
             $numPays ="";
             $NumPays ="";
-           
+
     // Fonction de controle des saisies du formulaire
     function ctrlSaisies($saisie) {
 
@@ -28,7 +28,7 @@
       $saisie = trim($saisie);
       // Suppression des antislashs d'une chaîne
       $saisie = stripslashes($saisie);
-      // Conversion des caractères spéciaux en entités HTML 
+      // Conversion des caractères spéciaux en entités HTML
       $saisie = htmlentities($saisie);
 
       return $saisie;
@@ -41,14 +41,14 @@
 
             $Submit = isset($_POST['Submit']) ? $_POST['Submit'] : '';
 			if (isset($_POST['id']) AND $_POST['id'] == 0) {
-              
+
 				if (((isset($_POST['Lib1Lang'])) AND !empty($_POST['Lib1Lang']))
                 AND ((isset($_POST['Lib2Lang'])) AND !empty($_POST['Lib2Lang']))
                 AND ((isset($_POST['NumPays'])) AND !empty($_POST['NumPays']))) {
                     $erreur = false;
-                    
+
                     $NumLang = 0;
-				
+
                     $Lib1Lang = ctrlSaisies($_POST['Lib1Lang']);
                     $Lib2Lang = ctrlSaisies($_POST['Lib2Lang']);
                     $NumPays = ctrlSaisies($_POST['NumPays']);
@@ -80,7 +80,7 @@
                             $NumLang = $StrLang . $numSeqLang;
                         }
 
-                       
+
 
                         try {
                             $stmt = $bdPdo->prepare("INSERT INTO LANGUE (NumLang, Lib1Lang, Lib2Lang, NumPays) VALUES (:NumLang, :Lib1Lang, :Lib2Lang, :NumPays)");
@@ -88,23 +88,23 @@
                             $stmt->bindParam(':Lib1Lang', $Lib1Lang);
                             $stmt->bindParam(':Lib2Lang', $Lib2Lang);
                             $stmt->bindParam(':NumPays', $NumPays);
-        
+
                             $stmt->execute();
                         } catch (\Throwable $th) {
                             //throw $th;
                         }
                     }
 
-                
+
             }
     }
 }
-   
-        
+
+
 ?>
 
 
-    <h2>Ajoutez une langue...</h2>
+    <h2>Ajouter une langue...</h2>
     <form action="addLang.php" name="formLangue" method="post">
         <input type="hidden" name="id" value="">
 
@@ -115,10 +115,10 @@
         <input type="text" name="Lib2Lang" maxlength="25" id="" placeholder="25 char."><br>
 
         <label for="">Quel Pays :</label>
-        <select name="NumPays" >            
+        <select name="NumPays" >
             <?php while($v = $SelectPays->fetch()){ ?>
                     <option value="<?= $v['numPays']?>" > <?= $v['numPays']?> <?= $v['frPays']?> </option>
-            <?php }?>               
+            <?php }?>
         </select>
 
         <input type="submit" name="Submit" value="Validé">

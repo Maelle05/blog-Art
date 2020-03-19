@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Thematiques</title>
+    <title>Ajouter Thematiques</title>
 </head>
 <body>
 
-<?php   
+<?php
 
     ini_set('display_errors','on');
 
@@ -15,16 +15,16 @@
 
     function getNextNumThem($NumLang) {
 
-        // Connexion à la BDD 
+        // Connexion à la BDD
         include 'conect.php';
-  
-        // Découpage FK LANGUE 
-        $LibLangSelect = substr($NumLang, 0, 4); 
+
+        // Découpage FK LANGUE
+        $LibLangSelect = substr($NumLang, 0, 4);
         $parmNumLang = $LibLangSelect . '%';
-  
+
         $requete = "SELECT MAX(NumLang) AS NumLang FROM THEMATIQUE WHERE NumLang LIKE '$parmNumLang';";
         $result = $bdPdo->query($requete);
-  
+
         if ($result) {
             $tuple = $result->fetch();
             $NumLang = $tuple["NumLang"];
@@ -34,7 +34,7 @@
                 $result = $bdPdo->query($requete);
                 $tuple = $result->fetch();
                 $NumThem = $tuple["NumThem"];
-  
+
                 $NumThemSelect = (int)substr($NumThem, 3, 2);
                 // No séquence suivant LANGUE
                 $numSeq1Them = $NumThemSelect + 1;
@@ -47,15 +47,15 @@
                 $result = $bdPdo->query($requete);
                 $tuple = $result->fetch();
                 $NumThem = $tuple["NumThem"];
-  
+
                 // No séquence actuel LANGUE
                 $numSeq1Them = (int)substr($NumThem, 3, 2);
                 // No séquence actuel THEMATIQUE
-                $numSeq2Them = (int)substr($NumThem, 5, 2); 
+                $numSeq2Them = (int)substr($NumThem, 5, 2);
                 // No séquence suivant THEMATIQUE
                 $numSeq2Them++;
             }
-  
+
             $LibThemSelect = "THE";
             // PK reconstituée : THE + no seq langue
             if ($numSeq1Them < 10) {
@@ -121,7 +121,7 @@
             $NumLang ="";
             $NumThem ="";
             $LibThem ="";
-           
+
     // Fonction de controle des saisies du formulaire
     function ctrlSaisies($saisie) {
 
@@ -129,7 +129,7 @@
       $saisie = trim($saisie);
       // Suppression des antislashs d'une chaîne
       $saisie = stripslashes($saisie);
-      // Conversion des caractères spéciaux en entités HTML 
+      // Conversion des caractères spéciaux en entités HTML
       $saisie = htmlentities($saisie);
 
       return $saisie;
@@ -141,18 +141,18 @@
         if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             $Submit = isset($_POST['Submit']) ? $_POST['Submit'] : '';
-              
+
 				if (((isset($_POST['NumThem'])) AND !empty($_POST['NumThem']))
                 AND ((isset($_POST['LibThem'])) AND !empty($_POST['LibThem']))
                 AND ((isset($_POST['NumLang'])) AND !empty($_POST['NumLang']))) {
                     $erreur = false;
-                             
+
 
                     $NumLang = ctrlSaisies($_POST['NumLang']);
                     $NumThem =getNextNumThem($NumLang);
                     $LibThem = ctrlSaisies($_POST['LibThem']);
-                    
-                      
+
+
 
                         try {
                             $stmt = $bdPdo->prepare("INSERT INTO thematique (NumLang, NumThem, LibThem) VALUES (:NumLang, :NumThem, :LibThem)");
@@ -170,38 +170,38 @@
                 if($_SERVER["REQUEST_METHOD"] == "GET"){
 
                     $Submit = isset($_GET['Submit']) ? $_GET['Submit'] : '';
-                      
+
                         if (((isset($_GET['NumThem'])) AND !empty($_GET['NumThem']))
                         AND ((isset($_GET['LibThem'])) AND !empty($_GET['LibThem']))
                         AND ((isset($_GET['NumLang'])) AND !empty($_GET['NumLang']))) {
                             $erreur = false;
-                                     
-        
-        
-        
+
+
+
+
                             $NumThem1 =$_GET['NumThem'];
                             $NumThem = getNextNumThem1($NumThem1);
                             echo $NumThem;
                             $LibThem = ctrlSaisies($_GET['LibThem']);
                             $NumLang = ctrlSaisies($_GET['NumLang']);
-                              
-        
+
+
                                 try {
                                     $stmt = $bdPdo->prepare("INSERT INTO thematique (NumLang, NumThem, LibThem) VALUES (:NumLang, :NumThem, :LibThem)");
                                     $stmt->bindParam(':NumLang', $NumLang);
                                     $stmt->bindParam(':NumThem', $NumThem);
                                     $stmt->bindParam(':LibThem', $LibThem);
-        
+
                                     $stmt->execute();
                                 } catch (\Throwable $th) {
                                     throw $th;
                                 }
                             }
                         }
-    
-            
-   
-        
+
+
+
+
 ?>
 
 
@@ -214,10 +214,10 @@
         <input type="text" name="LibThem" maxlength="25" id="" ><br>
 
         <label for="">Quelle langue ?</label>
-        <select name="NumLang" >            
+        <select name="NumLang" >
             <?php while($v = $SelectLang->fetch()){ ?>
                     <option value="<?= $v['NumLang']?>" > <?= $v['NumLang']?> <?= $v['Lib2Lang']?> </option>
-            <?php }?>               
+            <?php }?>
         </select>
                 <br>
         <input type="submit" name="Submit" value="Valider">
@@ -226,12 +226,12 @@
 
     <h2>Ajouter une nouvelle Langue à une Thématique </strong></h2>
     <form action="addThem.php" name="formThem" method="get">
-        
+
         <label for="">Pour quelle Thématique ?</label>
-            <select name="NumThem" >            
+            <select name="NumThem" >
                 <?php while($a = $SelectThem->fetch()){ ?>
                         <option value="<?= $a['NumThem']?>" ><?= $a['NumLang']?><?= $a['LibThem']?> </option>
-                <?php }?>               
+                <?php }?>
             </select>
             <br>
 
@@ -239,10 +239,10 @@
         <input type="text" name="LibThem" maxlength="25" id="" ><br>
 
         <label for="">En quelle langue ?</label>
-        <select name="NumLang" >            
+        <select name="NumLang" >
             <?php while($l = $SelectLang2->fetch()){ ?>
                     <option value="<?= $l['NumLang']?>" > <?= $l['NumLang']?> <?= $l['Lib2Lang']?> </option>
-            <?php }?>               
+            <?php }?>
         </select>
                 <br>
         <input type="submit" name="Submit" value="Valider">

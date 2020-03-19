@@ -6,8 +6,8 @@
     <title>Inscription</title>
 </head>
 <body>
-    
-<?php   
+
+<?php
 
 ini_set('display_errors','on');
 
@@ -18,7 +18,7 @@ include 'conect.php';
         $LastName ="";
         $FirstName ="";
         $EMail ="";
-       
+
 // Fonction de controle des saisies du formulaire
 function ctrlSaisies($saisie) {
 
@@ -26,7 +26,7 @@ function ctrlSaisies($saisie) {
   $saisie = trim($saisie);
   // Suppression des antislashs d'une chaîne
   $saisie = stripslashes($saisie);
-  // Conversion des caractères spéciaux en entités HTML 
+  // Conversion des caractères spéciaux en entités HTML
   $saisie = htmlentities($saisie);
 
   return $saisie;
@@ -38,15 +38,15 @@ function ctrlSaisies($saisie) {
     if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         $Submit = isset($_POST['Submit']) ? $_POST['Submit'] : '';
-        
-          
+
+
             if (((isset($_POST['Login'])) AND !empty($_POST['Login']))
             AND ((isset($_POST['Pass'])) AND !empty($_POST['Pass']))
             AND ((isset($_POST['LastName'])) AND !empty($_POST['LastName']))
             AND ((isset($_POST['FirstName'])) AND !empty($_POST['FirstName']))
             AND ((isset($_POST['EMail'])) AND !empty($_POST['EMail']))) {
                 $erreur = false;
-                             
+
                 $Login = ctrlSaisies($_POST['Login']);
                 $Pass = ctrlSaisies($_POST['Pass']);
                 $LastName = ctrlSaisies($_POST['LastName']);
@@ -56,7 +56,7 @@ function ctrlSaisies($saisie) {
                 $reqmail = $bdPdo->prepare("SELECT * FROM User WHERE EMail = ?");
                 $reqmail->execute(array($EMail));
                 $mailexist = $reqmail->rowCount();
-               
+
                 if( $mailexist == 0){
                         try {
                             $stmt = $bdPdo->prepare("INSERT INTO User (Login, Pass, LastName, FirstName, EMail) VALUES (:Login, :Pass, :LastName, :FirstName, :EMail)");
@@ -65,22 +65,22 @@ function ctrlSaisies($saisie) {
                             $stmt->bindParam(':LastName', $LastName);
                             $stmt->bindParam(':FirstName', $FirstName);
                             $stmt->bindParam(':EMail', $EMail);
-        
+
                             $stmt->execute();
                             echo "Vous vous êtes bien inscrit ! <br>  <a href=\"ConnectionUser.php\">Conectez - vous !</a>";
                         } catch (\Throwable $th) {
                             //throw $th;
                         }
                     }else{
-                        echo "Adresse Mail déja utilisée !"; 
+                        echo "Adresse Mail déja utilisée !";
                      }
                 }else{
-                    echo "Vous devez commpleter tous les champs !";
-                }                
+                    echo "Vous devez commpléter tous les champs !";
+                }
         }
 
 
-    
+
 ?>
 
 
@@ -101,7 +101,7 @@ function ctrlSaisies($saisie) {
     <label for="">Adresse Mail</label>
     <input type="mail" name="EMail" id="" ><br>
 
-    
+
 
     <input type="submit" name="Submit" value="S'inscrire">
 </form>

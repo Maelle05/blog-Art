@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Article</title>
+    <title>Editer Article</title>
 </head>
 <body>
-    <?php 
-        
+    <?php
+
        include 'conect.php';
 
        $SelectAngle = $bdPdo ->query('SELECT * FROM angle');
@@ -38,19 +38,19 @@
                 $NumAngl = $Article['NumAngl'];
                 $NumThem = $Article['NumThem'];
                 $NumLang = $Article['NumLang'];
- 
+
 
             }else{
                 die('Cette Article n\'existe pas !');
             }
         }else{
-            echo('<a href="vewArti.php">Retour</a>'); 
+            echo('<a href="vewArti.php">Retour</a>');
             die('ERREUR');
         }
 
         if($_SERVER["REQUEST_METHOD"] == "GET"){
-		
-              
+
+
                 if (((isset($_GET['LibTitrA'])) AND !empty($_GET['LibTitrA']))
                 AND ((isset($_GET['LibChapoA'])) AND !empty($_GET['LibChapoA']))
                 AND ((isset($_GET['LibAccrochA'])) AND !empty($_GET['LibAccrochA']))
@@ -66,7 +66,7 @@
                 AND ((isset($_GET['NumLang'])) AND !empty($_GET['NumLang']))
                     ) {
                     $erreur = false;
-                 				
+
                     $LibTitrA = htmlspecialchars($_GET['LibTitrA']);
                     $LibChapoA = htmlspecialchars($_GET['LibChapoA']);
                     $LibAccrochA = htmlspecialchars($_GET['LibAccrochA']);
@@ -80,7 +80,7 @@
                     $NumAngl = htmlspecialchars($_GET['NumAngl']);
                     $NumThem = htmlspecialchars($_GET['NumThem']);
                     $NumLang = htmlspecialchars($_GET['NumLang']);
-                  
+
 
                     try{
                         //Début transaction
@@ -88,7 +88,7 @@
                         // preparation de la requete Preparee dans une chane de caractere
                         // instruction incert Preparation
                         $query = $bdPdo->prepare('UPDATE article SET LibTitrA = :LibTitrA, LibChapoA = :LibChapoA, LibAccrochA = :LibAccrochA,
-                         Parag1A = :Parag1A, LibSsTitr1 = :LibSsTitr1, Parag2A = :Parag2A, LibSsTitr2 = :LibSsTitr2, Parag3A = :Parag3A, 
+                         Parag1A = :Parag1A, LibSsTitr1 = :LibSsTitr1, Parag2A = :Parag2A, LibSsTitr2 = :LibSsTitr2, Parag3A = :Parag3A,
                          LibConclA = :LibConclA, UrlPhotA = :UrlPhotA, NumAngl = :NumAngl, NumThem = :NumThem, NumLang = :NumLang
                            WHERE  NumArt ="'.$get_id.'"');
                         // Execution du prepare lancement
@@ -112,29 +112,29 @@
 
                         // commite de la transaction (confirm insert)
                         $bdPdo->commit();
-                
+
                     }catch( PDOException $e ){
                         //rollBack  (annule Insert)
                     $bdPdo->rollBack();
                     echo "erreur";
                     }
-                
-                    //liberer le curseur 
+
+                    //liberer le curseur
                     $query->closeCursor();
-                
+
                     // affichage des messsages d'erreur et/ou d'envoie
                     echo"Requete <b>update</b> a remplacé les valeurs de l'article numéro " . $NumArt . "!";
                     echo"<br />";
-               
+
 
                 }
             }
-                   
+
 
                 include 'disconect.php';
-        
+
         ?>
-    
+
             <h2>Modifier l'Article Numéro <?= $NumArt?> </h2>
             <form action="editArti.php" name="formArticle" method="Get">
 
@@ -171,33 +171,33 @@
         <input type="text" name="UrlPhotA" value="<?= $UrlPhotA ?>"  id="" ><br>
 
         <label for="">L'angle de L'article</label>
-        <select name="NumAngl" > 
-        <option value="<?= $NumAngl ?>"><?= $NumAngl ?></option>          
+        <select name="NumAngl" >
+        <option value="<?= $NumAngl ?>"><?= $NumAngl ?></option>
             <?php while($v = $SelectAngle->fetch()){ ?>
                     <option value="<?= $v['NumAngl']?>" > <?= $v['LibAngl']?> </option>
-            <?php }?>               
+            <?php }?>
         </select><br>
 
         <label for="">Thématique de L'article</label>
-        <select name="NumThem" >  
-        <option value="<?= $NumThem ?>"><?= $NumThem ?></option>          
+        <select name="NumThem" >
+        <option value="<?= $NumThem ?>"><?= $NumThem ?></option>
             <?php while($t = $SelectTheme->fetch()){ ?>
                     <option value="<?= $t['NumThem']?>" > <?= $t['LibThem']?> </option>
-            <?php }?>               
+            <?php }?>
         </select><br>
 
         <label for="">Langue de L'article</label>
-        <select name="NumLang" > 
-            <option value="<?= $NumLang ?>"><?= $NumLang ?></option>           
+        <select name="NumLang" >
+            <option value="<?= $NumLang ?>"><?= $NumLang ?></option>
             <?php while($l = $SelectLang->fetch()){ ?>
                     <option value="<?= $l['NumLang']?>" > <?= $l['Lib1Lang']?> </option>
-            <?php }?>               
+            <?php }?>
         </select><br>
 
-       
-   
 
-        
+
+
+
 
         <input type="submit" name="Submit" value="Validé">
     </form>

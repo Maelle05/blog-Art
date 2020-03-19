@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Supr User</title>
+    <title>Supprimer Utilisateur</title>
 </head>
 <body>
     <?php
@@ -23,7 +23,7 @@
     );
 
     $query->closeCursor();
-    echo "La langue <i>" . $NumUser . "</i> a bien été supprimée !";
+    echo "L'Utilisateur'<i>" . $NumUser . "</i> a bien été supprimé !";
     echo "<br>";
     $bdPDO = NULL;
     // echo "<h2>Closed connection !</h2>";
@@ -34,10 +34,9 @@
     $bdPdo->rollBack();
   }
 
- 
-  
+
+
 ?>
 <a href="vewUser.php">Retour</a>
 </body>
 </html>
-

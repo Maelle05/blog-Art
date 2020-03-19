@@ -6,17 +6,17 @@
       <title>All User</title>
   </head>
   <body>
-    <?php 
-        
+    <?php
+
     include "conect.php";
 
     ?>
 
     <h1>Tous les utilisateurs entrés dans la base de données</h1>
 
-    <?php  
+    <?php
               $User = $bdPdo ->query('SELECT * FROM User');
-            
+
             ?>
             <table>
                 <tr>
@@ -38,15 +38,15 @@
                         <td><a href="editUser.php? id=<?=$v['Login']?> "><img src="https://img.icons8.com/cute-clipart/64/000000/edit.png"/> </a></td>
                         <td><a href="DeleteUser.php?NumUser=<?php echo $v['Login'] ?>"><img src="https://img.icons8.com/cute-clipart/64/000000/delete-forever.png"/></a></td>
                     </tr>
-                    
+
                 <?php }?>
             </table>
 
            <br />
-                <?php 
+                <?php
                     if(isset($erreur)){ echo $erreur;}
                 ?>
 
         <a href="admin.php?mot_de_passe=MMI21">Retour</a>
   </body>
-  </html>     
+  </html>

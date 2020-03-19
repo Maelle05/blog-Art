@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Supr angle</title>
+    <title>Supprimer Angle</title>
 </head>
 <body>
     <?php
@@ -22,7 +22,7 @@
     );
 
     $query->closeCursor();
-    echo "L'angle <i>" . $NumAngl . "</i> a bien été supprimée !";
+    echo "L'angle <i>" . $NumAngl . "</i> a bien été supprimé !";
     echo "<br>";
     $bdPDO = NULL;
     // echo "<h2>Closed connection !</h2>";
@@ -33,10 +33,9 @@
     $bdPdo->rollBack();
   }
 
- 
-  
+
+
 ?>
 <a href="vewAngle.php">Retour</a>
 </body>
 </html>
-

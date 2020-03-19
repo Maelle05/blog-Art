@@ -6,8 +6,8 @@
     <title>Liaison Mot Clé Articles</title>
 </head>
 <body>
-    
-    <?php 
+
+    <?php
 
         include 'conect.php';
 
@@ -17,18 +17,18 @@
      $SelectAM = $bdPdo ->query('SELECT * FROM motclearticle')
     ?>
     <h2>Liaison Mot Clé - Articles</h2>
-    <?php 
+    <?php
             if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                 $Submit = isset($_POST['Submit']) ? $_POST['Submit'] : '';
-                  
+
                     if (((isset($_POST['NumArt'])) AND !empty($_POST['NumArt']))
                     AND ((isset($_POST['NumMoCle'])) AND !empty($_POST['NumMoCle']))){
                         $erreur = false;
-                    
+
                         $NumArt = htmlspecialchars($_POST['NumArt']);
-                        $NumMoCle = htmlspecialchars($_POST['NumMoCle']);                      
-    
+                        $NumMoCle = htmlspecialchars($_POST['NumMoCle']);
+
                             try {
                                 $stmt = $bdPdo->prepare("INSERT INTO motclearticle ( NumArt, NumMoCle) VALUES (:NumArt, :NumMoCle)");
                                 $stmt->bindParam(':NumArt', $NumArt);
@@ -39,27 +39,27 @@
                                 //throw $th;
                             }
                         }
-    
-                    
+
+
                 }
-    
+
     ?>
 
     <form action="motArt.php" name="formMotArt" method="post">
-        
+
         <label for="">Pour quelle Article ?</label>
-            <select name="NumArt" >            
+            <select name="NumArt" >
                 <?php while($a = $SelectArt1->fetch()){ ?>
                         <option value="<?= $a['NumArt']?>" ><?= $a['NumArt']?> <?= $a['LibTitrA']?> </option>
-                <?php }?>               
+                <?php }?>
             </select>
-          
+
 
         <label for="">Quel Mot Clé ?</label>
-        <select name="NumMoCle" >            
+        <select name="NumMoCle" >
             <?php while($l = $SelectMot->fetch()){ ?>
                     <option value="<?= $l['NumMoCle']?>" > <?= $l['LibMoCle']?> </option>
-            <?php }?>               
+            <?php }?>
         </select>
                 <br>
         <input type="submit" name="Submit" value="Validé">
@@ -67,49 +67,49 @@
     <br>
     <br>
     <br>
-    <h2>Les Liaisons deja effectué</h2>
+    <h2>Les Liaisons deja effectuées</h2>
 
     <?php while($v = $SelectArt->fetch()){ ?>
                     <div>
                         <h3>Article numéro <?= $v['NumArt']?> : <?= $v['LibTitrA']?></h3>
                         <p>Mots Clés:</p>
-                        <?php 
+                        <?php
                             $NumArt = $v['NumArt'];
                             $bdPdo->beginTransaction();
 
                             $query = $bdPdo->prepare('SELECT * FROM motclearticle WHERE NumArt=:NumArt;');
-                        
+
                             $query->execute(
                               array(
                                 ':NumArt' => $NumArt
                               )
                             );
-                        
+
                             $bdPdo->commit();
                         ?>
-                        
+
                         <ul>
                             <?php while($v = $query->fetch()){ ?>
                                 <li>
-                            <?php 
+                            <?php
                                 $NumMot = $v['NumMoCle'];
                                 $bdPdo->beginTransaction();
-    
+
                                 $Mot = $bdPdo->prepare('SELECT * FROM motcle WHERE NumMoCle=:NumMot;');
-                            
+
                                 $Mot->execute(
                                   array(
                                     ':NumMot' => $NumMot
                                   )
                                 );
-                            
+
                                 $bdPdo->commit();
                                 $m = $Mot->fetch()
-                            
+
                             ?>
                             <?= $m['LibMoCle']?>
                             <a href="DeleteLaison.php?NumMoCle=<?php echo $v['NumMoCle'] ?>&amp;NumArt=<?php echo $v['NumArt'] ?>">Supprimer</a>
-                            </li>               
+                            </li>
                             <?php }?>
                         </ul>
                     </div>
@@ -117,6 +117,6 @@
                 include "disconect.php";
                 ?>
                 <a href="admin.php?mot_de_passe=MMI21">Retour</a>
-    
+
 </body>
 </html>

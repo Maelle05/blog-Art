@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 
 include 'conect.php';
@@ -15,7 +15,7 @@ function likes() {
                 ':likes'=> $likes
             )
         );
-    
+
 }
 
   if (isset($_GET['like'])) {
@@ -26,7 +26,7 @@ function likes() {
 
 function getNextNumCom() {
 
-    // Connexion à la BDD 
+    // Connexion à la BDD
     include 'conect.php';
 
     $requete = "SELECT MAX(NumCom) AS NumCom FROM COMMENT;";
@@ -47,7 +47,7 @@ function getNextNumCom() {
     $EMail = htmlspecialchars($_POST['EMail']);
 }else{
     $EMail = htmlspecialchars($_SESSION['EMail']);
-    
+
 }
 
 if(isset($_SESSION['EMail'])){
@@ -56,8 +56,8 @@ if(isset($_SESSION['EMail'])){
     $reqUser = $bdPdo->prepare("SELECT * FROM USER WHERE EMAIL = ?");
     $reqUser->execute(array($EMail));
     $userInfo = $reqUser->fetch();
-    
-   
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -67,8 +67,8 @@ if(isset($_SESSION['EMail'])){
     <title>Article</title>
 </head>
 <body>
-    
-    <?php  
+
+    <?php
         include "conect.php";
 
         if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -76,9 +76,9 @@ if(isset($_SESSION['EMail'])){
         }else{
             $numArticle =htmlspecialchars($_GET['id']);
         }
-        
+
         $Article = $bdPdo ->prepare('SELECT * FROM Article WHERE NumArt =?');
-       
+
         $Article->execute(array($numArticle));
         if($Article->rowCount() == 1){
             $Article =$Article->fetch();
@@ -100,17 +100,17 @@ if(isset($_SESSION['EMail'])){
             die('C\'ette Article n\'existe pas !');
         }
 
-        if($_SERVER["REQUEST_METHOD"] == "POST"){			
-              
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+
             if (((isset($_POST['LibCom'])) AND !empty($_POST['LibCom']))
             AND ((isset($_POST['NumArt'])) AND !empty($_POST['NumArt']))
            ) {
                 $erreur = false;
 
                 $USER = $bdPdo ->prepare('SELECT * FROM USER WHERE EMail =?');
-                
 
-       
+
+
                 $USER->execute(array($EMail));
                 if($USER->rowCount() == 1){
                     $USER =$USER->fetch();
@@ -119,7 +119,7 @@ if(isset($_SESSION['EMail'])){
                 }else{
                     die('Ce USER n\'existe pas !');
                 }
-                             
+
                 $LibCom = htmlspecialchars($_POST['LibCom']);
                 $NumArt = htmlspecialchars($_POST['NumArt']);
                 $NumCom = getNextNumCom();
@@ -129,8 +129,8 @@ if(isset($_SESSION['EMail'])){
 
                     try {
                         $stmt = $bdPdo->prepare("INSERT INTO COMMENT (NumCom, DtCreC, PseudoAuteur, EmailAuteur, TitrCom, LibCom, NumArt) VALUES (:NumCom,:DtCreC,:PseudoAuteur,:EmailAuteur,:TitrCom,:LibCom, :NumArt)");
-                        
-                        
+
+
                         $stmt->bindParam(':NumCom', $NumCom);
                         $stmt->bindParam(':DtCreC', $date);
                         $stmt->bindParam(':PseudoAuteur', $PseudoAuteur);
@@ -138,20 +138,20 @@ if(isset($_SESSION['EMail'])){
                         $stmt->bindParam(':TitrCom', $TitrCom);
                         $stmt->bindParam(':LibCom', $LibCom);
                         $stmt->bindParam(':NumArt', $NumArt);
- 
+
                         $stmt->execute();
 
                         echo "Le Nouveau commentaire à bien ete ajouté à l'article numéro " .$NumArt . "!";
                     } catch (\Throwable $th) {
                         throw $th;
                     }
-                }                
+                }
         }
 
     ?>
             <h1><?= $LibTitrA ?> </h1>
 
-                    <div>                      
+                    <div>
                         <p><?= $DtCreA ?></p>
                         <p><?= $LibAccrochA ?></p>
                         <p><?= $Parag1A ?></p>
@@ -166,28 +166,28 @@ if(isset($_SESSION['EMail'])){
                     </div>
 
                     <h2>Commentaires</h2>
-                    <?php 
+                    <?php
                             $bdPdo->beginTransaction();
 
                             $query = $bdPdo->prepare('SELECT * FROM COMMENT WHERE NumArt=:NumArt;');
-                        
+
                             $query->execute(
                               array(
                                 ':NumArt' => $NumArt
                               )
                             );
-                        
+
                             $bdPdo->commit();
                         ?>
                         <ul>
                             <?php while($v = $query->fetch()){ ?>
-                                <li>"<?= $v['LibCom']?>" de <?= $v['PseudoAuteur']?> </li>               
+                                <li>"<?= $v['LibCom']?>" de <?= $v['PseudoAuteur']?> </li>
                             <?php }?>
                         </ul>
                     </div>
 
                     <form action="articleC.php" method="post">
-                            <label for="">Metre un commentaire</label>
+                            <label for="">Mettre un commentaire</label>
                             <input type="hidden" name="NumArt" value="<?= $NumArt ?>">
                             <input type="hidden" name="EMail" value="<?=$EMail?>">
                             <input type="hidden" name="id" value="<?=$numArticle?>">
@@ -196,19 +196,19 @@ if(isset($_SESSION['EMail'])){
                     </form>
 
 
-                <?php 
+                <?php
                      include "disconect.php";
                 ?>
                 <a href="profil.php?EMail=<?=$EMail?> ">Retour</a>
 
            <br />
-                <?php 
+                <?php
                     if(isset($erreur)){ echo $erreur;}
                 ?>
                   <?php
     }
-    ?>  
+    ?>
 
-   
+
 </body>
 </html>

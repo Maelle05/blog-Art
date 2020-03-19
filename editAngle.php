@@ -6,8 +6,8 @@
     <title>Edit Angle </title>
 </head>
 <body>
-    <?php 
-        
+    <?php
+
        include 'conect.php';
 
        $SelectLang = $bdPdo ->query('SELECT * FROM Langue');
@@ -27,24 +27,24 @@
                 $NumLang = $Angle['NumLang'];
 
             }else{
-                die('Cette Angle n\'existe pas !');
+                die('Cet Angle n\'existe pas !');
             }
         }else{
-            echo('<a href="vewAngle.php">Retour</a>'); 
+            echo('<a href="vewAngle.php">Retour</a>');
             die('ERREUR');
         }
 
         if($_SERVER["REQUEST_METHOD"] == "GET"){
-		
-              
+
+
 				if (((isset($_GET['NumAngl'])) AND !empty($_GET['NumAngl']))
                 AND ((isset($_GET['LibAngl'])) AND !empty($_GET['LibAngl']))
              ) {
                     $erreur = false;
-                 				
+
                     $NumAngl = htmlspecialchars($_GET['NumAngl']);
                     $LibAngl = htmlspecialchars($_GET['LibAngl']);
-                   
+
 
                     try{
                         //Début transaction
@@ -62,33 +62,33 @@
 
                         // commite de la transaction (confirm insert)
                         $bdPdo->commit();
-                
+
                     }catch( PDOException $e ){
                         //rollBack  (annule Insert)
                     $bdPdo->rollBack();
                     }
-                
-                    //liberer le curseur 
+
+                    //liberer le curseur
                     $query->closeCursor();
-                
+
                     // affichage des messsages d'erreur et/ou d'envoie
-                    echo"Requete <b>update</b> a remplacé les valeurs de" . $NumAngl . "!";
+                    echo"Requête <b>update</b> a remplacé les valeurs de" . $NumAngl . "!";
                     echo"<br />";
-               
+
 
                 }
             }
-                   
+
 
                 include 'disconect.php';
-        
+
         ?>
-    
+
             <h2>Modifier l'Angle <?= $NumAngl?> </h2>
             <form action="editAngle.php" name="formAngle" method="Get">
 
             <input type="hidden" name="id" value="<?= $NumAngl ?>">
-    
+
         <input type="hidden" name="NumAngl" maxlength="25" id="" value="<?= $NumAngl ?>" ><br>
 
         <label for="">Angle</label>
@@ -96,7 +96,7 @@
 
         <p>Dans la langue :<?= $NumLang ?></p>
 
-        
+
 
         <input type="submit" name="Submit" value="Validé">
     </form>

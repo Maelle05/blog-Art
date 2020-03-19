@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Supr Liaison </title>
+    <title>Supprimer Liaison </title>
 </head>
 <body>
     <?php
@@ -31,11 +31,11 @@
   }
 
   $query->closeCursor();
-  echo "La Liaison du mot clé numéro <i>" . $NumMoCle ." et l'article numéro " . $NumArt . "</i> a bien été supprimé !";
+  echo "La Liaison du mot clé numéro <i>" . $NumMoCle ." et l'article numéro " . $NumArt . "</i> a bien été supprimée !";
   echo "<br>";
   $bdPDO = NULL;
   // echo "<h2>Closed connection !</h2>";
-  
+
 ?>
 <a href="motArt.php">Retour</a>
 </body>

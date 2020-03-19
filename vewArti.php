@@ -6,17 +6,17 @@
       <title>All Article</title>
   </head>
   <body>
-    <?php 
-        
+    <?php
+
     include "conect.php";
 
     ?>
 
-    <h1>Tout les articles entrés dans la base de données</h1>
+    <h1>Tous les articles entrés dans la base de données</h1>
 
-    <?php  
+    <?php
               $Article = $bdPdo ->query('SELECT * FROM Article');
-            
+
             ?>
             <table>
                 <tr>
@@ -60,12 +60,12 @@
                         <td><a href="editArti.php? id=<?=$v['NumArt']?> "><img src="https://img.icons8.com/cute-clipart/64/000000/edit.png"/> </a></td>
                         <td><a href="DeleteArti.php?NumArt=<?php echo $v['NumArt'] ?>"><img src="https://img.icons8.com/cute-clipart/64/000000/delete-forever.png"/></a></td>
                     </tr>
-                    
+
                 <?php }?>
             </table>
 
            <br />
-                <?php 
+                <?php
                     if(isset($erreur)){ echo $erreur;}
                 ?>
 

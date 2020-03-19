@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<?php   
+<?php
 
     ini_set('display_errors','on');
 
@@ -17,8 +17,8 @@
     $SelectTheme = $bdPdo ->query('SELECT * FROM thematique');
     $SelectLang = $bdPdo ->query('SELECT * FROM Langue');
 
-     
-           
+
+
     // Fonction de controle des saisies du formulaire
     function ctrlSaisies($saisie) {
 
@@ -26,7 +26,7 @@
       $saisie = trim($saisie);
       // Suppression des antislashs d'une chaîne
       $saisie = stripslashes($saisie);
-      // Conversion des caractères spéciaux en entités HTML 
+      // Conversion des caractères spéciaux en entités HTML
       $saisie = htmlentities($saisie);
 
       return $saisie;
@@ -37,7 +37,7 @@
 
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             $Submit = isset($_POST['Submit']) ? $_POST['Submit'] : '';
-              
+
 			if ( ((isset($_POST['LibTitrA'])) AND !empty($_POST['LibTitrA']))
                 AND ((isset($_POST['LibChapoA'])) AND !empty($_POST['LibChapoA']))
                 AND ((isset($_POST['LibAccrochA'])) AND !empty($_POST['LibAccrochA']))
@@ -53,7 +53,7 @@
                 AND ((isset($_POST['NumLang'])) AND !empty($_POST['NumLang']))
                 ) {
                     $erreur = false;
-                    
+
                     $LibTitrA = ctrlSaisies($_POST['LibTitrA']);
                     $LibChapoA = ctrlSaisies($_POST['LibChapoA']);
                     $LibAccrochA = ctrlSaisies($_POST['LibAccrochA']);
@@ -69,10 +69,10 @@
                     $NumThem = ctrlSaisies($_POST['NumThem']);
                     $NumLang = ctrlSaisies($_POST['NumLang']);
 
-                
+
 
 //.........................................................................................................
-                    
+
                     $requete = "SELECT MAX(NumArt) AS NumArt FROM article";
 
                     $result = $bdPdo->query($requete);
@@ -89,7 +89,7 @@
                         try {
                             $stmt = $bdPdo->prepare("INSERT INTO `article`(`NumArt`, `DtCreA`, `LibTitrA`, `LibChapoA`, `LibAccrochA`, `Parag1A`, `LibSsTitr1`, `Parag2A`, `LibSsTitr2`, `Parag3A`, `LibConclA`, `UrlPhotA`, `Likes`, `NumAngl`, `NumThem`, `NumLang`) VALUES (:NumArt,:DtCreA,:LibTitrA,:LibChapoA,:LibAccrochA,:Parag1A,:LibSsTitr1,:Parag2A,:LibSsTitr2,:Parag3A,:LibConclA,:UrlPhotA,:Likes,:NumAngl,:NumThem,:NumLang)");
 
-  
+
                             $stmt->bindParam(':NumArt', $NumArt);
                             $stmt->bindParam(':DtCreA', $date);
                             $stmt->bindParam(':LibTitrA', $LibTitrA);
@@ -106,21 +106,21 @@
                             $stmt->bindParam(':NumAngl', $NumAngl);
                             $stmt->bindParam(':NumThem', $NumThem);
                             $stmt->bindParam(':NumLang', $NumLang);
-        
+
                             $stmt->execute();
 
-                            
+
                         } catch (\Throwable $th) {
                             throw $th;
                         }
                     }
 
-                
+
             }
 
 
-   
-        
+
+
 ?>
 
 
@@ -158,24 +158,24 @@
         <input type="text" name="UrlPhotA"  id="" ><br>
 
         <label for="">L'angle de L'article</label>
-        <select name="NumAngl" >            
+        <select name="NumAngl" >
             <?php while($v = $SelectAngle->fetch()){ ?>
                     <option value="<?= $v['NumAngl']?>" ><?= $v['NumLang']?> <?= $v['LibAngl']?> </option>
-            <?php }?>               
+            <?php }?>
         </select><br>
 
         <label for="">Thématique de L'article</label>
-        <select name="NumThem" >            
+        <select name="NumThem" >
             <?php while($t = $SelectTheme->fetch()){ ?>
                     <option value="<?= $t['NumThem']?>" > <?= $t['LibThem']?> </option>
-            <?php }?>               
+            <?php }?>
         </select><br>
 
         <label for="">Langue de L'article</label>
-        <select name="NumLang" >            
+        <select name="NumLang" >
             <?php while($l = $SelectLang->fetch()){ ?>
                     <option value="<?= $l['NumLang']?>" > <?= $l['Lib1Lang']?> </option>
-            <?php }?>               
+            <?php }?>
         </select><br>
 
         <input type="submit" name="Submit" value="Validé">

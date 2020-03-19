@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 ?>
 <!DOCTYPE html>
@@ -6,11 +6,11 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connection</title>
+    <title>Connexion</title>
 </head>
 <body>
 
-<?php 
+<?php
     include 'conect.php';
 
     if(isset($_POST['formC']))
@@ -20,7 +20,7 @@ session_start();
        if(!empty($EMail)AND !empty($Pass))
        {
             $reqUser = $bdPdo->prepare("SELECT * FROM user WHERE EMail = ? AND Pass = ? ");
-            $reqUser->execute(array($EMail, $Pass)); 
+            $reqUser->execute(array($EMail, $Pass));
             $userexist = $reqUser->rowCount();
             if($userexist == 1){
 
@@ -46,11 +46,11 @@ session_start();
 
     <label for="">Adresse Mail</label>
     <input type="mail" name="EMail" id="" ><br>
-    
+
 
     <label for="">Mot de passe</label>
     <input type="text" name="Pass" placeholder="max 25 char ." maxlength="25" id="" ><br>
-     
+
     <input type="submit" name="formC" value="Se connecter">
 
 </form>
@@ -64,6 +64,6 @@ session_start();
 
 <?php include 'disconect.php';?>
 
-    
+
 </body>
 </html>

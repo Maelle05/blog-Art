@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Supr Com </title>
+    <title>Supprimer Commentaire </title>
 </head>
 <body>
     <?php
@@ -33,9 +33,8 @@
   echo "<br>";
   $bdPDO = NULL;
   // echo "<h2>Closed connection !</h2>";
-  
+
 ?>
 <a href="admin.php?mot_de_passe=MMI21">Retour</a>
 </body>
 </html>
-

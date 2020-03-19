@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Comment</title>
+    <title>Ajouter un Commentaire</title>
 </head>
 <body>
 
-<?php   
+<?php
 
     ini_set('display_errors','on');
 
@@ -17,22 +17,22 @@
 
     function getNextNumCom() {
 
-        // Connexion à la BDD 
+        // Connexion à la BDD
         include 'conect.php';
-  
+
         $requete = "SELECT MAX(NumCom) AS NumCom FROM COMMENT;";
         $result = $bdPdo->query($requete);
-  
+
         if ($result) {
             $tuple = $result->fetch();
             $NumCom = $tuple["NumCom"];
             // No PK suivante COMMENT
             $NumCom++;
-  
+
         }   // End of if ($result)
         return $NumCom;
       }
-           
+
     // Fonction de controle des saisies du formulaire
     function ctrlSaisies($saisie) {
 
@@ -40,7 +40,7 @@
       $saisie = trim($saisie);
       // Suppression des antislashs d'une chaîne
       $saisie = stripslashes($saisie);
-      // Conversion des caractères spéciaux en entités HTML 
+      // Conversion des caractères spéciaux en entités HTML
       $saisie = htmlentities($saisie);
 
       return $saisie;
@@ -49,13 +49,13 @@
 
 
 
-        if($_SERVER["REQUEST_METHOD"] == "POST"){			
-              
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+
 				if (((isset($_POST['LibCom'])) AND !empty($_POST['LibCom']))
                 AND ((isset($_POST['NumArt'])) AND !empty($_POST['NumArt']))
                ) {
                     $erreur = false;
-                 				
+
                     $LibCom = ctrlSaisies($_POST['LibCom']);
                     $NumArt = ctrlSaisies($_POST['NumArt']);
                     $NumCom = getNextNumCom();
@@ -67,8 +67,8 @@
 
                         try {
                             $stmt = $bdPdo->prepare("INSERT INTO COMMENT (NumCom, DtCreC, PseudoAuteur, EmailAuteur, TitrCom, LibCom, NumArt) VALUES (:NumCom,:DtCreC,:PseudoAuteur,:EmailAuteur,:TitrCom,:LibCom, :NumArt)");
-                            
-                            
+
+
                             $stmt->bindParam(':NumCom', $NumCom);
                             $stmt->bindParam(':DtCreC', $date);
                             $stmt->bindParam(':PseudoAuteur', $PseudoAuteur);
@@ -76,33 +76,33 @@
                             $stmt->bindParam(':TitrCom', $TitrCom);
                             $stmt->bindParam(':LibCom', $LibCom);
                             $stmt->bindParam(':NumArt', $NumArt);
-     
+
                             $stmt->execute();
 
                             echo "Le Nouveau commentaire à bien ete ajouté à l'article numéro " .$NumArt . "!";
                         } catch (\Throwable $th) {
                             throw $th;
                         }
-                    }                
+                    }
             }
-    
-   
-        
+
+
+
 ?>
 
 
-    <h2>Ajoutez un Commentaire</h2>
+    <h2>Ajouter un Commentaire</h2>
     <form action="addCom.php" name="formCom" method="post">
         <label for="">Commentaire</label>
         <input type="text" name="LibCom" maxlength="25" id="" ><br>
 
         <label for="">Pour l'Article</label>
-        <select name="NumArt" >            
+        <select name="NumArt" >
                 <?php while($a = $SelectArt->fetch()){ ?>
                         <option value="<?= $a['NumArt']?>" ><?= $a['NumArt']?> <?= $a['LibTitrA']?> </option>
-                <?php }?>               
+                <?php }?>
             </select>
-        
+
 
         <input type="submit" name="Submit" value="Validé">
     </form>

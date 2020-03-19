@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Langue </title>
+    <title>Editer Langue </title>
 </head>
 <body>
-    <?php 
-        
+    <?php
+
        include 'conect.php';
 
        $SelectPays = $bdPdo ->query('SELECT * FROM Pays');
@@ -34,21 +34,21 @@
         }
 
         if(isset($_GET['Submit']) ){
-              
+
 				if (((isset($_GET['Lib1Lang'])) AND !empty($_GET['Lib1Lang']))
                 AND ((isset($_GET['Lib2Lang'])) AND !empty($_GET['Lib2Lang']))
                 AND ((isset($_GET['NumPays'])) AND !empty($_GET['NumPays'])))
                {
-                    
-    
 
-                    
+
+
+
                     $NumLang = 0;
 
 				    $Lib1Lang = htmlspecialchars($_GET['Lib1Lang']);
                     $Lib2Lang = htmlspecialchars($_GET['Lib2Lang']);
                     $NumPays = htmlspecialchars($_GET['NumPays']);
-                   
+
 
                     $numPaysSelect = $NumPays;
                     $parmNumlang = $numPaysSelect . '%';
@@ -96,29 +96,29 @@
 
                         // commite de la transaction (confirm insert)
                         $bdPdo->commit();
-                
+
                     }catch( PDOException $e ){
                         //rollBack  (annule Insert)
                     $bdPdo->rollBack();
                     }
-                
-                    //liberer le curseur 
+
+                    //liberer le curseur
                     $query->closeCursor();
-                
+
                     // affichage des messsages d'erreur et/ou d'envoie
                     echo"Requete <b>update</b> a remplacé les valeurs de " . $NumLang . "!";
                     echo"<br />";
                     echo $NumLang;
-                
+
 
                 }
             }
-        
+
 
                 include 'disconect.php';
-        
+
         ?>
-    
+
             <h2>Modifier la Langue | <?= $NumLang?> </h2>
                 <form action="editLang.php" name="formLangue" method="get">
                     <input type="hidden" name="id" value="<?= $NumLang ?>">
@@ -135,7 +135,7 @@
                                 <?php while($v = $SelectPays->fetch()){ ?>
                                         <option value="<?= $v['numPays']?>" > <?= $v['numPays']?> <?= $v['frPays']?> </option>
                                 <?php }?>
-                                
+
                     </select>
 
                         <br>
