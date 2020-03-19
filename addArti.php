@@ -124,7 +124,7 @@
 ?>
 
 
-    <h2>Ajoutez un Nouvel Article</h2>
+    <h2>Ajouter un Nouvel Article</h2>
     <form action="addArti.php" name="formArti" method="post">
 
         <label for="">Titre de L'article</label>
