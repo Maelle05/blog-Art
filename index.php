@@ -22,7 +22,7 @@
                         <?php
                          $image = $v['UrlPhotA'];
                          ?>
-                        <img src="<?= $v['UrlPhotA'] ?>"/>
+                        <img src="<?=$v['UrlPhotA']?>"/>
                         <h3>Article num <?= $v['NumArt']?> : <?= $v['LibTitrA']?></h3>
                         <p><?= $v['LibChapoA']?></p>
                         <p><?= $v['DtCreA']?></p>
