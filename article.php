@@ -20,7 +20,33 @@
 <link rel="stylesheet" type="text/css" href="style.css">
     <title>Article</title>
 </head>
-<body>
+<body class="article-page">
+    
+    <div class="icon">
+        <div class="hamburger hamburger-middle"></div>
+    </div>
+
+    <section class="menu-container">
+        <div class="link-container-menu">
+            <a class="menu-container-link" href="index.html">ACCUEIL</a>
+            <a class="menu-container-link" href="articles.html">ARTICLES</a>
+            <a class="menu-container-link" href="about.html">A PROPOS</a>
+            <a class="menu-container-link" href="contact.html">CONTACT</a>
+            <a class="menu-container-link" href="connexion.html">CONNECTION</a>
+        </div>      
+    </section>
+    <section class="nav-bar">
+        <a class="no-display" href="index.html"><img class="logo-header" src="img/logo.png"></a>
+        <a href="articles.html">Articles</a>
+        <a href="about.html">A propos</a>
+        <a href="contact.html">Contact</a>
+        <a href="connexion.html">Connection</a>
+    
+    </section>
+
+    <section class="first-container">
+        <h1>Slogan</h1>
+    </section>
     
     <?php  
         include "conect.php";
@@ -49,41 +75,56 @@
         }
 
     ?>
-            <h1><?= $LibTitrA ?> </h1>
+        <section class="article-container">
+            <h3><?= $LibTitrA ?> </h3>
+                   
+            <p class="publie"><?= $DtCreA ?></p>
+            <p class="chapo"><?= $LibAccrochA ?></p>
+            <p class="first-paragraphe"><?= $Parag1A ?></p>
+            <img class="illustration" src="<?= $UrlPhotA ?>" alt="">
+            <p class="sous-titre"><?= $LibSsTitr1 ?></p>
+            <p class="second-paragraphe"><?= $Parag2A ?></p>
+            <img class="illustration" src="<?= $UrlPhotA ?>" alt="">
+            <p class="sous-titre"><?= $LibSsTitr2 ?></p>
+            <p class="third-paragraphe"><?= $Parag3A ?></p>
+            <p class="conclusion"><?= $LibConclA ?></p>
 
-                    <div>                      
-                        <p><?= $DtCreA ?></p>
-                        <p><?= $LibAccrochA ?></p>
-                        <p><?= $Parag1A ?></p>
-                        <img src="<?= $UrlPhotA ?>" alt="">
-                        <p><?= $LibSsTitr1 ?></p>
-                        <p><?= $Parag2A ?></p>
-                        <img src="<?= $UrlPhotA ?>" alt="">
-                        <p><?= $LibSsTitr2 ?></p>
-                        <p><?= $Parag3A ?></p>
-                        <p><?= $LibConclA ?></p>
-                    </div>
+            <div class="articles-logo-container">
+                <a href=""><img src="img/like.png"></a>
+                <a href=""><img src="img/share.png"></a>
+            </div>
+            <p>Mots-Clés</p>
+        </section>
 
-                    <h2>Commentaires</h2>
+            <section class="commentaires-container">
+                <div class="commentaire-wrapper">
+
+                    <h3 class="commentaire-title">Commentaires</h3>
                     <?php 
-                            $bdPdo->beginTransaction();
+                        $bdPdo->beginTransaction();
 
-                            $query = $bdPdo->prepare('SELECT * FROM COMMENT WHERE NumArt=:NumArt;');
-                        
-                            $query->execute(
-                              array(
-                                ':NumArt' => $NumArt
-                              )
-                            );
-                        
-                            $bdPdo->commit();
-                        ?>
-                        <ul>
-                            <?php while($v = $query->fetch()){ ?>
-                                <li>"<?= $v['LibCom']?>" de <?= $v['PseudoAuteur']?> </li>               
-                            <?php }?>
-                        </ul>
+                        $query = $bdPdo->prepare('SELECT * FROM COMMENT WHERE NumArt=:NumArt;');
+                    
+                        $query->execute(
+                          array(
+                            ':NumArt' => $NumArt
+                          )
+                        );
+                    
+                        $bdPdo->commit();
+                    ?>
+                    <div class="commentary">
+                        <?php while($v = $query->fetch()){ ?>
+                            <div>
+                                <img class="user-logo" src="img/user.png">
+                                <div class="commentary-content">
+                                    <p>"<?= $v['LibCom']?>" de <?= $v['PseudoAuteur']?> </p>
+                                </div> 
+                            </div>              
+                        <?php }?>
                     </div>
+                </div>
+            </section>
                 <?php 
                      include "disconect.php";
                 ?>
@@ -98,6 +139,12 @@
     // header("Location: index.php");
     // }
  ?> 
+ <footer>
+    <a href="#"><img class="logo-footer" src="img/logo.png"></a>
+    <a href="#">MENTIONS LEGALES</a>
+    <a href="#">COOKIES</a>
+    <a href="#">CHARTE DE MODERATION</a>
+ </footer>
    
 </body>
 </html>

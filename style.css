@@ -445,6 +445,13 @@ footer a {
 
 .commentary{
 	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.commentary div{
+	display: flex;
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
@@ -458,7 +465,10 @@ footer a {
 	background-color: #EFEFEF;
 	border-radius: 22px;
 	min-height: 100px;
+	width: 300px;
 	margin-bottom: 15px;
+	display: flex;
+	align-items: center;
 }
 
 
@@ -654,6 +664,14 @@ div .send-button-inscription{
 	color: #BC9F25;
 	font-size: 2.5rem;
 	text-decoration: none;
+}
+
+.illustration{
+	width: 80%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 0;
 }
 
 @media only screen and (max-width: 768px) {
