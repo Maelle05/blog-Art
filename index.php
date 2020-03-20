@@ -13,8 +13,8 @@
 
     <section class="menu-container">
         <div class="link-container-menu">
-            <a class="menu-container-link" href="index.html">ACCUEIL</a>
-            <a class="menu-container-link" href="articles.html">ARTICLES</a>
+            <a class="menu-container-link" href="index.php">ACCUEIL</a>
+            <a class="menu-container-link" href="index.php">ARTICLES</a>
             <a class="menu-container-link" href="about.html">A PROPOS</a>
             <a class="menu-container-link" href="contact.html">CONTACT</a>
             <a class="menu-container-link" href="connexion.html">CONNECTION</a>
@@ -116,10 +116,12 @@
                 ?>
     </section>
 
-    <a href="mdp.php">Partie administration</a>
 
     <footer>
-        <a href="#"><img class="logo-footer" src="img/logo.png"></a>
+        <div class="footer-link-admin">
+            <a href="#"><img class="logo-footer" src="img/logo.png"></a>
+            <a class="admin-link" href="mdp.php">Partie administration</a>
+        </div>
         <a href="#">MENTIONS LEGALES</a>
         <a href="#">COOKIES</a>
         <a href="#">CHARTE DE MODERATION</a>

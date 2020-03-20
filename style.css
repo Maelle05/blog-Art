@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Oswald|Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Oswald:400,700|Raleway:400,700&display=swap');
+
+
 *{
 	margin: 0;
 	padding: 0;
@@ -81,6 +83,9 @@ h3{
 	font-size: 4rem;
 }
 
+.slogan{
+	font-weight: 700;
+}
 
 .coloree{
 	position: relative;
@@ -358,6 +363,7 @@ footer{
 	align-items: center;
 	width: 100%;
 	height: 10vh;
+	bottom: -8%;
 	position: absolute;
 	z-index: 101;
 	background-color: #2D5284;
@@ -378,6 +384,18 @@ footer a {
 
 .contact-footer{
 	bottom: -10%;
+}
+
+
+
+.footer-link-admin{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.admin-link{
+	font-size: 1rem;
 }
 
 
