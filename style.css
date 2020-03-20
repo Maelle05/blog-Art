@@ -65,11 +65,39 @@ h3{
 	height: 40vh;
 	margin-top: 10vh;
 	width: 100%;
+	background-image: url(img/background.jpg);
+	background-size: cover;
+	background-position: center;
+}
+
+.first-container-filter{
+	width: 100%;
+	height: 100%;
+	background-color: rgba(255, 255, 255, .5);
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: #DBDADA;
+	color: #2D5284;
+	font-size: 4rem;
 }
+
+
+.coloree{
+	position: relative;
+	z-index: 5;
+}
+
+.coloree:before{
+	content: '';
+	z-index: -1;
+	width: 100%;
+	height: 10px;
+	background-color: #BC9F25;
+	position: absolute;
+	bottom: 8px;
+	left: -5%;
+}
+
 
 .first-content-container{
 	width: 75%;

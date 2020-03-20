@@ -30,12 +30,11 @@
     </section>
 
     <section class="first-container">
-        <h1>Slogan</h1>
+        <div class="first-container-filter">
+            <h1 class="slogan">Une visite <span class="coloree">colorée</span> de Bordeaux</h1>
+        </div>
     </section>
-    <h1>Bienvenue sur Gavé Bleu</h1>
-    <a href="ConnectionUser.php">Connexion</a>
-    <a href="InscriptionUser.php">Inscription</a>
-    <h2>Nos Articles</h2>
+
 
     <div class="fixed-bar">
         <div class="research-input-div">
@@ -109,9 +108,9 @@
                 <?php }
                 include "disconect.php";
                 ?>
-                <div class="all-article-container">
+                <!-- <div class="all-article-container">
                     <a class="all-article" href="">Voir tous les articles</a>
-                </div>
+                </div> -->
 
            <br />
                 <?php 
