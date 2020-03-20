@@ -42,29 +42,65 @@ session_start();
 
 ?>
 
-<h2>Connexion </h2>
-<form action="ConnectionUser.php" name="formUser" method="post">
+  <div class="icon">
+    <div class="hamburger hamburger-middle"></div>
+  </div>
 
-    <label for="">Adresse Mail</label>
-    <input type="mail" name="EMail" id="" ><br>
+  <section class="menu-container">
+    <div class="link-container-menu">
+      <a class="menu-container-link" href="index.html">ACCUEIL</a>
+      <a class="menu-container-link" href="articles.html">ARTICLES</a>
+      <a class="menu-container-link" href="about.html">A PROPOS</a>
+      <a class="menu-container-link" href="contact.html">CONTACT</a>
+      <a class="menu-container-link" href="connexion.html">CONNECTION</a>
+    </div>  
+  </section>
 
 
-    <label for="">Mot de passe</label>
-    <input type="text" name="Pass" placeholder="max 25 char ." maxlength="25" id="" ><br>
+  <section class="nav-bar">
+    <a class="no-display" href="index.html"><img class="logo-header" src="img/logo.png"></a>
+    <a href="articles.html">Articles</a>
+    <a href="about.html">A propos</a>
+    <a href="contact.html">Contact</a>
+    <a href="connexion.html">Connection</a>
 
-    <input type="submit" name="formC" value="Se connecter">
+  </section>
 
-</form>
-<p>Pas encore de compte ? Inscrivez-vous <a href="InscriptionUser.php">ICI</a> </p>
+  <section class="first-container">
+    <h1>Slogan</h1>
+  </section>
 
-<br>
-<a href="index.php">Retour</a>
+
+  <section class="article-container contact-container">
+    <h3>CONNEXION</h3>
+    <form class="connexion-input-container" action="ConnectionUser.php" name="formUser" method="post">
+
+        <label for="">Adresse Mail</label>
+        <input class="connexion-input" type="mail" name="EMail" id="" >
+
+
+        <label for="">Mot de passe</label>
+        <input class="connexion-input" type="text" name="Pass" placeholder="max 25 char ." maxlength="25" id="" >
+
+        <input class="send-button" type="submit" name="formC" value="Se connecter">
+
+        <p>Pas encore de compte ?<a href="InscriptionUser.php"> Inscrivez-vous ICI</a></p>
+
+    </form>
+    
+    <a href="index.php">Retour</a>
+  </section>
 
 
 
 
 <?php include 'disconect.php';?>
 
-
+  <footer>
+    <a href="#"><img class="logo-footer" src="img/logo.png"></a>
+    <a href="#">MENTIONS LEGALES</a>
+    <a href="#">COOKIES</a>
+    <a href="#">CHARTE DE MODERATION</a>
+  </footer>
 </body>
 </html>

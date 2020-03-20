@@ -85,30 +85,77 @@ function ctrlSaisies($saisie) {
 ?>
 
 
-<h2>Nouvel Utilisateur</h2>
-<form action="InscriptionUser.php" name="formUser" method="post">
-    <label for="">Pseudonyme</label>
-    <input type="text" name="Login" placeholder="max 25 char ." maxlength="25" id="" ><br>
+    <div class="icon">
+        <div class="hamburger hamburger-middle"></div>
+    </div>
 
-    <label for="">Mot de Passe</label>
-    <input type="text" name="Pass" placeholder="max 25 char ." maxlength="25" id="" ><br>
+    <section class="menu-container">
+        <div class="link-container-menu">
+            <a class="menu-container-link" href="index.html">ACCUEIL</a>
+            <a class="menu-container-link" href="articles.html">ARTICLES</a>
+            <a class="menu-container-link" href="about.html">A PROPOS</a>
+            <a class="menu-container-link" href="contact.html">CONTACT</a>
+            <a class="menu-container-link" href="connexion.html">CONNECTION</a>
+        </div>      
+    </section>
 
-    <label for="">Nom</label>
-    <input type="text" name="LastName" maxlength="25" id="" ><br>
+    <section class="nav-bar">
+        <a class="no-display" href="index.html"><img class="logo-header" src="img/logo.png"></a>
+        <a href="articles.html">Articles</a>
+        <a href="about.html">A propos</a>
+        <a href="contact.html">Contact</a>
+        <a href="connexion.html">Connection</a>
+    
+    </section>
 
-    <label for="">Prénom</label>
-    <input type="text" name="FirstName" maxlength="25" id="" ><br>
+    <section class="first-container">
+        <h1>Slogan</h1>
+    </section>
 
-    <label for="">Adresse Mail</label>
-    <input type="mail" name="EMail" id="" ><br>
+    <section class="article-container contact-container">
+        <h3>INSCRIPTION</h3>
 
+        <form class="inscription-input-container" action="InscriptionUser.php" name="formUser" method="post">
+            <div>
+                <label for="">Pseudonyme</label>
+                <input  class="connexion-input" type="text" name="Login" placeholder="max 25 char ." maxlength="25" id="" >
+            </div>
 
+            <div>
+                <label for="">Mot de Passe</label>
+                <input class="connexion-input" type="text" name="Pass" placeholder="max 25 char ." maxlength="25" id="" >
+            </div>
+            <div>
+                <label for="">Nom</label>
+                <input class="connexion-input" type="text" name="LastName" maxlength="25" id="" >
+            </div>
 
-    <input type="submit" name="Submit" value="S'inscrire">
-</form>
-<a href="index.php">Retour</a>
+            <div>
+                <label for="">Prénom</label>
+                <input class="connexion-input" type="text" name="FirstName" maxlength="25" id="" >
+            </div>
+
+            <div>
+                <label for="">Adresse Mail</label>
+                <input class="connexion-input" type="mail" name="EMail" id="" >
+            </div>
+
+            <div class="last-inscription-div">
+                <input class="send-button send-button-inscription" type="submit" name="Submit" value="S'inscrire">
+            </div>
+            <p>Vous possédez déjà un compte ?<a href="ConnectionUser.php"> Connectez-vous</a></p>
+        </form>
+        <a href="index.php">Retour</a>
+    </section>
 
 
 <?php include 'disconect.php';?>
+
+    <footer>
+        <a href="#"><img class="logo-footer" src="img/logo.png"></a>
+        <a href="#">MENTIONS LEGALES</a>
+        <a href="#">COOKIES</a>
+        <a href="#">CHARTE DE MODERATION</a>
+    </footer>
 </body>
 </html>
