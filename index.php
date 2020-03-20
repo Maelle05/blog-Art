@@ -111,8 +111,6 @@
                 <!-- <div class="all-article-container">
                     <a class="all-article" href="">Voir tous les articles</a>
                 </div> -->
-
-           <br />
                 <?php 
                     if(isset($erreur)){ echo $erreur;}
                 ?>
