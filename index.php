@@ -6,7 +6,7 @@
 <link rel="stylesheet" type="text/css" href="style.css">
     <title>Gavé Bleu</title>
 </head>
-<body>
+<body class="index-page">
     <div class="icon">
         <div class="hamburger hamburger-middle"></div>
     </div>

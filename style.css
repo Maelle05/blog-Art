@@ -370,14 +370,19 @@ h3{
 	text-decoration: none;
 	font-size: 4rem;
 }
+
+
+.index-page footer{
+	position: absolute;
+	bottom: -10%;
+}
+
 footer{
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
 	width: 100%;
 	height: 10vh;
-	bottom: -8%;
-	position: absolute;
 	z-index: 101;
 	background-color: #2D5284;
 }
