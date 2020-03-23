@@ -499,7 +499,7 @@ footer a {
 }
 
 .commentaire-wrapper{
-	width: 50%;
+	width: 70%;
 }
 
 .commentary{
@@ -511,13 +511,16 @@ footer a {
 
 .commentary div{
 	display: flex;
+	width: 80%;
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
+	margin-bottom: 30px;
 }
 
 .user-logo{
 	height: 80px;
+	margin-bottom: 30px;
 }
 
 .commentary-content{
@@ -525,7 +528,6 @@ footer a {
 	border-radius: 22px;
 	min-height: 100px;
 	width: 300px;
-	margin-bottom: 15px;
 	display: flex;
 	align-items: center;
 }
@@ -549,7 +551,13 @@ footer a {
 	margin-top: 10vh;
 }
 
-textarea{
+.commentaire-form{
+
+	width: 50%;
+	position: relative;
+}
+
+.commentaire-input{
 	min-height: 200px;
 	width: 100%;
 	padding: 10px;
@@ -557,10 +565,25 @@ textarea{
 	font-size: 2rem;
 	background-color: #EFEFEF;
 	color: #2D5284 !important;
+	border: 2px solid #BC9F25;
 }
 
-textarea ::placeholder{
+.commentaire-input ::placeholder{
 	color: #2D5284;
+}
+
+.submit-commentaire{
+	color: #2D5284;
+	font-size: 2rem;
+	bottom: -50px;
+	position: absolute;
+	right: -3%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 120px;
+	height: 40px;
+
 }
 
 

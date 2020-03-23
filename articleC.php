@@ -67,7 +67,35 @@ if(isset($_SESSION['EMail'])){
 <link rel="stylesheet" type="text/css" href="style.css">
     <title>Article</title>
 </head>
-<body>
+<body class="article-page">
+    
+    <div class="icon">
+        <div class="hamburger hamburger-middle"></div>
+    </div>
+
+    <section class="menu-container">
+        <div class="link-container-menu">
+            <a class="menu-container-link" href="index.php">ACCUEIL</a>
+            <a class="menu-container-link" href="index.php">ARTICLES</a>
+            <a class="menu-container-link" href="about.html">A PROPOS</a>
+            <a class="menu-container-link" href="contact.html">CONTACT</a>
+            <a class="menu-container-link" href="ConnectionUser.php">Connexion</a>
+        </div>      
+    </section>
+
+    <section class="nav-bar">
+        <a class="no-display" href="index.php"><img class="logo-header" src="img/logo.png"></a>
+        <a href="index.php">Articles</a>
+        <a href="about.html">A propos</a>
+        <a href="contact.html">Contact</a>
+        <a href="ConnectionUser.php">Connexion</a>
+    </section>
+
+    <section class="first-container">
+        <div class="first-container-filter">
+            <h1 class="slogan">Une visite <span class="coloree">colorée</span> de Bordeaux</h1>
+        </div>
+    </section>
 
     <?php
         include "conect.php";
@@ -150,50 +178,65 @@ if(isset($_SESSION['EMail'])){
         }
 
     ?>
-            <h1><?= $LibTitrA ?> </h1>
 
-                    <div>
-                        <p><?= $DtCreA ?></p>
-                        <p><?= $LibAccrochA ?></p>
-                        <p><?= $Parag1A ?></p>
-                        <img src="<?= $UrlPhotA ?>" alt="">
-                        <p><?= $LibSsTitr1 ?></p>
-                        <p><?= $Parag2A ?></p>
-                        <img src="<?= $UrlPhotA ?>" alt="">
-                        <p><?= $LibSsTitr2 ?></p>
-                        <p><?= $Parag3A ?></p>
-                        <p><?= $LibConclA ?></p>
-                        <div><a href="articleCd.php?like=true&amp;EMail=<?= $_SESSION['EMail']?>&amp;id=<?= $NumArt?>&amp;likes=<?= $Likes?>"><?= $Likes ?> Likes</a></div>
-                    </div>
+    <section class="article-container">
+            <h3><?= $LibTitrA ?> </h3>
 
-                    <h2>Commentaires</h2>
-                    <?php
-                            $bdPdo->beginTransaction();
+              
+            <p class="publie"><?= $DtCreA ?></p>
+            <p class="chapo"><?= $LibAccrochA ?></p>
+            <p class="first-paragraphe"><?= $Parag1A ?></p>
+            <img class="illustration" src="<?= $UrlPhotA ?>" alt="">
+            <p class="sous-titre"><?= $LibSsTitr1 ?></p>
+            <p class="second-paragraphe"><?= $Parag2A ?></p>
+            <img class="illustration" src="<?= $UrlPhotA ?>" alt="">
+            <p class="sous-titre"><?= $LibSsTitr2 ?></p>
+            <p class="third-paragraphe"><?= $Parag3A ?></p>
+            <p class="conclusion"><?= $LibConclA ?></p>
+            <div><a href="articleCd.php?like=true&amp;EMail=<?= $_SESSION['EMail']?>&amp;id=<?= $NumArt?>&amp;likes=<?= $Likes?>"><?= $Likes ?> Likes</a></div>
+            <div class="articles-logo-container">
+                <a href=""><img src="img/like.png"></a>
+                <a href=""><img src="img/share.png"></a>
+            </div>
+            <p>Mots-Clés</p>
+    </section>
+             
 
-                            $query = $bdPdo->prepare('SELECT * FROM COMMENT WHERE NumArt=:NumArt;');
+   <section class="commentaires-container">
+       <div class="commentaire-wrapper">
 
-                            $query->execute(
-                              array(
-                                ':NumArt' => $NumArt
-                              )
-                            );
+           <h3 class="commentaire-title">Commentaires</h3>
+            <?php
+                    $bdPdo->beginTransaction();
 
-                            $bdPdo->commit();
-                        ?>
-                        <ul>
-                            <?php while($v = $query->fetch()){ ?>
-                                <li>"<?= $v['LibCom']?>" de <?= $v['PseudoAuteur']?> </li>
-                            <?php }?>
-                        </ul>
-                    </div>
+                    $query = $bdPdo->prepare('SELECT * FROM COMMENT WHERE NumArt=:NumArt;');
 
-                    <form action="articleC.php" method="post">
-                            <label for="">Mettre un commentaire</label>
-                            <input type="hidden" name="NumArt" value="<?= $NumArt ?>">
-                            <input type="hidden" name="EMail" value="<?=$EMail?>">
-                            <input type="hidden" name="id" value="<?=$numArticle?>">
-                            <input type="text" name="LibCom">
-                            <input type="submit" value="Poster">
+                    $query->execute(
+                      array(
+                        ':NumArt' => $NumArt
+                      )
+                    );
+
+                    $bdPdo->commit();
+                ?>
+                 <div class="commentary">
+                    <?php while($v = $query->fetch()){ ?>
+                         <div>
+                            <img class="user-logo" src="img/user.png">
+                            <div class="commentary-content">
+                            <p>"<?= $v['LibCom']?>" de <?= $v['PseudoAuteur']?> </p>
+                            </div>
+                        </div>
+                    <?php }?>
+                </div>
+            </div>
+
+                    <form class="commentaire-form" action="articleC.php" method="post">
+                        <input type="hidden" name="NumArt" value="<?= $NumArt ?>">
+                        <input type="hidden" name="EMail" value="<?=$EMail?>">
+                        <input type="hidden" name="id" value="<?=$numArticle?>">
+                        <input class="commentaire-input" type="text" placeholder="Écrire un commentaire…" name="LibCom">
+                        <input class="submit-commentaire" type="submit" value="Ajouter">
                     </form>
 
 
@@ -202,7 +245,6 @@ if(isset($_SESSION['EMail'])){
                 ?>
                 <a href="profil.php?EMail=<?=$EMail?> ">Retour</a>
 
-           <br />
                 <?php
                     if(isset($erreur)){ echo $erreur;}
                 ?>

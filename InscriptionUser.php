@@ -109,7 +109,9 @@ function ctrlSaisies($saisie) {
     </section>
 
     <section class="first-container">
-        <h1>Slogan</h1>
+        <div class="first-container-filter">
+            <h1 class="slogan">Une visite <span class="coloree">colorée</span> de Bordeaux</h1>
+        </div>
     </section>
 
     <section class="article-container contact-container">
