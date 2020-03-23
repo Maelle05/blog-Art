@@ -76,7 +76,7 @@ session_start();
 
 
         <label for="">Mot de passe</label>
-        <input class="connexion-input" type="text" name="Pass" placeholder="max 25 char ." maxlength="25" id="" >
+        <input class="connexion-input" type="password" name="Pass" placeholder="max 25 char ." maxlength="25" id="" >
 
         <input class="send-button" type="submit" name="formC" value="Se connecter">
 
