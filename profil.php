@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 
 include 'conect.php';
@@ -33,7 +33,7 @@ if(isset($_GET['EMail'])){
             <a class="menu-container-link" href="contact.php?EMail=<?=$EMail?>">CONTACT</a>
             <a class="menu-container-link" href="disconnectUser.php">Se déconnecter</a>
             <a class="menu-container-link" href="editUserProfil.php"><?= $userInfo['Login'] ?></a>
-        </div>      
+        </div>
     </section>
 
     <section class="nav-bar">
@@ -62,15 +62,27 @@ if(isset($_GET['EMail'])){
             <h3>Trier par...</h3>
             <div>
                 <label>
-                <input class="" type="checkbox" name="">
-                <span></span>
-                Nombre de like
+                    <form method="POST" action="">
+                        <input type="hidden" name="triLikes" value="Likes">
+                        <input type="submit" name="submitLikes" value="Nombre de likes">
+                    </form>
                 </label>
             </div>
             <div>
                 <label>
-                <input class="" type="checkbox" name="">
-                Date de publication</label>
+                    <form method="POST" action="">
+                        <input type="hidden" name="triDate" value="DtCreA">
+                        <input type="submit" name="submitDate" value="Date de publication">
+                    </form>
+                </label>
+            </div>
+            <div>
+                <label>
+                    <form method="POST" action="">
+                        <input type="hidden" name="triAlphabet" value="LibTitrA">
+                        <input type="submit" name="submitAlphabet" value="Ordre alphabétique">
+                    </form>
+                </label>
             </div>
             <hr class="horizontal-bar">
         </div>
@@ -101,7 +113,24 @@ if(isset($_GET['EMail'])){
   <section class="first-content-container">
     <?php
         include "conect.php";
-              $Article = $bdPdo ->query('SELECT * FROM Article ORDER BY NumArt DESC');
+                $submit1 = isset($_POST['submitLikes']) ? $_POST['submitLikes'] : '';
+                $submit2 = isset($_POST['submitDate']) ? $_POST['submitDate'] : '';
+                $submit3 = isset($_POST['submitAlphabet']) ? $_POST['submitAlphabet'] : '';
+                if (((isset($_POST['triLikes'])) AND !empty($_POST['triLikes']))
+                AND (!empty($_POST['submitLikes']) AND ($submit1 == "Nombre de likes"))) {
+                    $Article = $bdPdo ->query('SELECT * FROM Article ORDER BY Likes DESC ');
+                }
+                elseif (((isset($_POST['triDate'])) AND !empty($_POST['triDate']))
+                AND (!empty($_POST['submitDate']) AND ($submit2 == "Date de publication"))) {
+                    $Article = $bdPdo ->query('SELECT * FROM Article ORDER BY DtCreA DESC ');
+                }
+                elseif (((isset($_POST['triAlphabet'])) AND !empty($_POST['triAlphabet']))
+                AND (!empty($_POST['submitAlphabet']) AND ($submit3 == "Ordre alphabétique"))) {
+                    $Article = $bdPdo ->query('SELECT * FROM Article ORDER BY LibTitrA ASC ');
+                }
+                else {
+                    $Article = $bdPdo ->query('SELECT * FROM Article ORDER BY NumArt DESC ');
+                }
 
             ?>
 
@@ -114,7 +143,7 @@ if(isset($_GET['EMail'])){
                         <img src="<?= $v['UrlPhotA'] ?>"/>
                          </div>
 
-                         <div class="text-container">                        
+                         <div class="text-container">
                             <h3>Article num <?= $v['NumArt']?> : <?= $v['LibTitrA']?></h3>
                             <p><?= $v['LibChapoA']?></p>
                             <p><?= $v['DtCreA']?></p>
