@@ -182,29 +182,29 @@ if(isset($_SESSION['EMail'])){
     ?>
 
     <section class="article-container">
-            <h3><?= $LibTitrA ?> </h3>
 
-              
-            <p class="publie"><?= $DtCreA ?></p>
-            <p class="chapo"><?= $LibAccrochA ?></p>
-            <p class="first-paragraphe"><?= $Parag1A ?></p>
-            <img class="illustration" src="<?= $UrlPhotA ?>" alt="">
-            <p class="sous-titre"><?= $LibSsTitr1 ?></p>
-            <p class="second-paragraphe"><?= $Parag2A ?></p>
-            <img class="illustration" src="<?= $UrlPhotA ?>" alt="">
-            <p class="sous-titre"><?= $LibSsTitr2 ?></p>
-            <p class="third-paragraphe"><?= $Parag3A ?></p>
-            <p class="conclusion"><?= $LibConclA ?></p>
-            <div class="articles-logo-container">
-                <div style="display: flex; flex-direction: row;">
-                    <p><?= $Likes ?>Likes</p>
-                    <a href="articleCd.php?like=true&amp;EMail=<?= $_SESSION['EMail']?>&amp;id=<?= $NumArt?>&amp;likes=<?= $Likes?>"><img src="img/like.png"></a>
-                </div>
-                <a href=""><img src="img/share.png"></a>
-            </div>
-            <p>Mots-Clés</p>
-            <?php 
-            ?>
+        <h3><?= $LibTitrA ?> </h3>
+
+          
+        <p class="publie"><?= $DtCreA ?></p>
+        <p class="chapo"><?= $LibAccrochA ?></p>
+        <p class="first-paragraphe"><?= $Parag1A ?></p>
+        <img class="illustration" src="<?= $UrlPhotA ?>" alt="">
+        <p class="sous-titre"><?= $LibSsTitr1 ?></p>
+        <p class="second-paragraphe"><?= $Parag2A ?></p>
+        <img class="illustration" src="<?= $UrlPhotA ?>" alt="">
+        <p class="sous-titre"><?= $LibSsTitr2 ?></p>
+        <p class="third-paragraphe"><?= $Parag3A ?></p>
+        <p class="conclusion"><?= $LibConclA ?></p>
+        <div class="articles-logo-container">
+            
+                 
+            <a style="display: flex; flex-direction: column; align-items: center;" href="articleCd.php?like=true&amp;EMail=<?= $_SESSION['EMail']?>&amp;id=<?= $NumArt?>&amp;likes=<?= $Likes?>"><img src="img/like.png"><?= $Likes ?> </a>
+           
+            <a href=""><img src="img/share.png"></a>
+        </div>
+        <p>Mots-Clés</p>
+
     </section>
              
 
@@ -257,6 +257,16 @@ if(isset($_SESSION['EMail'])){
                   <?php
     }
     ?>
+
+    <footer>
+        <div class="footer-link-admin">
+            <a href="#"><img class="logo-footer" src="img/logo.png"></a>
+            <a class="admin-link" href="mdp.php">Partie administration</a>
+        </div>
+        <a href="#">MENTIONS LEGALES</a>
+        <a href="#">COOKIES</a>
+        <a href="#">CHARTE DE MODERATION</a>
+    </footer>
 
 
 </body>

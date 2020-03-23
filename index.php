@@ -18,7 +18,7 @@
             <a class="menu-container-link" href="about.php">A PROPOS</a>
             <a class="menu-container-link" href="contact.php">CONTACT</a>
             <a class="menu-container-link" href="ConnectionUser.php">Connexion</a>
-        </div>      
+        </div>
     </section>
 
     <section class="nav-bar">
@@ -38,7 +38,7 @@
 
     <div class="fixed-bar">
         <div class="research-input-div">
-            <input class="research-input" type="research" placeholder="Rechercher" name="">
+            <input class="research-input" type="search" placeholder="Rechercher" name="">
             <img class="img-search" src="img/search.png">
             <hr class="horizontal-bar">
         </div>
@@ -46,15 +46,27 @@
             <h3>Trier par...</h3>
             <div>
                 <label>
-                <input class="" type="checkbox" name="">
-                <span></span>
-                Nombre de like
+                    <form method="POST" action="">
+                        <input type="hidden" name="triLikes" value="Likes">
+                        <input type="submit" name="submitLikes" value="Nombre de likes">
+                    </form>
                 </label>
             </div>
             <div>
                 <label>
-                <input class="" type="checkbox" name="">
-                Date de publication</label>
+                    <form method="POST" action="">
+                        <input type="hidden" name="triDate" value="DtCreA">
+                        <input type="submit" name="submitDate" value="Date de publication">
+                    </form>
+                </label>
+            </div>
+            <div>
+                <label>
+                    <form method="POST" action="">
+                        <input type="hidden" name="triAlphabet" value="LibTitrA">
+                        <input type="submit" name="submitAlphabet" value="Ordre alphabétique">
+                    </form>
+                </label>
             </div>
             <hr class="horizontal-bar">
         </div>
@@ -82,10 +94,29 @@
 
     <section class="first-content-container">
 
-    <?php  
+    <?php
         include "conect.php";
-              $Article = $bdPdo ->query('SELECT * FROM Article ORDER BY NumArt DESC ');
-            
+            $submit1 = isset($_POST['submitLikes']) ? $_POST['submitLikes'] : '';
+            $submit2 = isset($_POST['submitDate']) ? $_POST['submitDate'] : '';
+            $submit3 = isset($_POST['submitAlphabet']) ? $_POST['submitAlphabet'] : '';
+            if (((isset($_POST['triLikes'])) AND !empty($_POST['triLikes']))
+            AND (!empty($_POST['submitLikes']) AND ($submit1 == "Nombre de likes"))) {
+                $Article = $bdPdo ->query('SELECT * FROM Article ORDER BY Likes DESC ');
+            }
+            elseif (((isset($_POST['triDate'])) AND !empty($_POST['triDate']))
+            AND (!empty($_POST['submitDate']) AND ($submit2 == "Date de publication"))) {
+                $Article = $bdPdo ->query('SELECT * FROM Article ORDER BY DtCreA DESC ');
+            }
+            elseif (((isset($_POST['triAlphabet'])) AND !empty($_POST['triAlphabet']))
+            AND (!empty($_POST['submitAlphabet']) AND ($submit3 == "Ordre alphabétique"))) {
+                $Article = $bdPdo ->query('SELECT * FROM Article ORDER BY LibTitrA ASC ');
+            }
+            else {
+                $Article = $bdPdo ->query('SELECT * FROM Article ORDER BY NumArt DESC ');
+            }
+
+
+
             ?>
 
                 <?php while($v = $Article->fetch()){ ?>
@@ -111,7 +142,7 @@
                 <!-- <div class="all-article-container">
                     <a class="all-article" href="">Voir tous les articles</a>
                 </div> -->
-                <?php 
+                <?php
                     if(isset($erreur)){ echo $erreur;}
                 ?>
     </section>
@@ -126,6 +157,6 @@
         <a href="#">COOKIES</a>
         <a href="#">CHARTE DE MODERATION</a>
     </footer>
-    
+
 </body>
 </html>
