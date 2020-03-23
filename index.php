@@ -38,8 +38,10 @@
 
     <div class="fixed-bar">
         <div class="research-input-div">
-            <input class="research-input" type="search" placeholder="Rechercher" name="">
-            <img class="img-search" src="img/search.png">
+            <form method="POST" action="">
+                <input class="research-input" type="search" name="search" placeholder="Rechercher">
+                <button type="submit" name="rechercher" value="Rechercher"><img class="img-search" src="img/search.png"></button>
+            </form>
             <hr class="horizontal-bar">
         </div>
         <div class="check-input-div">
@@ -74,11 +76,19 @@
         <div class="plus-vus-div">
             <div class="les-plus-vus-container">
                 <h3>Les plus likés</h3>
-                <p><span class="big-number">1</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod… </p>
+                <?php
+                include "conect.php";
+                $Article = $bdPdo ->query('SELECT * FROM Article ORDER BY Likes DESC ');
+                $nbArticle = 1;
+                while(($v = $Article->fetch()) AND $nbArticle <= 3) {
+                ?>
+                <p><span class="big-number"><?= $nbArticle; ?></span><a href="article.php?id=<?= $v['NumArt']?>"><?= $v['LibTitrA']; ?></a></p>
                 <hr class="horizontal-bar">
-                <p><span class="big-number">2</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod… </p>
-                <hr class="horizontal-bar">
-                <p><span class="big-number">3</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod… </p>
+                <?php
+                    $nbArticle++;
+                }
+                $nbArticle = NULL;
+                ?>
             </div>
             <hr class="horizontal-bar">
         </div>
@@ -95,7 +105,6 @@
     <section class="first-content-container">
 
     <?php
-        include "conect.php";
             $submit1 = isset($_POST['submitLikes']) ? $_POST['submitLikes'] : '';
             $submit2 = isset($_POST['submitDate']) ? $_POST['submitDate'] : '';
             $submit3 = isset($_POST['submitAlphabet']) ? $_POST['submitAlphabet'] : '';
@@ -116,10 +125,68 @@
             }
 
 
+            $submit4 = isset($_POST['rechercher']) ? $_POST['rechercher'] : '';
+            if (((isset($_POST['search'])) AND !empty($_POST['search']))
+            AND (!empty($_POST['rechercher']) AND ($submit4 == "Rechercher"))) {
+                while($v = $Article->fetch()){
 
-            ?>
+                    if (preg_match('#'.$_POST['search'].'#i', $v['LibTitrA'])) {
 
-                <?php while($v = $Article->fetch()){ ?>
+                        ?><div class="photo-text-container">
+                            <div class="photo-container">
+                                <?php
+                                 $image = $v['UrlPhotA'];
+                                 ?>
+                                <img src="<?= $v['UrlPhotA'] ?>"/>
+                            </div>
+                            <div class="text-container">
+                                <h3>Article num <?= $v['NumArt']?> : <?= $v['LibTitrA']?></h3>
+                                <p><?= $v['LibChapoA']?></p>
+                                <p><?= $v['DtCreA']?></p>
+                                <p> <?= $v['Likes']?> likes</p>
+                            </div>
+                            <a class="lire-suite" href="article.php?id=<?= $v['NumArt']?>">Lire -></a>
+
+                        </div>
+
+                <?php
+                    }
+                    else {
+                        $haveMotcle = false;
+                        $motcles = $bdPdo ->prepare('SELECT m.LibMoCle motcle FROM MOTCLEARTICLE n INNER JOIN MOTCLE m ON m.NumMoCle = n.NumMoCle WHERE NumArt = ?');
+                        $motcles->execute(array($v['NumArt']));
+
+                        while($m = $motcles->fetch()) {
+                            if (preg_match('#'.$_POST['search'].'#i', $m['motcle'])) {
+                                $haveMotcle = true;
+                            }
+                        }
+
+                        if ($haveMotcle) {
+                            ?><div class="photo-text-container">
+                            <div class="photo-container">
+                                <?php
+                                 $image = $v['UrlPhotA'];
+                                 ?>
+                                <img src="<?= $v['UrlPhotA'] ?>"/>
+                            </div>
+                            <div class="text-container">
+                                <h3>Article num <?= $v['NumArt']?> : <?= $v['LibTitrA']?></h3>
+                                <p><?= $v['LibChapoA']?></p>
+                                <p><?= $v['DtCreA']?></p>
+                                <p> <?= $v['Likes']?> likes</p>
+                            </div>
+                            <a class="lire-suite" href="article.php?id=<?= $v['NumArt']?>">Lire -></a>
+
+                        </div>
+                        <?php
+                        }
+                    }
+                }
+            }
+            else {
+                while($v = $Article->fetch()) {
+                    ?>
                     <div class="photo-text-container">
                         <div class="photo-container">
                             <?php
@@ -136,7 +203,9 @@
                         <a class="lire-suite" href="article.php?id=<?= $v['NumArt']?>">Lire -></a>
 
                     </div>
-                <?php }
+                <?php
+                }
+            }
                 include "disconect.php";
                 ?>
                 <!-- <div class="all-article-container">
