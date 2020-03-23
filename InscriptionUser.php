@@ -91,7 +91,7 @@ function ctrlSaisies($saisie) {
 
     <section class="menu-container">
         <div class="link-container-menu">
-            <a class="menu-container-link" href="index.html">ACCUEIL</a>
+            <a class="menu-container-link" href="index.php">ACCUEIL</a>
             <a class="menu-container-link" href="articles.html">ARTICLES</a>
             <a class="menu-container-link" href="about.html">A PROPOS</a>
             <a class="menu-container-link" href="contact.html">CONTACT</a>
@@ -100,11 +100,11 @@ function ctrlSaisies($saisie) {
     </section>
 
     <section class="nav-bar">
-        <a class="no-display" href="index.html"><img class="logo-header" src="img/logo.png"></a>
+        <a class="no-display" href="index.php"><img class="logo-header" src="img/logo.png"></a>
         <a href="articles.html">Articles</a>
         <a href="about.html">A propos</a>
         <a href="contact.html">Contact</a>
-        <a href="connexion.html">Connection</a>
+        <a class="active" href="connexion.html">Connection</a>
     
     </section>
 
@@ -152,7 +152,10 @@ function ctrlSaisies($saisie) {
 <?php include 'disconect.php';?>
 
     <footer>
-        <a href="#"><img class="logo-footer" src="img/logo.png"></a>
+        <div class="footer-link-admin">
+            <a href="#"><img class="logo-footer" src="img/logo.png"></a>
+            <a class="admin-link" href="mdp.php">Partie administration</a>
+        </div>
         <a href="#">MENTIONS LEGALES</a>
         <a href="#">COOKIES</a>
         <a href="#">CHARTE DE MODERATION</a>
