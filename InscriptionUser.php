@@ -95,7 +95,7 @@ function ctrlSaisies($saisie) {
             <a class="menu-container-link" href="index.php">ARTICLES</a>
             <a class="menu-container-link" href="about.php">A PROPOS</a>
             <a class="menu-container-link" href="contact.php">CONTACT</a>
-            <a class="menu-container-link" href="ConnectionUser.php">CONNECTION</a>
+            <a class="menu-container-link" href="ConnectionUser.php">CONNEXION</a>
         </div>      
     </section>
 
