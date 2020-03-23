@@ -38,7 +38,7 @@
 
     <div class="fixed-bar">
         <div class="research-input-div">
-            <input class="research-input" type="research" placeholder="Rechercher" name="">
+            <input class="research-input" type="search" placeholder="Rechercher" name="">
             <img class="img-search" src="img/search.png">
             <hr class="horizontal-bar">
         </div>

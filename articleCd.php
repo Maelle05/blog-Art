@@ -67,7 +67,37 @@ if(isset($_SESSION['EMail'])){
 <link rel="stylesheet" type="text/css" href="style.css">
     <title>Article</title>
 </head>
-<body>
+<body class="article-page">
+    
+    <div class="icon">
+        <div class="hamburger hamburger-middle"></div>
+    </div>
+
+    <section class="menu-container">
+        <div class="link-container-menu">
+            <a class="menu-container-link" href="profil.php?EMail=<?=$EMail?> ">ACCUEIL</a>
+            <a class="menu-container-link" href="profil.php?EMail=<?=$EMail?> ">ARTICLES</a>
+            <a class="menu-container-link" href="about.php?EMail=<?=$EMail?>">A PROPOS</a>
+            <a class="menu-container-link" href="contact.php?EMail=<?=$EMail?>">CONTACT</a>
+            <a class="menu-container-link" href="disconnectUser.php">Se déconnecter</a>
+            <a class="menu-container-link" href="editUserProfil.php"><?= $userInfo['Login'] ?></a>
+        </div>      
+    </section>
+
+    <section class="nav-bar">
+        <a class="no-display" href="profil.php?EMail=<?=$EMail?> "><img class="logo-header" src="img/logo.png"></a>
+        <a class="active" href="profil.php?EMail=<?=$EMail?> ">Articles</a>
+        <a href="about.php?EMail=<?=$EMail?>">A propos</a>
+        <a href="contact.php?EMail=<?=$EMail?>">Contact</a>
+        <a href="disconnectUser.php">Se déconnecter</a>
+        <a href="editUserProfil.php"><?= $userInfo['Login'] ?></a>
+    </section>
+
+    <section class="first-container">
+        <div class="first-container-filter">
+            <h1 class="slogan">Une visite <span class="coloree">colorée</span> de Bordeaux</h1>
+        </div>
+    </section>
 
     <?php
         include "conect.php";
@@ -150,65 +180,85 @@ if(isset($_SESSION['EMail'])){
         }
 
     ?>
-            <h1><?= $LibTitrA ?> </h1>
+    <section class="article-container">
+        <h3><?= $LibTitrA ?> </h3>
 
-                    <div>
-                        <p><?= $DtCreA ?></p>
-                        <p><?= $LibAccrochA ?></p>
-                        <p><?= $Parag1A ?></p>
-                        <img src="<?= $UrlPhotA ?>" alt="">
-                        <p><?= $LibSsTitr1 ?></p>
-                        <p><?= $Parag2A ?></p>
-                        <img src="<?= $UrlPhotA ?>" alt="">
-                        <p><?= $LibSsTitr2 ?></p>
-                        <p><?= $Parag3A ?></p>
-                        <p><?= $LibConclA ?></p>
-                        <div><a href="articleC.php?like=true&amp;EMail=<?= $_SESSION['EMail']?>&amp;id=<?= $NumArt?>&amp;likes=<?= $Likes?>"><?= $Likes ?> Dislikes</a></div>
-                    </div>
-
-                    <h2>Commentaires</h2>
-                    <?php
-                            $bdPdo->beginTransaction();
-
-                            $query = $bdPdo->prepare('SELECT * FROM COMMENT WHERE NumArt=:NumArt;');
-
-                            $query->execute(
-                              array(
-                                ':NumArt' => $NumArt
-                              )
-                            );
-
-                            $bdPdo->commit();
-                        ?>
-                        <ul>
-                            <?php while($v = $query->fetch()){ ?>
-                                <li>"<?= $v['LibCom']?>" de <?= $v['PseudoAuteur']?> </li>
-                            <?php }?>
-                        </ul>
-                    </div>
-
-                    <form action="articleC.php" method="post">
-                            <label for="">Mettre un commentaire</label>
-                            <input type="hidden" name="NumArt" value="<?= $NumArt ?>">
-                            <input type="hidden" name="EMail" value="<?=$EMail?>">
-                            <input type="hidden" name="id" value="<?=$numArticle?>">
-                            <input type="text" name="LibCom">
-                            <input type="submit" value="Poster">
-                    </form>
+            <p class="publie"><?= $DtCreA ?></p>
+            <p class="chapo"><?= $LibAccrochA ?></p>
+            <p class="first-paragraphe"><?= $Parag1A ?></p>
+            <img class="illustration" src="<?= $UrlPhotA ?>" alt="">
+            <p class="sous-titre"><?= $LibSsTitr1 ?></p>
+            <p class="second-paragraphe"><?= $Parag2A ?></p>
+            <img class="illustration" src="<?= $UrlPhotA ?>" alt="">
+            <p class="sous-titre"><?= $LibSsTitr2 ?></p>
+            <p class="third-paragraphe"><?= $Parag3A ?></p>
+            <p class="conclusion"><?= $LibConclA ?></p>
+            <div class="articles-logo-container">
+                <a style="display: flex; flex-direction: column; align-items: center;" href="articleC.php?like=true&amp;EMail=<?= $_SESSION['EMail']?>&amp;id=<?= $NumArt?>&amp;likes=<?= $Likes?>"><img src="img/like-active.png"><?= $Likes ?> Likes</a>
+                 <a href=""><img src="img/share.png"></a>
+            </div>
+        </section>
 
 
-                <?php
-                     include "disconect.php";
+    <section class="commentaires-container">
+        <div class="commentaire-wrapper">
+            <h3 class="commentaire-title">Commentaires</h3>
+            <?php
+                    $bdPdo->beginTransaction();
+
+                    $query = $bdPdo->prepare('SELECT * FROM COMMENT WHERE NumArt=:NumArt;');
+
+                    $query->execute(
+                      array(
+                        ':NumArt' => $NumArt
+                      )
+                    );
+
+                    $bdPdo->commit();
                 ?>
-                <a href="profil.php?EMail=<?=$EMail?> ">Retour</a>
+                <div class="commentary">
+                    <?php while($v = $query->fetch()){ ?>
+                        <div>
+                            <img class="user-logo" src="img/user.png">
+                            <div class="commentary-content">
+                            <p>"<?= $v['LibCom']?>" de <?= $v['PseudoAuteur']?> </p>
+                        </div>
+                    </div>
+                    <?php }?>
+                </div>
+            </div>
 
-           <br />
-                <?php
-                    if(isset($erreur)){ echo $erreur;}
-                ?>
-                  <?php
-    }
-    ?>
+            <form class="commentaire-form" action="articleC.php" method="post">
+                <input type="hidden" name="NumArt" value="<?= $NumArt ?>">
+                <input type="hidden" name="EMail" value="<?=$EMail?>">
+                <input type="hidden" name="id" value="<?=$numArticle?>">
+                <input class="commentaire-input" type="text" placeholder="Écrire un commentaire…" name="LibCom">
+                <input class="submit-commentaire" type="submit" value="Ajouter">
+            </form>
+        </div>
+    </section>
+
+
+        <?php
+             include "disconect.php";
+        ?>
+
+        <?php
+            if(isset($erreur)){ echo $erreur;}
+        ?>
+          <?php
+}
+?>
+
+<footer>
+    <div class="footer-link-admin">
+        <a href="#"><img class="logo-footer" src="img/logo.png"></a>
+        <a class="admin-link" href="mdp.php">Partie administration</a>
+    </div>
+    <a href="#">MENTIONS LEGALES</a>
+    <a href="#">COOKIES</a>
+    <a href="#">CHARTE DE MODERATION</a>
+</footer>
 
 
 </body>

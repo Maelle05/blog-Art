@@ -61,13 +61,10 @@ if(isset($_SESSION['EMail']) AND $userInfo['EMail'] == $_SESSION['EMail']){
 	<section class="article-container about-container">
 		<h3>A PROPOS</h3>
 
-		<p class="chapo">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris… </p>
-
-		
-		<img class="illustration" src="img/test.png">
-		
-
-		<p class="second-paragraphe">Tantum autem cuique tribuendum, primum quantum ipse efficere possis, deinde etiam quantum ille quem diligas atque adiuves, sustinere. Non enim neque tu possis, quamvis excellas, omnes tuos ad honores amplissimos perducere, ut Scipio P. Rupilium potuit consulem efficere, fratrem eius L. non potuit. Quod si etiam possis quidvis deferre ad alterum, videndum est tamen, quid ille possit sustinere. Tantum autem cuique tribuendum, primum quantum ipse efficere possis, deinde etiam quantum ille quem diligas atque adiuves, sustinere. Non enim neque tu possis, quamvis excellas, omnes tuos ad honores amplissimos perducere, ut Scipio P. Rupilium potuit consulem efficere, fratrem eius L. non potuit. Quod si etiam possis quidvis deferre ad alterum, videndum est tamen, quid ille possit sustinere. Tantum autem cuique tribuendum, primum quantum ipse efficere possis, deinde etiam quantum ille quem diligas atque adiuves, sustinere. Non enim neque tu possis, quamvis excellas, omnes tuos ad honores amplissimos perducere, ut Scipio P. Rupilium potuit consulem efficere, fratrem eius L. non potuit. Quod si etiam possis quidvis deferre ad alterum, videndum est tamen, quid ille possit sustinere. </p>
+		<p class="second-paragraphe">Nous sommes un groupe de six étudiants en DUT Métiers du Multimédia et de l’Internet. Nous nous sommes réunis autour d’un seul et même projet : un blog sur la belle ville de Bordeaux ! C’est comme ça que Gavé Bleu est naît ! 
+		Il nous tenait à coeur de parler de notre capitale du Sud-Ouest au travers d’une thématique large afin d’exprimer au mieux nos différentes personnalités. Nous avons donc choisi la couleur bleu comme angle d’attaque. La Gavé team vous invite à lire, découvrir et apprécier nos articles pour en apprendre plus sur Bordeaux. Croyez le ou non, le Bleu est omniprésent ici et nous avons beaucoup de choses à partager avec vous ! 
+		La Gavé Team vous souhaite donc une très bonne découverte de la ville colorée qu’est Bordeaux ! 
+		</p>
 
 		
 	</section>
@@ -136,13 +133,10 @@ if(isset($_SESSION['EMail']) AND $userInfo['EMail'] == $_SESSION['EMail']){
 	<section class="article-container about-container">
 		<h3>A PROPOS</h3>
 
-		<p class="chapo">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris… </p>
-
-		
-		<img class="illustration" src="img/test.png">
-		
-
-		<p class="second-paragraphe">Tantum autem cuique tribuendum, primum quantum ipse efficere possis, deinde etiam quantum ille quem diligas atque adiuves, sustinere. Non enim neque tu possis, quamvis excellas, omnes tuos ad honores amplissimos perducere, ut Scipio P. Rupilium potuit consulem efficere, fratrem eius L. non potuit. Quod si etiam possis quidvis deferre ad alterum, videndum est tamen, quid ille possit sustinere. Tantum autem cuique tribuendum, primum quantum ipse efficere possis, deinde etiam quantum ille quem diligas atque adiuves, sustinere. Non enim neque tu possis, quamvis excellas, omnes tuos ad honores amplissimos perducere, ut Scipio P. Rupilium potuit consulem efficere, fratrem eius L. non potuit. Quod si etiam possis quidvis deferre ad alterum, videndum est tamen, quid ille possit sustinere. Tantum autem cuique tribuendum, primum quantum ipse efficere possis, deinde etiam quantum ille quem diligas atque adiuves, sustinere. Non enim neque tu possis, quamvis excellas, omnes tuos ad honores amplissimos perducere, ut Scipio P. Rupilium potuit consulem efficere, fratrem eius L. non potuit. Quod si etiam possis quidvis deferre ad alterum, videndum est tamen, quid ille possit sustinere. </p>
+		<p class="second-paragraphe">Nous sommes un groupe de six étudiants en DUT Métiers du Multimédia et de l’Internet. Nous nous sommes réunis autour d’un seul et même projet : un blog sur la belle ville de Bordeaux ! C’est comme ça que Gavé Bleu est naît ! 
+		Il nous tenait à coeur de parler de notre capitale du Sud-Ouest au travers d’une thématique large afin d’exprimer au mieux nos différentes personnalités. Nous avons donc choisi la couleur bleu comme angle d’attaque. La Gavé team vous invite à lire, découvrir et apprécier nos articles pour en apprendre plus sur Bordeaux. Croyez le ou non, le Bleu est omniprésent ici et nous avons beaucoup de choses à partager avec vous ! 
+		La Gavé Team vous souhaite donc une très bonne découverte de la ville colorée qu’est Bordeaux ! 
+		</p>
 
 		
 	</section>
