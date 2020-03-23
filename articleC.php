@@ -197,12 +197,14 @@ if(isset($_SESSION['EMail'])){
             <p class="conclusion"><?= $LibConclA ?></p>
             <div class="articles-logo-container">
                 <div style="display: flex; flex-direction: row;">
-                    <?= $Likes ?>
+                    <p><?= $Likes ?>Likes</p>
                     <a href="articleCd.php?like=true&amp;EMail=<?= $_SESSION['EMail']?>&amp;id=<?= $NumArt?>&amp;likes=<?= $Likes?>"><img src="img/like.png"></a>
                 </div>
                 <a href=""><img src="img/share.png"></a>
             </div>
             <p>Mots-Clés</p>
+            <?php 
+            ?>
     </section>
              
 

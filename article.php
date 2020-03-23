@@ -92,7 +92,8 @@
             <p class="conclusion"><?= $LibConclA ?></p>
 
             <div class="articles-logo-container">
-                <a href=""><img src="img/like.png"></a>
+                <p><?= $Likes ?>Likes</p>
+                <a href="connectionUser.php"><img src="img/like.png"></a>
                 <a href=""><img src="img/share.png"></a>
             </div>
             <p>Mots-Clés</p>
@@ -130,7 +131,6 @@
                 <?php 
                      include "disconect.php";
                 ?>
-                <a href="index.php">Retour</a>
 
            <br />
                 <?php 
