@@ -27,20 +27,20 @@ if(isset($_GET['EMail'])){
 
     <section class="menu-container">
         <div class="link-container-menu">
-            <a class="menu-container-link" href="profil.php">ACCUEIL</a>
-            <a class="menu-container-link" href="profil.php">ARTICLES</a>
-            <a class="menu-container-link" href="about.php">A PROPOS</a>
-            <a class="menu-container-link" href="contact.php">CONTACT</a>
+            <a class="menu-container-link" href="profil.php?EMail=<?=$EMail?> ">ACCUEIL</a>
+            <a class="menu-container-link" href="profil.php?EMail=<?=$EMail?> ">ARTICLES</a>
+            <a class="menu-container-link" href="about.php?EMail=<?=$EMail?>">A PROPOS</a>
+            <a class="menu-container-link" href="contact.php?EMail=<?=$EMail?>">CONTACT</a>
             <a class="menu-container-link" href="disconnectUser.php">Se déconnecter</a>
             <a class="menu-container-link" href="editUserProfil.php"><?= $userInfo['Login'] ?></a>
         </div>      
     </section>
 
     <section class="nav-bar">
-        <a class="no-display" href="profil.php"><img class="logo-header" src="img/logo.png"></a>
-        <a class="active" href="profil.php">Articles</a>
-        <a href="about.php">A propos</a>
-        <a href="contact.php">Contact</a>
+        <a class="no-display" href="profil.php?EMail=<?=$EMail?> "><img class="logo-header" src="img/logo.png"></a>
+        <a class="active" href="profil.php?EMail=<?=$EMail?> ">Articles</a>
+        <a href="about.php?EMail=<?=$EMail?> ">A propos</a>
+        <a href="contact.php?EMail=<?=$EMail?>">Contact</a>
         <a href="disconnectUser.php">Se déconnecter</a>
         <a href="editUserProfil.php"><?= $userInfo['Login'] ?></a>
     </section>
@@ -95,19 +95,13 @@ if(isset($_GET['EMail'])){
             <hr class="horizontal-bar">
         </div>
     </div>
-    <h1>Profil de <?= $userInfo['FirstName'] ?></h1>
-    <p>Pseudo = <?= $userInfo['Login'] ?></p>
     <?php
     if(isset($_SESSION['EMail']) AND $userInfo['EMail'] == $_SESSION['EMail']){
     ?>
-    <a href="editUserProfil.php">Editer mon Profil</a>
-    <a href="disconnectUser.php">Se déconnecter</a>
-
- <h2>Nos Articles</h2>
   <section class="first-content-container">
     <?php
         include "conect.php";
-              $Article = $bdPdo ->query('SELECT * FROM Article');
+              $Article = $bdPdo ->query('SELECT * FROM Article ORDER BY NumArt DESC');
 
             ?>
 

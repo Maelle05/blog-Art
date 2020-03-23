@@ -75,20 +75,20 @@ if(isset($_SESSION['EMail'])){
 
     <section class="menu-container">
         <div class="link-container-menu">
-            <a class="menu-container-link" href="profil.php">ACCUEIL</a>
-            <a class="menu-container-link" href="profil.php">ARTICLES</a>
-            <a class="menu-container-link" href="about.php">A PROPOS</a>
-            <a class="menu-container-link" href="contact.php">CONTACT</a>
+            <a class="menu-container-link" href="profil.php?EMail=<?=$EMail?> ">ACCUEIL</a>
+            <a class="menu-container-link" href="profil.php?EMail=<?=$EMail?> ">ARTICLES</a>
+            <a class="menu-container-link" href="about.php?EMail=<?=$EMail?>">A PROPOS</a>
+            <a class="menu-container-link" href="contact.php?EMail=<?=$EMail?>">CONTACT</a>
             <a class="menu-container-link" href="disconnectUser.php">Se déconnecter</a>
             <a class="menu-container-link" href="editUserProfil.php"><?= $userInfo['Login'] ?></a>
         </div>      
     </section>
 
     <section class="nav-bar">
-        <a class="no-display" href="profil.php"><img class="logo-header" src="img/logo.png"></a>
-        <a class="active" href="profil.php">Articles</a>
-        <a href="about.php">A propos</a>
-        <a href="contact.php">Contact</a>
+        <a class="no-display" href="profil.php?EMail=<?=$EMail?> "><img class="logo-header" src="img/logo.png"></a>
+        <a class="active" href="profil.php?EMail=<?=$EMail?> ">Articles</a>
+        <a href="about.php?EMail=<?=$EMail?>">A propos</a>
+        <a href="contact.php?EMail=<?=$EMail?>">Contact</a>
         <a href="disconnectUser.php">Se déconnecter</a>
         <a href="editUserProfil.php"><?= $userInfo['Login'] ?></a>
     </section>
@@ -195,9 +195,11 @@ if(isset($_SESSION['EMail'])){
             <p class="sous-titre"><?= $LibSsTitr2 ?></p>
             <p class="third-paragraphe"><?= $Parag3A ?></p>
             <p class="conclusion"><?= $LibConclA ?></p>
-            <div><a href="articleCd.php?like=true&amp;EMail=<?= $_SESSION['EMail']?>&amp;id=<?= $NumArt?>&amp;likes=<?= $Likes?>"><?= $Likes ?> Likes</a></div>
             <div class="articles-logo-container">
-                <a href=""><img src="img/like.png"></a>
+                <div style="display: flex; flex-direction: row;">
+                    <?= $Likes ?>
+                    <a href="articleCd.php?like=true&amp;EMail=<?= $_SESSION['EMail']?>&amp;id=<?= $NumArt?>&amp;likes=<?= $Likes?>"><img src="img/like.png"></a>
+                </div>
                 <a href=""><img src="img/share.png"></a>
             </div>
             <p>Mots-Clés</p>
@@ -245,7 +247,7 @@ if(isset($_SESSION['EMail'])){
                 <?php
                      include "disconect.php";
                 ?>
-                <a href="profil.php?EMail=<?=$EMail?> ">Retour</a>
+                
 
                 <?php
                     if(isset($erreur)){ echo $erreur;}

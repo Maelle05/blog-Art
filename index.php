@@ -84,7 +84,7 @@
 
     <?php  
         include "conect.php";
-              $Article = $bdPdo ->query('SELECT * FROM Article');
+              $Article = $bdPdo ->query('SELECT * FROM Article ORDER BY NumArt DESC ');
             
             ?>
 
