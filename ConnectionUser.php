@@ -84,7 +84,6 @@ session_start();
 
     </form>
     
-    <a href="index.php">Retour</a>
   </section>
 
 

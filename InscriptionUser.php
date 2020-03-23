@@ -147,7 +147,6 @@ function ctrlSaisies($saisie) {
             </div>
             <p>Vous possédez déjà un compte ?<a href="ConnectionUser.php"> Connectez-vous</a></p>
         </form>
-        <a href="index.php">Retour</a>
     </section>
 
 
