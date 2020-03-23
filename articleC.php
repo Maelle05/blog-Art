@@ -75,20 +75,22 @@ if(isset($_SESSION['EMail'])){
 
     <section class="menu-container">
         <div class="link-container-menu">
-            <a class="menu-container-link" href="index.php">ACCUEIL</a>
-            <a class="menu-container-link" href="index.php">ARTICLES</a>
+            <a class="menu-container-link" href="profil.php">ACCUEIL</a>
+            <a class="menu-container-link" href="profil.php">ARTICLES</a>
             <a class="menu-container-link" href="about.html">A PROPOS</a>
             <a class="menu-container-link" href="contact.html">CONTACT</a>
-            <a class="menu-container-link" href="ConnectionUser.php">Connexion</a>
+            <a class="menu-container-link" href="disconnectUser.php">Se déconnecter</a>
+            <a class="menu-container-link" href="editUserProfil.php"><?= $userInfo['Login'] ?></a>
         </div>      
     </section>
 
     <section class="nav-bar">
-        <a class="no-display" href="index.php"><img class="logo-header" src="img/logo.png"></a>
-        <a href="index.php">Articles</a>
+        <a class="no-display" href="profil.php"><img class="logo-header" src="img/logo.png"></a>
+        <a class="active" href="profil.php">Articles</a>
         <a href="about.html">A propos</a>
         <a href="contact.html">Contact</a>
-        <a href="ConnectionUser.php">Connexion</a>
+        <a href="disconnectUser.php">Se déconnecter</a>
+        <a href="editUserProfil.php"><?= $userInfo['Login'] ?></a>
     </section>
 
     <section class="first-container">
