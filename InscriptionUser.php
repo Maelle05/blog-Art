@@ -93,8 +93,8 @@ function ctrlSaisies($saisie) {
         <div class="link-container-menu">
             <a class="menu-container-link" href="index.php">ACCUEIL</a>
             <a class="menu-container-link" href="index.php">ARTICLES</a>
-            <a class="menu-container-link" href="about.html">A PROPOS</a>
-            <a class="menu-container-link" href="contact.html">CONTACT</a>
+            <a class="menu-container-link" href="about.php">A PROPOS</a>
+            <a class="menu-container-link" href="contact.php">CONTACT</a>
             <a class="menu-container-link" href="ConnectionUser.php">CONNECTION</a>
         </div>      
     </section>
@@ -102,8 +102,8 @@ function ctrlSaisies($saisie) {
     <section class="nav-bar">
         <a class="no-display" href="index.php"><img class="logo-header" src="img/logo.png"></a>
         <a href="index.php">Articles</a>
-        <a href="about.html">A propos</a>
-        <a href="contact.html">Contact</a>
+        <a href="about.php">A propos</a>
+        <a href="contact.php">Contact</a>
         <a class="active" href="ConnectionUser.php">Connection</a>
     
     </section>

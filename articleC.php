@@ -77,8 +77,8 @@ if(isset($_SESSION['EMail'])){
         <div class="link-container-menu">
             <a class="menu-container-link" href="profil.php">ACCUEIL</a>
             <a class="menu-container-link" href="profil.php">ARTICLES</a>
-            <a class="menu-container-link" href="about.html">A PROPOS</a>
-            <a class="menu-container-link" href="contact.html">CONTACT</a>
+            <a class="menu-container-link" href="about.php">A PROPOS</a>
+            <a class="menu-container-link" href="contact.php">CONTACT</a>
             <a class="menu-container-link" href="disconnectUser.php">Se déconnecter</a>
             <a class="menu-container-link" href="editUserProfil.php"><?= $userInfo['Login'] ?></a>
         </div>      
@@ -87,8 +87,8 @@ if(isset($_SESSION['EMail'])){
     <section class="nav-bar">
         <a class="no-display" href="profil.php"><img class="logo-header" src="img/logo.png"></a>
         <a class="active" href="profil.php">Articles</a>
-        <a href="about.html">A propos</a>
-        <a href="contact.html">Contact</a>
+        <a href="about.php">A propos</a>
+        <a href="contact.php">Contact</a>
         <a href="disconnectUser.php">Se déconnecter</a>
         <a href="editUserProfil.php"><?= $userInfo['Login'] ?></a>
     </section>

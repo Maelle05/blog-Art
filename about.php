@@ -9,7 +9,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
 </head>
 <body>
-		
+	
 	<div class="icon">
 		<div class="hamburger hamburger-middle"></div>
 	</div>
@@ -18,8 +18,8 @@
         <div class="link-container-menu">
             <a class="menu-container-link" href="index.php">ACCUEIL</a>
             <a class="menu-container-link" href="index.php">ARTICLES</a>
-            <a class="menu-container-link" href="about.html">A PROPOS</a>
-            <a class="menu-container-link" href="contact.html">CONTACT</a>
+            <a class="menu-container-link" href="about.php">A PROPOS</a>
+            <a class="menu-container-link" href="contact.php">CONTACT</a>
             <a class="menu-container-link" href="ConnectionUser.php">Connexion</a>
         </div>      
     </section>
@@ -27,8 +27,8 @@
     <section class="nav-bar">
         <a class="no-display" href="index.php"><img class="logo-header" src="img/logo.png"></a>
         <a href="index.php">Articles</a>
-        <a href="about.html">A propos</a>
-        <a class="active" href="contact.html">Contact</a>
+        <a class="active" href="about.php">A propos</a>
+        <a href="contact.php">Contact</a>
         <a href="ConnectionUser.php">Connexion</a>
     </section>
 
@@ -38,37 +38,23 @@
         </div>
     </section>
 
-	<section class="article-container contact-container">
-		<h3>CONTACT</h3>
+	<section class="article-container about-container">
+		<h3>A PROPOS</h3>
 
 		<p class="chapo">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris… </p>
 
-		<div class="contact-input-container">
-			<input class="contact-input" type="mail" placeholder="Adresse mail…" name="mail">
-			<input class="contact-input" type="text" placeholder="Objet…" name="">
-			<textarea placeholder="Écrire un message…"></textarea>
-			<button class="send-button">Envoyer</button>
-
-			<div class="logo-contact-container">
-			<div>
-				<a href=""><img src="img/black-fb.png">
-				<p>Gavé Bleu</p></a>
-			</div>
-			<div>
-				<a href=""><img src="img/black-insta.png">
-				<p>gavebleu</p></a>
-			</div>
-		</div>
-		</div>
-
 		
+		<img class="illustration" src="img/test.png">
+		
+
+		<p class="second-paragraphe">Tantum autem cuique tribuendum, primum quantum ipse efficere possis, deinde etiam quantum ille quem diligas atque adiuves, sustinere. Non enim neque tu possis, quamvis excellas, omnes tuos ad honores amplissimos perducere, ut Scipio P. Rupilium potuit consulem efficere, fratrem eius L. non potuit. Quod si etiam possis quidvis deferre ad alterum, videndum est tamen, quid ille possit sustinere. Tantum autem cuique tribuendum, primum quantum ipse efficere possis, deinde etiam quantum ille quem diligas atque adiuves, sustinere. Non enim neque tu possis, quamvis excellas, omnes tuos ad honores amplissimos perducere, ut Scipio P. Rupilium potuit consulem efficere, fratrem eius L. non potuit. Quod si etiam possis quidvis deferre ad alterum, videndum est tamen, quid ille possit sustinere. Tantum autem cuique tribuendum, primum quantum ipse efficere possis, deinde etiam quantum ille quem diligas atque adiuves, sustinere. Non enim neque tu possis, quamvis excellas, omnes tuos ad honores amplissimos perducere, ut Scipio P. Rupilium potuit consulem efficere, fratrem eius L. non potuit. Quod si etiam possis quidvis deferre ad alterum, videndum est tamen, quid ille possit sustinere. </p>
 
 		
 	</section>
 
 
 
-	<footer class="contact-footer">
+	<footer class="footer-about">
 		<div class="footer-link-admin">
             <a href="#"><img class="logo-footer" src="img/logo.png"></a>
             <a class="admin-link" href="mdp.php">Partie administration</a>
