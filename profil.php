@@ -162,7 +162,7 @@ if(isset($_GET['EMail'])){
                                 <p><?= $v['DtCreA']?></p>
                                 <p> <?= $v['Likes']?> likes</p>
                             </div>
-                            <a class="lire-suite" href="article.php?id=<?= $v['NumArt']?>">Lire -></a>
+                            <a class="lire-suite" href="articleC.php?id=<?= $v['NumArt']?>&amp;EMail=<?= $_SESSION['EMail']?>&amp;l=0">Lire -></a>
 
                         </div>
 
@@ -193,7 +193,7 @@ if(isset($_GET['EMail'])){
                                 <p><?= $v['DtCreA']?></p>
                                 <p> <?= $v['Likes']?> likes</p>
                             </div>
-                            <a class="lire-suite" href="article.php?id=<?= $v['NumArt']?>">Lire -></a>
+                            <a class="lire-suite" href="articleC.php?id=<?= $v['NumArt']?>&amp;EMail=<?= $_SESSION['EMail']?>&amp;l=0">Lire -></a>
 
                         </div>
                         <?php
@@ -217,7 +217,7 @@ if(isset($_GET['EMail'])){
                             <p><?= $v['DtCreA']?></p>
                             <p> <?= $v['Likes']?> likes</p>
                         </div>
-                        <a class="lire-suite" href="article.php?id=<?= $v['NumArt']?>">Lire -></a>
+                        <a class="lire-suite" href="articleC.php?id=<?= $v['NumArt']?>&amp;EMail=<?= $_SESSION['EMail']?>&amp;l=0">Lire -></a>
 
                     </div>
                 <?php
