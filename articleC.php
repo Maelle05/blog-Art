@@ -204,6 +204,25 @@ if(isset($_SESSION['EMail'])){
             <a href=""><img src="img/share.png"></a>
         </div>
         <p>Mots-Clés</p>
+        <?php  
+                $numArticle = $NumArt;
+                $motcle = $bdPdo ->prepare('SELECT * FROM motclearticle WHERE NumArt =?');
+            
+                $motcle->execute(array($numArticle));
+                ?>
+                <ul style="margin-top: 0;">
+              <?php  while($mots =$motcle->fetch()){ ?>
+                            <?php  
+                                $NumMoCle = $mots['NumMoCle'];
+                                $mot = $bdPdo ->prepare('SELECT * FROM motcle WHERE NumMoCle =?');
+                            
+                                $mot->execute(array($NumMoCle));
+
+                                while($motcl =$mot->fetch()){ ?>
+                                            <li style="margin-top: 0; padding-left: 0;"><?= $motcl['LibMoCle'] ?></li>                           
+                            <?php }?>
+             <?php }?>
+             </ul>
 
     </section>
              
