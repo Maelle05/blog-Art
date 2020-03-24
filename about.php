@@ -145,7 +145,7 @@ if(isset($_SESSION['EMail']) AND $userInfo['EMail'] == $_SESSION['EMail']){
 
 	<footer class="footer-about">
 		<div class="footer-link-admin">
-            <a href="#"><img class="logo-footer" src="img/logo.png"></a>
+            <a href="mdp.php"><img class="logo-footer" src="img/logo.png"></a>
             <a class="admin-link" href="mdp.php">Partie administration</a>
         </div>
 		<a href="#">MENTIONS LEGALES</a>
