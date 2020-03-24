@@ -32,7 +32,7 @@ if(isset($_GET['EMail'])){
             <a class="menu-container-link" href="about.php?EMail=<?=$EMail?>">A PROPOS</a>
             <a class="menu-container-link" href="contact.php?EMail=<?=$EMail?>">CONTACT</a>
             <a class="menu-container-link" href="disconnectUser.php">Se déconnecter</a>
-            <a class="menu-container-link" href="editUserProfil.php"><?= $userInfo['Login'] ?></a>
+            <a class="menu-container-link" href="editUserProfil.php?EMail=<?=$EMail?>"><?= $userInfo['Login'] ?></a>
         </div>
     </section>
 
@@ -42,7 +42,7 @@ if(isset($_GET['EMail'])){
         <a href="about.php?EMail=<?=$EMail?> ">A propos</a>
         <a href="contact.php?EMail=<?=$EMail?>">Contact</a>
         <a href="disconnectUser.php">Se déconnecter</a>
-        <a href="editUserProfil.php"><?= $userInfo['Login'] ?></a>
+        <a href="editUserProfil.php?EMail=<?=$EMail?>"><?= $userInfo['Login'] ?></a>
     </section>
 
     <section class="first-container">
