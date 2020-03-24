@@ -53,7 +53,7 @@
                         <td> <?= $v['LibSsTitr2']?></td>
                         <td> <?= $v['Parag3A']?></td>
                         <td> <?= $v['LibConclA']?></td>
-                        <td> <img src="<?=$v['UrlPhotA']?>" alt=""> </td>
+                        <td> <?=$v['UrlPhotA']?></td>
                         <td> <?= $v['Likes']?></td>
                         <td> <?= $v['NumAngl']?></td>
                         <td> <?= $v['NumThem']?></td>

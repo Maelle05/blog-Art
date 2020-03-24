@@ -39,6 +39,38 @@
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             $Submit = isset($_POST['Submit']) ? $_POST['Submit'] : '';
 
+
+            if (isset($_FILES['monfichier']) AND $_FILES['monfichier']['error'] == 0) {
+                // Test si fichier pas trop gros
+                if ($_FILES['monfichier']['size'] <= 2000000) {
+                    // Test si extension autorisée
+                    $infosfile = pathinfo($_FILES['monfichier']['name']);
+                    $extension_upload = $infosfile['extension'];
+                    $extensions_OK = array('jpg', 'jpeg', 'gif', 'png');
+                    $name = $infosfile['filename'];
+                    $file = '' .$name. '.' .$extension_upload;
+                    
+                    if (in_array($extension_upload, $extensions_OK)) {
+                        // valider fichier / le stocker définitivement
+                        move_uploaded_file($_FILES['monfichier']['tmp_name'], 'uploads/' . $file);
+                        echo "<p>Upload d'une image sur le serveur :</p>";
+                        echo "<p><font color='green'>L'envoi de votre image a bien été effectué !</font><br /></p>";
+                        echo'<a href="./uploads/'.$file.' "/>Voir l\'image</a>' . "<br>";
+                    } else {
+                        echo "<p>Upload d'une image sur le serveur :</p>";                     
+                        echo "<font color='red'>L'extension du fichier n'est pas autorisée. <br /></font>";
+                        echo "<font color='red'>(Seuls les fichiers jpg, jpeg, gif, png sont acceptés.)</font> " . "<br><br>"; 
+                    }
+                } else {
+                    echo "<p>Upload d'une image sur le serveur :</p>";
+                    echo "<font color='red'>Le fichier est trop volumineux :</font> <br />";
+                    echo "<font color='red'><b>(Poids limité à 4Mo) !</b></font>" . "<br><br>";
+                }
+            } else {
+                echo "<p>Upload d'une image sur le serveur :</p>";
+                echo "<p><font color='red'>Veuillez selectionner un fichier...</font></p>"; 
+            }
+
 			if ( ((isset($_POST['LibTitrA'])) AND !empty($_POST['LibTitrA']))
                 AND ((isset($_POST['LibChapoA'])) AND !empty($_POST['LibChapoA']))
                 AND ((isset($_POST['LibAccrochA'])) AND !empty($_POST['LibAccrochA']))
@@ -48,7 +80,6 @@
                 AND ((isset($_POST['LibSsTitr2'])) AND !empty($_POST['LibSsTitr2']))
                 AND ((isset($_POST['Parag3A'])) AND !empty($_POST['Parag3A']))
                 AND ((isset($_POST['LibConclA'])) AND !empty($_POST['LibConclA']))
-                AND ((isset($_POST['UrlPhotA'])) AND !empty($_POST['UrlPhotA']))
                 AND ((isset($_POST['NumAngl'])) AND !empty($_POST['NumAngl']))
                 AND ((isset($_POST['NumThem'])) AND !empty($_POST['NumThem']))
                 AND ((isset($_POST['NumLang'])) AND !empty($_POST['NumLang']))
@@ -64,7 +95,7 @@
                     $LibSsTitr2 = ctrlSaisies($_POST['LibSsTitr2']);
                     $Parag3A = ctrlSaisies($_POST['Parag3A']);
                     $LibConclA = ctrlSaisies($_POST['LibConclA']);
-                    $UrlPhotA = ctrlSaisies($_POST['UrlPhotA']);
+                    $UrlPhotA = $file;
                     $Likes = 0;
                     $NumAngl = ctrlSaisies($_POST['NumAngl']);
                     $NumThem = ctrlSaisies($_POST['NumThem']);
@@ -126,7 +157,7 @@
 
 
     <h2>Ajouter un Nouvel Article</h2>
-    <form action="addArti.php" name="formArti" method="post">
+    <form action="addArti.php" name="formArti" method="post" enctype="multipart/form-data">
 
         <label for="">Titre de L'article</label>
         <input type="text" name="LibTitrA"  id="" ><br>
@@ -154,10 +185,22 @@
 
         <label for="">Conclusion</label>
         <input type="text" name="LibConclA"  id="" ><br>
+<?php //***********************************************************************************************************************?>
 
-        <label for="">Image URL</label>
-        <input type="text" name="UrlPhotA"  id="" ><br>
-
+        <legend class="legend1">Ajouter mon image</legend>
+          <p>
+            <label for="uploadFile" title="Recherchez le fichier à uploader !"><b>Quel fichier ?&nbsp;&nbsp;&nbsp;</b></label>
+            <input type="file" name="monfichier" id="monfichier" required="required" accept=".jpg,.gif,.png,.jpeg" size="62" maxlength="62" title="Recherchez le fichier à uploader !" autofocus="autofocus" />
+            <br><br>
+          </p>
+          <p>
+            <?php
+              // Gestion extension images acceptées
+              $msgImagesOK = ">> Extension des images acceptées : .jpg, .gif, .png, .jpeg (lageur, hauteur, taille max : 80000px, 80000px, 100 000 Go)";
+              echo "<i>" . $msgImagesOK . "</i>";
+            ?>
+          </p>
+<?php //***********************************************************************************************************************?>
         <label for="">L'angle de L'article</label>
         <select name="NumAngl" >
             <?php while($v = $SelectAngle->fetch()){ ?>

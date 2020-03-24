@@ -154,7 +154,7 @@ if(isset($_GET['EMail'])){
                                 <?php
                                  $image = $v['UrlPhotA'];
                                  ?>
-                                <img src="<?= $v['UrlPhotA'] ?>"/>
+                                <img src="./uploads/<?= $v['UrlPhotA'] ?>"/>
                             </div>
                             <div class="text-container">
                                 <h3>Article num <?= $v['NumArt']?> : <?= $v['LibTitrA']?></h3>
@@ -185,7 +185,7 @@ if(isset($_GET['EMail'])){
                                 <?php
                                  $image = $v['UrlPhotA'];
                                  ?>
-                                <img src="<?= $v['UrlPhotA'] ?>"/>
+                                <img src="./uploads/<?= $v['UrlPhotA'] ?>"/>
                             </div>
                             <div class="text-container">
                                 <h3>Article num <?= $v['NumArt']?> : <?= $v['LibTitrA']?></h3>
@@ -209,7 +209,7 @@ if(isset($_GET['EMail'])){
                             <?php
                              $image = $v['UrlPhotA'];
                              ?>
-                            <img src="<?= $v['UrlPhotA'] ?>"/>
+                            <img src="./uploads/<?= $v['UrlPhotA'] ?>"/>
                         </div>
                         <div class="text-container">
                             <h3>Article num <?= $v['NumArt']?> : <?= $v['LibTitrA']?></h3>

@@ -168,7 +168,7 @@
         <label for="">Conclusion</label>
         <input type="text" name="LibConclA" value="<?= $LibConclA ?>" id="" ><br>
 
-        <label for="">Image URL</label>
+        <label for="">Image URL : Nom de l'image deja upload (ex: image1.jpg)</label>
         <input type="text" name="UrlPhotA" value="<?= $UrlPhotA ?>"  id="" ><br>
 
         <label for="">L'angle de L'article</label>

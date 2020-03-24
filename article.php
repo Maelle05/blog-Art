@@ -83,10 +83,10 @@
             <p class="publie"><?= $DtCreA ?></p>
             <p class="chapo"><?= $LibAccrochA ?></p>
             <p class="first-paragraphe"><?= $Parag1A ?></p>
-            <img class="illustration" src="<?= $UrlPhotA ?>" alt="">
+            <img class="illustration" src="./uploads/<?= $UrlPhotA ?>" alt="">
             <p class="sous-titre"><?= $LibSsTitr1 ?></p>
             <p class="second-paragraphe"><?= $Parag2A ?></p>
-            <img class="illustration" src="<?= $UrlPhotA ?>" alt="">
+            <img class="illustration" src="./uploads/<?= $UrlPhotA ?>" alt="">
             <p class="sous-titre"><?= $LibSsTitr2 ?></p>
             <p class="third-paragraphe"><?= $Parag3A ?></p>
             <p class="conclusion"><?= $LibConclA ?></p>
