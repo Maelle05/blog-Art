@@ -92,8 +92,7 @@
             <p class="conclusion"><?= $LibConclA ?></p>
 
             <div class="articles-logo-container">
-                <p><?= $Likes ?>Likes</p>
-                <a href="connectionUser.php"><img src="img/like.png"></a>
+                <a style="display: flex; flex-direction: column; align-items: center;" href="connectionUser.php"><img src="img/like.png"><?= $Likes ?> </a>
                 <a href=""><img src="img/share.png"></a>
             </div>
             <p>Mots-Clés</p>
@@ -122,6 +121,7 @@
                                 <img class="user-logo" src="img/user.png">
                                 <div class="commentary-content">
                                     <p>"<?= $v['LibCom']?>" de <?= $v['PseudoAuteur']?> </p>
+                                    <p><?= $v['DtCreC'] ?></p>
                                 </div> 
                             </div>              
                         <?php }?>

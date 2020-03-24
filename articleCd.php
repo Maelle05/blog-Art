@@ -222,6 +222,7 @@ if(isset($_SESSION['EMail'])){
                             <img class="user-logo" src="img/user.png">
                             <div class="commentary-content">
                             <p>"<?= $v['LibCom']?>" de <?= $v['PseudoAuteur']?> </p>
+                            <p><?= $v['DtCreC'] ?></p>
                         </div>
                     </div>
                     <?php }?>
