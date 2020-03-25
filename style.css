@@ -33,6 +33,18 @@ input, textarea{
 }
 
 
+input[type='file']{
+	color: #fefefe!important;
+}
+
+select{
+	color: #2D5284!important;
+}
+
+option{
+	color: #2D5284!important;
+}
+
 
 
 .logo-header{
@@ -842,7 +854,7 @@ div .send-button-inscription{
 	color: #fefefe;
 }
 
-.admin-pannel-container input{
+.admin-pannel-container input, .admin-pannel-container textarea, .admin-pannel-container select{
 	margin-bottom: 5rem;
 }
 

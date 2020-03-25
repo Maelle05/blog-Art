@@ -86,9 +86,16 @@
 
 ?>
 
+<section class="nav-bar">
+    <h1 class="admin-title">Gavé Bleu Administration</h1>
+</section>
 
-    <h2>Ajouter un Utilisateur</h2>
-    <form action="addUser.php" name="formUser" method="post">
+
+
+<section class="admin-pannel-container">
+
+    <h3>Ajouter un Utilisateur</h3>
+    <form class="admin-pannel-container" action="addUser.php" name="formUser" method="post">
         <label for="">Pseudonyme</label>
         <input type="text" name="Login" placeholder="max 25 char ." maxlength="25" id="" ><br>
 
@@ -109,6 +116,17 @@
         <input type="submit" name="Submit" value="Validé">
     </form>
     <a href="admin.php?mot_de_passe=MMI21">Retour</a>
+</section>
+
+
+<footer>
+    <p class="copyright" style="text-align: center;">
+        &copy; 2020 <span>Gavé Bleu</span>. All Rights Reserved.
+        <br>
+        <a href="https://icons8.com/icon/">Icons by Icons8</a>
+      </p>
+
+</footer>
 
 
 <?php include 'disconect.php';?>

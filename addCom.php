@@ -92,8 +92,16 @@
 ?>
 
 
-    <h2>Ajouter un Commentaire</h2>
-    <form action="addCom.php" name="formCom" method="post">
+<section class="nav-bar">
+    <h1 class="admin-title">Gavé Bleu Administration</h1>
+</section>
+
+
+
+<section class="admin-pannel-container">
+
+    <h3>Ajouter un Commentaire</h3>
+    <form class="admin-pannel-container" action="addCom.php" name="formCom" method="post">
         <label for="">Commentaire</label>
         <input type="text" name="LibCom" maxlength="25" id="" ><br>
 
@@ -108,6 +116,16 @@
         <input type="submit" name="Submit" value="Validé">
     </form>
     <a href="admin.php?mot_de_passe=MMI21">Retour</a>
+</section>
+
+<footer>
+    <p class="copyright" style="text-align: center;">
+        &copy; 2020 <span>Gavé Bleu</span>. All Rights Reserved.
+        <br>
+        <a href="https://icons8.com/icon/">Icons by Icons8</a>
+      </p>
+
+</footer>
 
 
 <?php include 'disconect.php';?>

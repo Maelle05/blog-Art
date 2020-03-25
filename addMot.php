@@ -132,8 +132,16 @@
                 }   ?>
 
 
-    <h2>Ajouter un Nouveau Mot Clé</h2>
-    <form action="addMot.php" name="formMot" method="post">
+
+<section class="nav-bar">
+    <h1 class="admin-title">Gavé Bleu Administration</h1>
+</section>
+
+
+
+<section class="admin-pannel-container">
+    <h3>Ajouter un Nouveau Mot Clé</h3>
+    <form class="admin-pannel-container" action="addMot.php" name="formMot" method="post">
 
         <input  type="hidden" name="NumMoCle" maxlength="25" id="" value="MTCL"  >
 
@@ -152,6 +160,16 @@
 
 
     <a href="admin.php?mot_de_passe=MMI21">Retour</a>
+  </section>
+
+<footer>
+    <p class="copyright" style="text-align: center;">
+        &copy; 2020 <span>Gavé Bleu</span>. All Rights Reserved.
+        <br>
+        <a href="https://icons8.com/icon/">Icons by Icons8</a>
+      </p>
+
+</footer>
 
 
 <?php include 'disconect.php';?>

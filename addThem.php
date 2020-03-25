@@ -206,8 +206,17 @@
 ?>
 
 
-    <h2>Ajouter une Nouvelle Thématique</h2>
-    <form action="addThem.php" name="formThem" method="post">
+<section class="nav-bar">
+    <h1 class="admin-title">Gavé Bleu Administration</h1>
+</section>
+
+
+
+<section class="admin-pannel-container">
+
+
+    <h3>Ajouter une Nouvelle Thématique</h3>
+    <form class="admin-pannel-container" action="addThem.php" name="formThem" method="post">
 
         <input  type="hidden" name="NumThem" maxlength="25" id="" value="THEM"  >
 
@@ -225,8 +234,8 @@
     </form>
 
 
-    <h2>Ajouter une nouvelle Langue à une Thématique </strong></h2>
-    <form action="addThem.php" name="formThem" method="get">
+    <h3>Ajouter une nouvelle Langue à une Thématique</h3>
+    <form class="admin-pannel-container" action="addThem.php" name="formThem" method="get">
 
         <label for="">Pour quelle Thématique ?</label>
             <select name="NumThem" >
@@ -251,6 +260,16 @@
 
 
     <a href="admin.php?mot_de_passe=MMI21">Retour</a>
+</section>
+
+<footer>
+    <p class="copyright" style="text-align: center;">
+        &copy; 2020 <span>Gavé Bleu</span>. All Rights Reserved.
+        <br>
+        <a href="https://icons8.com/icon/">Icons by Icons8</a>
+      </p>
+
+</footer>
 
 
 <?php include 'disconect.php';?>
