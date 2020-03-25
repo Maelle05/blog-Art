@@ -43,24 +43,33 @@
     <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-    <!-- Debut du formulaire -->
-    <form action="upload.php" method="post" enctype="multipart/form-data">
-        <legend class="legend1">Ajouter mon image</legend>
-          <p>
-            <label for="uploadFile" title="Recherchez le fichier à uploader !"><b>Quel fichier ?&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="file" name="monfichier" id="monfichier" required="required" accept=".jpg,.gif,.png,.jpeg" size="62" maxlength="62" title="Recherchez le fichier à uploader !" autofocus="autofocus" />
-            <br><br>
-            <input type="submit" name="submit" value="Uploader"  />
+    <section class="nav-bar">
+        <h1 class="admin-title">Gavé Bleu Administration</h1>
+    </section>
+    <section class="admin-pannel-container-img">
+            <!-- Debut du formulaire -->
+            <form class="admin-part-container" action="upload.php" method="post" enctype="multipart/form-data">
+                <h3 class="admin-h3-img">Ajouter mon image</h3>
+                <input type="file" name="monfichier" id="monfichier" required="required" accept=".jpg,.gif,.png,.jpeg" size="62" maxlength="62" title="Recherchez le fichier à uploader !" autofocus="autofocus" />
+                <input type="submit" name="submit" value="Uploader"  />
+                  <p>
+                    <?php
+                      // Gestion extension images acceptées
+                      $msgImagesOK = ">> Extension des images acceptées : .jpg, .gif, .png, .jpeg (lageur, hauteur, taille max : 80000px, 80000px, 100 000 Go)";
+                      echo "<i>" . $msgImagesOK . "</i>";
+                    ?>
+                  </p>
+            </form>
+            <a href="admin.php?mot_de_passe=MMI21">Retour</a>
+            <!-- Fin du formulaire -->
+    </section>
+    <footer>
+        <p class="copyright" style="text-align: center;">
+            &copy; 2020 <span>Gavé Bleu</span>. All Rights Reserved.
+            <br>
+            <a href="https://icons8.com/icon/">Icons by Icons8</a>
           </p>
-          <p>
-            <?php
-              // Gestion extension images acceptées
-              $msgImagesOK = ">> Extension des images acceptées : .jpg, .gif, .png, .jpeg (lageur, hauteur, taille max : 80000px, 80000px, 100 000 Go)";
-              echo "<i>" . $msgImagesOK . "</i>";
-            ?>
-          </p>
-    </form>
-    <a href="admin.php?mot_de_passe=MMI21">Retour</a>
-    <!-- Fin du formulaire -->
+
+    </footer>
   </body>
 </html>

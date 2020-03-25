@@ -24,6 +24,15 @@ h3{
 	text-align: center;
 }
 
+input:focus, textarea:focus{
+	color: #2D5284;
+}
+
+input, textarea{
+	color: #2D5284 !important; 
+}
+
+
 
 
 .logo-header{
@@ -813,11 +822,36 @@ div .send-button-inscription{
 
 .admin-pannel-container{
 	padding-top: 15vh;
+	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	background-color: #2D5284;
 }
+
+.admin-pannel-container-img{
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background-color: #2D5284;
+}
+
+.admin-pannel-container-img a{
+	color: #fefefe;
+}
+
+.admin-pannel-container input{
+	margin-bottom: 5rem;
+}
+
+
+.admin-h3-img{
+	color: #fefefe;
+}
+
+
 
 .admin-title{
 	font-size: 4rem;
