@@ -374,7 +374,7 @@ h3{
 
 .index-page footer{
 	position: absolute;
-	bottom: -10%;
+	top: 280vh;
 }
 
 footer{
@@ -495,7 +495,6 @@ footer a {
 	flex-direction: column;
 	align-items: center;
 	padding-top: 5rem;
-	padding-bottom: 15vh;
 }
 
 .commentaires-container *{
@@ -594,6 +593,7 @@ footer a {
 
 .article-page footer{
 	bottom: 0%;
+	margin-top: 20vh;
 }
 
 .add-commentary{
