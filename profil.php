@@ -157,7 +157,7 @@ if(isset($_GET['EMail'])){
                                 <img src="./uploads/<?= $v['UrlPhotA'] ?>"/>
                             </div>
                             <div class="text-container">
-                                <h3>Article num <?= $v['NumArt']?> : <?= $v['LibTitrA']?></h3>
+                                <h3><?= $v['LibTitrA']?></h3>
                                 <p><?= $v['LibChapoA']?></p>
                                 <p><?= $v['DtCreA']?></p>
                                 <p> <?= $v['Likes']?> likes</p>
@@ -188,7 +188,7 @@ if(isset($_GET['EMail'])){
                                 <img src="./uploads/<?= $v['UrlPhotA'] ?>"/>
                             </div>
                             <div class="text-container">
-                                <h3>Article num <?= $v['NumArt']?> : <?= $v['LibTitrA']?></h3>
+                                <h3><?= $v['LibTitrA']?></h3>
                                 <p><?= $v['LibChapoA']?></p>
                                 <p><?= $v['DtCreA']?></p>
                                 <p> <?= $v['Likes']?> likes</p>
@@ -212,7 +212,7 @@ if(isset($_GET['EMail'])){
                             <img src="./uploads/<?= $v['UrlPhotA'] ?>"/>
                         </div>
                         <div class="text-container">
-                            <h3>Article num <?= $v['NumArt']?> : <?= $v['LibTitrA']?></h3>
+                            <h3><?= $v['LibTitrA']?></h3>
                             <p><?= $v['LibChapoA']?></p>
                             <p><?= $v['DtCreA']?></p>
                             <p> <?= $v['Likes']?> likes</p>

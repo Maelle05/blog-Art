@@ -194,7 +194,7 @@ if(isset($_SESSION['EMail'])){
             <p class="third-paragraphe"><?= $Parag3A ?></p>
             <p class="conclusion"><?= $LibConclA ?></p>
             <div class="articles-logo-container">
-                <a style="display: flex; flex-direction: column; align-items: center;" href="articleC.php?like=true&amp;EMail=<?= $_SESSION['EMail']?>&amp;id=<?= $NumArt?>&amp;likes=<?= $Likes?>"><img src="img/like-active.png"><?= $Likes ?> Likes</a>
+                <a style="display: flex; flex-direction: column; align-items: center;" href="articleC.php?like=true&amp;EMail=<?= $_SESSION['EMail']?>&amp;id=<?= $NumArt?>&amp;likes=<?= $Likes?>"><img src="img/like-active.png"><?= $Likes ?></a>
                  <a href=""><img src="img/share.png"></a>
             </div>
             <p>Mots-Clés</p>
