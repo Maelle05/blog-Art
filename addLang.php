@@ -124,7 +124,7 @@
             <label for="">Quel Pays :</label>
             <select name="NumPays" >
                 <?php while($v = $SelectPays->fetch()){ ?>
-                        <option value="<?= $v['numPays']?>" > <?= $v['numPays']?> <?= $v['frPays']?> </option>
+                        <option value="<?= $v['numPays']?>" > <?= $v['frPays']?> </option>
                 <?php }?>
             </select>
 

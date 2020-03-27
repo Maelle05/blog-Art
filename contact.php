@@ -2,6 +2,7 @@
 session_start();
 
 include 'conect.php';
+$userInfo =0;
 
 if(isset($_GET['EMail'])){
 
@@ -89,12 +90,12 @@ if(isset($_SESSION['EMail']) AND $userInfo['EMail'] == $_SESSION['EMail']){
 
 	<footer class="contact-footer">
 		<div class="footer-link-admin">
-            <a href="#"><img class="logo-footer" src="img/logo.png"></a>
+            <a href="mdp.php"><img class="logo-footer" src="img/logo.png"></a>
             <a class="admin-link" href="mdp.php">Partie administration</a>
         </div>
-		<a href="mentions.php">MENTIONS LEGALES</a>
+		<a href="mentions.php?EMail=<?=$EMail?>">MENTIONS LEGALES</a>
         <a href="#">COOKIES</a>
-        <a href="moderation.php">CHARTE DE MODERATION</a>
+        <a href="moderation.php?EMail=<?=$EMail?>">CHARTE DE MODERATION</a>
 	</footer>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>

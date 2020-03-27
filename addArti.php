@@ -39,38 +39,6 @@
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             $Submit = isset($_POST['Submit']) ? $_POST['Submit'] : '';
 
-
-            if (isset($_FILES['monfichier']) AND $_FILES['monfichier']['error'] == 0) {
-                // Test si fichier pas trop gros
-                if ($_FILES['monfichier']['size'] <= 2000000) {
-                    // Test si extension autorisée
-                    $infosfile = pathinfo($_FILES['monfichier']['name']);
-                    $extension_upload = $infosfile['extension'];
-                    $extensions_OK = array('jpg', 'jpeg', 'gif', 'png');
-                    $name = $infosfile['filename'];
-                    $file = '' .$name. '.' .$extension_upload;
-
-                    if (in_array($extension_upload, $extensions_OK)) {
-                        // valider fichier / le stocker définitivement
-                        move_uploaded_file($_FILES['monfichier']['tmp_name'], 'uploads/' . $file);
-                        echo "<p>Upload d'une image sur le serveur :</p>";
-                        echo "<p><font color='green'>L'envoi de votre image a bien été effectué !</font><br /></p>";
-                        echo'<a href="./uploads/'.$file.' "/>Voir l\'image</a>' . "<br>";
-                    } else {
-                        echo "<p>Upload d'une image sur le serveur :</p>";
-                        echo "<font color='red'>L'extension du fichier n'est pas autorisée. <br /></font>";
-                        echo "<font color='red'>(Seuls les fichiers jpg, jpeg, gif, png sont acceptés.)</font> " . "<br><br>";
-                    }
-                } else {
-                    echo "<p>Upload d'une image sur le serveur :</p>";
-                    echo "<font color='red'>Le fichier est trop volumineux :</font> <br />";
-                    echo "<font color='red'><b>(Poids limité à 4Mo) !</b></font>" . "<br><br>";
-                }
-            } else {
-                echo "<p>Upload d'une image sur le serveur :</p>";
-                echo "<p><font color='red'>Veuillez selectionner un fichier...</font></p>";
-            }
-
 			if ( ((isset($_POST['LibTitrA'])) AND !empty($_POST['LibTitrA']))
                 AND ((isset($_POST['LibChapoA'])) AND !empty($_POST['LibChapoA']))
                 AND ((isset($_POST['LibAccrochA'])) AND !empty($_POST['LibAccrochA']))
@@ -95,7 +63,6 @@
                     $LibSsTitr2 = ctrlSaisies($_POST['LibSsTitr2']);
                     $Parag3A = ctrlSaisies($_POST['Parag3A']);
                     $LibConclA = ctrlSaisies($_POST['LibConclA']);
-                    $UrlPhotA = $file;
                     $Likes = 0;
                     $NumAngl = ctrlSaisies($_POST['NumAngl']);
                     $NumThem = ctrlSaisies($_POST['NumThem']);
@@ -115,6 +82,39 @@
                         $NumArt = "0" . $NumArt;
                     }
 //.........................................................................................................
+
+                    if (isset($_FILES['monfichier']) AND $_FILES['monfichier']['error'] == 0) {
+                        // Test si fichier pas trop gros
+                        if ($_FILES['monfichier']['size'] <= 2000000) {
+                            // Test si extension autorisée
+                            $infosfile = pathinfo($_FILES['monfichier']['name']);
+                            $extension_upload = $infosfile['extension'];
+                            $extensions_OK = array('jpg', 'jpeg', 'gif', 'png');
+                            $name = $infosfile['filename'];
+                            $file = 'imgArt' .$NumArt. '.' .$extension_upload;
+                            
+                            if (in_array($extension_upload, $extensions_OK)) {
+                                // valider fichier / le stocker définitivement
+                                move_uploaded_file($_FILES['monfichier']['tmp_name'], 'uploads/' . $file);
+                                echo "<p>Upload d'une image sur le serveur :</p>";
+                                echo "<p><font color='green'>L'envoi de votre image a bien été effectué !</font><br /></p>";
+                                echo'<a href="./uploads/'.$file.' "/>Voir l\'image</a>' . "<br>";
+                            } else {
+                                echo "<p>Upload d'une image sur le serveur :</p>";                     
+                                echo "<font color='red'>L'extension du fichier n'est pas autorisée. <br /></font>";
+                                echo "<font color='red'>(Seuls les fichiers jpg, jpeg, gif, png sont acceptés.)</font> " . "<br><br>"; 
+                            }
+                        } else {
+                            echo "<p>Upload d'une image sur le serveur :</p>";
+                            echo "<font color='red'>Le fichier est trop volumineux :</font> <br />";
+                            echo "<font color='red'><b>(Poids limité à 4Mo) !</b></font>" . "<br><br>";
+                        }
+                    } else {
+                        echo "<p>Upload d'une image sur le serveur :</p>";
+                        echo "<p><font color='red'>Veuillez selectionner un fichier...</font></p>"; 
+                    }
+
+//.........................................................................................................
                     $date = date("Y-m-d");
 
 
@@ -133,7 +133,7 @@
                             $stmt->bindParam(':LibSsTitr2', $LibSsTitr2);
                             $stmt->bindParam(':Parag3A', $Parag3A);
                             $stmt->bindParam(':LibConclA', $LibConclA);
-                            $stmt->bindParam(':UrlPhotA', $UrlPhotA);
+                            $stmt->bindParam(':UrlPhotA', $file);
                             $stmt->bindParam(':Likes', $Likes);
                             $stmt->bindParam(':NumAngl', $NumAngl);
                             $stmt->bindParam(':NumThem', $NumThem);
