@@ -93,7 +93,7 @@
         <input type="hidden" name="NumAngl" maxlength="25" id="" value="<?= $NumAngl ?>" ><br>
 
         <label for="">Angle</label>
-        <input type="text" name="LibAngl" maxlength="25" id="" value="<?= $LibAngl ?>" ><br>
+        <input type="text" name="LibAngl" maxlength="60" id="" value="<?= $LibAngl ?>" ><br>
 
         <p>Dans la langue :<?= $NumLang ?></p>
 

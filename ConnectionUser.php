@@ -49,7 +49,7 @@ session_start();
             <a class="menu-container-link" href="about.php">A PROPOS</a>
             <a class="menu-container-link" href="contact.php">CONTACT</a>
             <a class="menu-container-link" href="ConnectionUser.php">Connexion</a>
-        </div>      
+        </div>
     </section>
 
     <section class="nav-bar">
@@ -72,18 +72,18 @@ session_start();
     <form class="connexion-input-container" action="ConnectionUser.php" name="formUser" method="post">
 
         <label for="">Adresse Mail</label>
-        <input class="connexion-input" type="mail" name="EMail" id="" >
+        <input class="connexion-input" type="mail" maxlength="50" name="EMail" id="" >
 
 
         <label for="">Mot de passe</label>
-        <input class="connexion-input" type="password" name="Pass" placeholder="max 25 char ." maxlength="25" id="" >
+        <input class="connexion-input" type="password" name="Pass" placeholder="max 30 char ." maxlength="30" id="" >
 
         <input class="send-button" type="submit" name="formC" value="Se connecter">
 
         <p>Pas encore de compte ?<a href="InscriptionUser.php"> Inscrivez-vous ICI</a></p>
 
     </form>
-    
+
   </section>
 
 

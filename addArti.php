@@ -158,42 +158,42 @@
 <section class="nav-bar">
     <h1 class="admin-title">Gavé Bleu Administration</h1>
 </section>
-    
+
     <section class="admin-pannel-container">
 
         <h3>Ajouter un Nouvel Article</h3>
         <form class="admin-pannel-container"  action="addArti.php" name="formArti" method="post" enctype="multipart/form-data">
 
             <label for="">Titre de L'article</label>
-            <input type="text" name="LibTitrA"  id="" >
+            <input type="text" name="LibTitrA" maxlength="70" id="" >
 
             <label for="">Chapô</label>
-            <textarea type="text" name="LibChapoA"  id="" ></textarea>
+            <textarea type="text" name="LibChapoA" maxlength="500" id="" ></textarea>
 
             <label for="">Accroche</label>
-            <textarea type="text" name="LibAccrochA"  id="" ></textarea>
+            <textarea type="text" name="LibAccrochA" maxlength="500" id="" ></textarea>
 
             <label for="">Paragraphe 1</label>
-            <textarea type="text" name="Parag1A"  id="" ></textarea>
+            <textarea type="text" name="Parag1A" maxlength="1200" id="" ></textarea>
 
             <label for="">Sous Titre 1</label>
-            <textarea type="text" name="LibSsTitr1"  id="" ></textarea>
+            <textarea type="text" name="LibSsTitr1" maxlength="70" id="" ></textarea>
 
             <label for="">Paragraphe 2</label>
-            <textarea type="text" name="Parag2A"  id="" ></textarea>
+            <textarea type="text" name="Parag2A" maxlength="1200" id="" ></textarea>
 
             <label for="">Sous Titre 2</label>
-            <textarea type="text" name="LibSsTitr2"  id="" ></textarea>
+            <textarea type="text" name="LibSsTitr2" maxlength="70" id="" ></textarea>
 
             <label for="">Paragraphe 3</label>
-            <textarea type="text" name="Parag3A"  id="" ></textarea>
+            <textarea type="text" name="Parag3A" maxlength="1200" id="" ></textarea>
 
             <label for="">Conclusion</label>
-            <textarea type="text" name="LibConclA"  id="" ></textarea>
+            <textarea type="text" name="LibConclA" maxlength="500" id="" ></textarea>
     <?php //***********************************************************************************************************************?>
 
             <legend class="legend1">Ajouter mon image</legend>
-                
+
                 <input type="file" name="monfichier" id="monfichier" required="required" accept=".jpg,.gif,.png,.jpeg" size="62" maxlength="62" title="Recherchez le fichier à uploader !" autofocus="autofocus" />
               <p>
                 <?php

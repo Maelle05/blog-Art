@@ -9,7 +9,7 @@
             <div class="admin-container">
                 <p>Veuillez entrer le mot de passe pour avoir accès à l'administration .</p>
                 <form class="admin-form" action="admin.php" method="post">
-                    <input class="admin-password" placeholder="Mot de passe" type="password" name="mot_de_passe" />
+                    <input class="admin-password" placeholder="Mot de passe" type="password" maxlength="15" name="mot_de_passe" />
                     <input class="admin-btn" type="submit" name="mdp" value="Valider" />
                 </form>
             </div>

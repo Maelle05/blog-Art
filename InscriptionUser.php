@@ -96,7 +96,7 @@ function ctrlSaisies($saisie) {
             <a class="menu-container-link" href="about.php">A PROPOS</a>
             <a class="menu-container-link" href="contact.php">CONTACT</a>
             <a class="menu-container-link" href="ConnectionUser.php">CONNEXION</a>
-        </div>      
+        </div>
     </section>
 
     <section class="nav-bar">
@@ -105,7 +105,7 @@ function ctrlSaisies($saisie) {
         <a href="about.php">A propos</a>
         <a href="contact.php">Contact</a>
         <a class="active" href="ConnectionUser.php">Connection</a>
-    
+
     </section>
 
     <section class="first-container">
@@ -120,26 +120,26 @@ function ctrlSaisies($saisie) {
         <form class="inscription-input-container" action="InscriptionUser.php" name="formUser" method="post">
             <div>
                 <label for="">Pseudonyme</label>
-                <input  class="connexion-input" type="text" name="Login" placeholder="max 25 char ." maxlength="25" id="" >
+                <input  class="connexion-input" type="text" name="Login" placeholder="max 30 char ." maxlength="30" id="" >
             </div>
 
             <div>
                 <label for="">Mot de Passe</label>
-                <input class="connexion-input" type="text" name="Pass" placeholder="max 25 char ." maxlength="25" id="" >
+                <input class="connexion-input" type="text" name="Pass" placeholder="max 15 char ." maxlength="15" id="" >
             </div>
             <div>
                 <label for="">Nom</label>
-                <input class="connexion-input" type="text" name="LastName" maxlength="25" id="" >
+                <input class="connexion-input" type="text" name="LastName" placeholder="max 30 char ." maxlength="30" id="" >
             </div>
 
             <div>
                 <label for="">Prénom</label>
-                <input class="connexion-input" type="text" name="FirstName" maxlength="25" id="" >
+                <input class="connexion-input" type="text" name="FirstName" placeholder="max 30 char ." maxlength="30" id="" >
             </div>
 
             <div>
                 <label for="">Adresse Mail</label>
-                <input class="connexion-input" type="mail" name="EMail" id="" >
+                <input class="connexion-input" type="mail" name="EMail" placeholder="max 50 char ." maxlength="50" id="" >
             </div>
 
             <div class="last-inscription-div">

@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 
 include 'conect.php';
@@ -10,7 +10,7 @@ if(isset($_GET['EMail'])){
     $reqUser = $bdPdo->prepare("SELECT * FROM USER WHERE EMAIL = ?");
     $reqUser->execute(array($EMail));
 	$userInfo = $reqUser->fetch();
-	
+
 }
 ?>
 <?php
@@ -27,7 +27,7 @@ if(isset($_SESSION['EMail']) AND $userInfo['EMail'] == $_SESSION['EMail']){
 	<link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
 </head>
 <body>
-		
+
 	<div class="icon">
 		<div class="hamburger hamburger-middle"></div>
 	</div>
@@ -40,7 +40,7 @@ if(isset($_SESSION['EMail']) AND $userInfo['EMail'] == $_SESSION['EMail']){
             <a class="menu-container-link" href="contact.php?EMail=<?=$EMail?>">CONTACT</a>
             <a class="menu-container-link" href="disconnectUser.php">Se déconnecter</a>
         	<a class="menu-container-link" href="editUserProfil.php?EMail=<?=$EMail?>"><?= $userInfo['Login'] ?></a>
-        </div>      
+        </div>
     </section>
 
     <section class="nav-bar">
@@ -64,8 +64,8 @@ if(isset($_SESSION['EMail']) AND $userInfo['EMail'] == $_SESSION['EMail']){
 		<p class="chapo">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris… </p>
 
 		<div class="contact-input-container">
-			<input class="contact-input" type="mail" placeholder="Adresse mail…" name="mail">
-			<input class="contact-input" type="text" placeholder="Objet…" name="">
+			<input class="contact-input" type="mail" placeholder="Adresse mail…"  maxlength="50" name="mail">
+			<input class="contact-input" type="text" placeholder="Objet…"  maxlength="50" name="">
 			<textarea placeholder="Écrire un message…"></textarea>
 			<button class="send-button">Envoyer</button>
 
@@ -81,9 +81,9 @@ if(isset($_SESSION['EMail']) AND $userInfo['EMail'] == $_SESSION['EMail']){
 		</div>
 		</div>
 
-		
 
-		
+
+
 	</section>
 
 
@@ -113,7 +113,7 @@ if(isset($_SESSION['EMail']) AND $userInfo['EMail'] == $_SESSION['EMail']){
 	<link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
 </head>
 <body>
-		
+
 	<div class="icon">
 		<div class="hamburger hamburger-middle"></div>
 	</div>
@@ -125,7 +125,7 @@ if(isset($_SESSION['EMail']) AND $userInfo['EMail'] == $_SESSION['EMail']){
             <a class="menu-container-link" href="about.php">A PROPOS</a>
             <a class="menu-container-link" href="contact.php">CONTACT</a>
             <a class="menu-container-link" href="ConnectionUser.php">Connexion</a>
-        </div>      
+        </div>
     </section>
 
     <section class="nav-bar">
@@ -148,8 +148,8 @@ if(isset($_SESSION['EMail']) AND $userInfo['EMail'] == $_SESSION['EMail']){
 		<p class="chapo">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris… </p>
 
 		<div class="contact-input-container">
-			<input class="contact-input" type="mail" placeholder="Adresse mail…" name="mail">
-			<input class="contact-input" type="text" placeholder="Objet…" name="">
+			<input class="contact-input" type="mail" placeholder="Adresse mail…" maxlength="50" name="mail">
+			<input class="contact-input" type="text" placeholder="Objet…" maxlength="50" name="">
 			<textarea placeholder="Écrire un message…"></textarea>
 			<button class="send-button">Envoyer</button>
 
@@ -165,9 +165,9 @@ if(isset($_SESSION['EMail']) AND $userInfo['EMail'] == $_SESSION['EMail']){
 		</div>
 		</div>
 
-		
 
-		
+
+
 	</section>
 
 
