@@ -99,6 +99,7 @@ if(isset($_SESSION['EMail']) AND $userInfo['EMail'] == $_SESSION['EMail']){
 		sans autorisation de l’Editeur est prohibée et pourra entraînée des actions et poursuites judiciaires telles que
 		notamment prévues par le Code de la propriété intellectuelle et le Code civil.</p>
 		<p>Pour plus d’informations, se reporter aux CGU du site https://GaveBleu.fr accessible à la rubrique« CGU »</p>
+	</section>
 
 
 
