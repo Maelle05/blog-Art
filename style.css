@@ -988,6 +988,19 @@ h4{
 	margin-top: 2rem;
 }
 
+.mentions{
+	background-color: #2D5284;
+	color: #fefefe;
+	font-size: 2rem;
+	padding: 5rem;
+}
+
+.mentions h3{
+	text-align: left;
+	color: #fefefe;
+	margin-top: 5rem;
+}
+
 @media only screen and (max-width: 768px) {
 
 
