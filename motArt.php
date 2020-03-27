@@ -46,7 +46,15 @@
 
     ?>
 
-    <form action="motArt.php" name="formMotArt" method="post">
+<section class="nav-bar">
+    <h1 class="admin-title">Gavé Bleu Administration</h1>
+</section>
+
+
+
+<section class="admin-pannel-container-mot">
+
+    <form class="admin-pannel-container-mot" action="motArt.php" name="formMotArt" method="post">
 
         <label for="">Pour quelle Article ?</label>
             <select name="NumArt" >
@@ -65,13 +73,11 @@
                 <br>
         <input type="submit" name="Submit" value="Validé">
     </form>
-    <br>
-    <br>
-    <br>
+
     <h2>Les Liaisons deja effectuées</h2>
 
     <?php while($v = $SelectArt->fetch()){ ?>
-                    <div>
+                    <div  class="admin-pannel-container-mot-div">
                         <h3>Article numéro <?= $v['NumArt']?> : <?= $v['LibTitrA']?></h3>
                         <p>Mots Clés:</p>
                         <?php
@@ -118,6 +124,15 @@
                 include "disconect.php";
                 ?>
                 <a href="admin.php?mot_de_passe=MMI21">Retour</a>
+            </section>
+            <footer>
+                <p class="copyright" style="text-align: center;">
+                    &copy; 2020 <span>Gavé Bleu</span>. All Rights Reserved.
+                    <br>
+                    <a href="https://icons8.com/icon/">Icons by Icons8</a>
+                  </p>
+
+            </footer>
 
 </body>
 </html>

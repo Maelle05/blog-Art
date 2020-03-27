@@ -839,6 +839,61 @@ div .send-button-inscription{
 	background-color: #2D5284;
 }
 
+.admin-pannel-container-mot{
+	padding-top: 15vh;
+	display: flex;
+	min-height: 50vh;
+	flex-direction: column;
+	align-items: center;
+	background-color: #2D5284;
+}
+
+.admin-pannel-container-mot *{
+	color: #fefefe;
+	margin-bottom: 3rem;
+}
+
+.admin-pannel-container-mot-div{
+	padding-top: 6vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: #2D5284;	
+}
+
+.admin-pannel-container-mot-div ul li, .admin-pannel-container-mot-div p{
+	font-size: 2rem;
+}
+
+.change-profile{
+	padding-top: 15vh;
+	padding-bottom: 15vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: #2D5284;
+	min-height: 60vh;
+}
+
+.change-profile h3{
+	color: #fefefe;
+}
+
+
+.change-profile-form{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-top: 5rem;
+	color: #fefefe;
+	font-size: 2rem;
+}
+
+.mail-change{
+	color: #fefefe;
+	font-size: 2rem;
+}
+
 .admin-pannel-container-img{
 	min-height: 100vh;
 	display: flex;
