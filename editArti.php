@@ -79,41 +79,6 @@
                     $NumAngl = htmlspecialchars($_GET['NumAngl']);
                     $NumThem = htmlspecialchars($_GET['NumThem']);
                     $NumLang = htmlspecialchars($_GET['NumLang']);
-//..................................................................................................................
-
-                    if (isset($_FILES['monfichier'])AND $_FILES['monfichier']['error'] == 0) {
-                        // Test si fichier pas trop gros
-                        if ($_FILES['monfichier']['size'] <= 2000000) {
-                            // Test si extension autorisée
-                            $infosfile = pathinfo($_FILES['monfichier']['name']);
-                            $extension_upload = $infosfile['extension'];
-                            $extensions_OK = array('jpg', 'jpeg', 'gif', 'png');
-                            $name = $infosfile['filename'];
-                            $file = $UrlPhotA;
-
-                            if (in_array($extension_upload, $extensions_OK)) {
-                                // valider fichier / le stocker définitivement
-                                move_uploaded_file($_FILES['monfichier']['tmp_name'], 'uploads/' . $file);
-                                echo "<p>Upload d'une image sur le serveur :</p>";
-                                echo "<p><font color='green'>L'envoi de votre image a bien été effectué !</font><br /></p>";
-                                echo'<a href="./uploads/'.$file.' "/>Voir l\'image</a>' . "<br>";
-                            } else {
-                                echo "<p>Upload d'une image sur le serveur :</p>";
-                                echo "<font color='red'>L'extension du fichier n'est pas autorisée. <br /></font>";
-                                echo "<font color='red'>(Seuls les fichiers jpg, jpeg, gif, png sont acceptés.)</font> " . "<br><br>";
-                            }
-                        } else {
-                            echo "<p>Upload d'une image sur le serveur :</p>";
-                            echo "<font color='red'>Le fichier est trop volumineux :</font> <br />";
-                            echo "<font color='red'><b>(Poids limité à 4Mo) !</b></font>" . "<br><br>";
-                        }
-                    } else {
-                        echo "<p>Upload d'une image sur le serveur :</p>";
-                        echo "<p><font color='red'>Veuillez selectionner un fichier...</font></p>";
-                    }
-
-//.........................................................................................................
-
 
                     try{
                         //Début transaction
@@ -122,7 +87,7 @@
                         // instruction incert Preparation
                         $query = $bdPdo->prepare('UPDATE article SET LibTitrA = :LibTitrA, LibChapoA = :LibChapoA, LibAccrochA = :LibAccrochA,
                          Parag1A = :Parag1A, LibSsTitr1 = :LibSsTitr1, Parag2A = :Parag2A, LibSsTitr2 = :LibSsTitr2, Parag3A = :Parag3A,
-                         LibConclA = :LibConclA, UrlPhotA = :UrlPhotA, NumAngl = :NumAngl, NumThem = :NumThem, NumLang = :NumLang
+                         LibConclA = :LibConclA, NumAngl = :NumAngl, NumThem = :NumThem, NumLang = :NumLang
                            WHERE  NumArt ="'.$get_id.'"');
                         // Execution du prepare lancement
                         $query->execute(
@@ -136,7 +101,6 @@
                                 ':LibSsTitr2'=> $LibSsTitr2,
                                 ':Parag3A'=> $Parag3A,
                                 ':LibConclA'=> $LibConclA,
-                                ':UrlPhotA'=> $UrlPhotA,
                                 ':NumAngl'=> $NumAngl,
                                 ':NumThem'=> $NumThem,
                                 ':NumLang'=> $NumLang,
@@ -172,6 +136,30 @@
             <form action="editArti.php" name="formArticle" method="Get" enctype="multipart/form-data">
 
             <input type="hidden" name="id" value="<?= $NumArt ?>">
+        
+        <label for="">Langue de L'article</label>
+        <select name="NumLang" >
+            <option value="<?= $NumLang ?>"><?= $NumLang ?></option>
+            <?php while($l = $SelectLang->fetch()){ ?>
+                    <option value="<?= $l['NumLang']?>" > <?= $l['Lib1Lang']?> </option>
+            <?php }?>
+        </select><br>
+
+        <label for="">L'angle de L'article</label>
+        <select name="NumAngl" >
+        <option value="<?= $NumAngl ?>"><?= $NumAngl ?></option>
+            <?php while($v = $SelectAngle->fetch()){ ?>
+                    <option value="<?= $v['NumAngl']?>" > <?= $v['LibAngl']?> </option>
+            <?php }?>
+        </select><br>
+
+        <label for="">Thématique de L'article</label>
+        <select name="NumThem" >
+        <option value="<?= $NumThem ?>"><?= $NumThem ?></option>
+            <?php while($t = $SelectTheme->fetch()){ ?>
+                    <option value="<?= $t['NumThem']?>" > <?= $t['LibThem']?> </option>
+            <?php }?>
+        </select><br>
 
         <label for="">Titre de l'Article</label>
         <input type="text" name="LibTitrA" placeholder="max 70 char." maxlength="70"  value="<?= $LibTitrA ?>" ><br>
@@ -201,51 +189,7 @@
         <input type="text" name="LibConclA" placeholder="max 500 char." maxlength="500" value="<?= $LibConclA ?>" id="" ><br>
 
 
-        <label for="">Image URL : Nom de l'image deja upload (ex: image1.jpg)</label>
-        <input type="text" name="UrlPhotA" placeholder="max 62 char." maxlength="62" value="<?= $UrlPhotA ?>"  id="" ><br>
-        <label for="">Remplacer l'image: <?= $UrlPhotA ?></label>
-<?php //***********************************************************************************************************************?>
-
-        <legend class="legend1">Ajouter ma nouvelle image :</legend>
-
-            <input type="file" name="monfichier" id="monfichier" required="required" accept=".jpg,.gif,.png,.jpeg" size="62" maxlength="62" title="Recherchez le fichier à uploader !" autofocus="autofocus" />
-        <p>
-            <?php
-            // Gestion extension images acceptées
-            $msgImagesOK = ">> Extension des images acceptées : .jpg, .gif, .png, .jpeg (lageur, hauteur, taille max : 80000px, 80000px, 100 000 Go)";
-            echo "<i>" . $msgImagesOK . "</i>";
-            ?>
-        </p>
-<?php //***********************************************************************************************************************?>
-
-        <label for="">L'angle de L'article</label>
-        <select name="NumAngl" >
-        <option value="<?= $NumAngl ?>"><?= $NumAngl ?></option>
-            <?php while($v = $SelectAngle->fetch()){ ?>
-                    <option value="<?= $v['NumAngl']?>" > <?= $v['LibAngl']?> </option>
-            <?php }?>
-        </select><br>
-
-        <label for="">Thématique de L'article</label>
-        <select name="NumThem" >
-        <option value="<?= $NumThem ?>"><?= $NumThem ?></option>
-            <?php while($t = $SelectTheme->fetch()){ ?>
-                    <option value="<?= $t['NumThem']?>" > <?= $t['LibThem']?> </option>
-            <?php }?>
-        </select><br>
-
-        <label for="">Langue de L'article</label>
-        <select name="NumLang" >
-            <option value="<?= $NumLang ?>"><?= $NumLang ?></option>
-            <?php while($l = $SelectLang->fetch()){ ?>
-                    <option value="<?= $l['NumLang']?>" > <?= $l['Lib1Lang']?> </option>
-            <?php }?>
-        </select><br>
-
-
-
-
-
+        <p>Image: <?= $UrlPhotA ?></p>
 
         <input type="submit" name="Submit" value="Validé">
     </form>

@@ -163,6 +163,26 @@
 
         <h3>Ajouter un Nouvel Article</h3>
         <form class="admin-pannel-container"  action="addArti.php" name="formArti" method="post" enctype="multipart/form-data">
+            <label for="">Langue de L'article</label>
+                <select name="NumLang" >
+                    <?php while($l = $SelectLang->fetch()){ ?>
+                            <option value="<?= $l['NumLang']?>" > <?= $l['Lib1Lang']?> </option>
+                    <?php }?>
+                </select><br>
+
+            <label for="">L'angle de L'article</label>
+                <select name="NumAngl" >
+                    <?php while($v = $SelectAngle->fetch()){ ?>
+                            <option value="<?= $v['NumAngl']?>" ><?= $v['LibAngl']?> </option>
+                    <?php }?>
+                </select><br>
+
+            <label for="">Thématique de L'article</label>
+                <select name="NumThem" >
+                    <?php while($t = $SelectTheme->fetch()){ ?>
+                            <option value="<?= $t['NumThem']?>" > <?= $t['LibThem']?> </option>
+                    <?php }?>
+                </select><br>
 
             <label for="">Titre de L'article</label>
             <input type="text" name="LibTitrA" placeholder="max 70 char." maxlength="70" id="" >
@@ -203,26 +223,7 @@
                 ?>
               </p>
     <?php //***********************************************************************************************************************?>
-            <label for="">L'angle de L'article</label>
-            <select name="NumAngl" >
-                <?php while($v = $SelectAngle->fetch()){ ?>
-                        <option value="<?= $v['NumAngl']?>" ><?= $v['NumLang']?> <?= $v['LibAngl']?> </option>
-                <?php }?>
-            </select><br>
 
-            <label for="">Thématique de L'article</label>
-            <select name="NumThem" >
-                <?php while($t = $SelectTheme->fetch()){ ?>
-                        <option value="<?= $t['NumThem']?>" > <?= $t['LibThem']?> </option>
-                <?php }?>
-            </select><br>
-
-            <label for="">Langue de L'article</label>
-            <select name="NumLang" >
-                <?php while($l = $SelectLang->fetch()){ ?>
-                        <option value="<?= $l['NumLang']?>" > <?= $l['Lib1Lang']?> </option>
-                <?php }?>
-            </select><br>
 
             <input type="submit" name="Submit" value="Validé">
         </form>
