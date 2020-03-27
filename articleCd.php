@@ -276,9 +276,9 @@ if(isset($_SESSION['EMail'])){
         <a href="mdp.php"><img class="logo-footer" src="img/logo.png"></a>
         <a class="admin-link" href="mdp.php">Partie administration</a>
     </div>
-    <a href="#">MENTIONS LEGALES</a>
-    <a href="#">COOKIES</a>
-    <a href="#">CHARTE DE MODERATION</a>
+    <a href="mentions.php">MENTIONS LEGALES</a>
+        <a href="#">COOKIES</a>
+        <a href="moderation.php">CHARTE DE MODERATION</a>
 </footer>
 
 
