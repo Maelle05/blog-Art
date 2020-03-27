@@ -11,7 +11,7 @@
     include "conect.php";
     ?>
 
-  <section class="nav-bar">
+<section class="nav-bar">
     <h1 class="admin-title">Gavé Bleu Administration</h1>
 </section>
 
