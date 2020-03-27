@@ -129,16 +129,16 @@ $query->closeCursor();
             <label class="no-margin" for="">Login</label>
             <input type="hidden" name="id" value="<?= $Login ?>">
 
-            <input class="connexion-input" type="text" name="Login" maxlength="30" id="" value="<?= $Login ?>" ><br>
+            <input class="connexion-input" type="text" name="Login" placeholder="max 30 char." maxlength="30" id="" value="<?= $Login ?>" ><br>
 
             <label class="no-margin" for="">Password</label>
-            <input class="connexion-input" type="password" name="Pass" maxlength="15" id="" value="<?= $Pass ?>" ><br>
+            <input class="connexion-input" type="password" name="Pass" placeholder="max 15 char." maxlength="15" id="" value="<?= $Pass ?>" ><br>
 
             <label class="no-margin" for="">Nom</label>
-            <input class="connexion-input" type="text" name="LastName" maxlength="30" id="" value="<?= $LastName ?>" ><br>
+            <input class="connexion-input" type="text" name="LastName" placeholder="max 30 char." maxlength="30" id="" value="<?= $LastName ?>" ><br>
 
             <label class="no-margin" for="">Prénom</label>
-            <input class="connexion-input" type="text" name="FirstName" maxlength="30" id="" value="<?= $FirstName ?>" ><br>
+            <input class="connexion-input" type="text" name="FirstName" placeholder="max 30 char." maxlength="30" id="" value="<?= $FirstName ?>" ><br>
 
             <input class="send-button" type="submit" name="Submit" value="Validé">
         </form>

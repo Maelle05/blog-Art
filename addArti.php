@@ -165,31 +165,31 @@
         <form class="admin-pannel-container"  action="addArti.php" name="formArti" method="post" enctype="multipart/form-data">
 
             <label for="">Titre de L'article</label>
-            <input type="text" name="LibTitrA" maxlength="70" id="" >
+            <input type="text" name="LibTitrA" placeholder="max 70 char." maxlength="70" id="" >
 
             <label for="">Chapô</label>
-            <textarea type="text" name="LibChapoA" maxlength="500" id="" ></textarea>
+            <textarea type="text" name="LibChapoA" placeholder="max 500 char." maxlength="500" id="" ></textarea>
 
             <label for="">Accroche</label>
-            <textarea type="text" name="LibAccrochA" maxlength="500" id="" ></textarea>
+            <textarea type="text" name="LibAccrochA" placeholder="max 500 char." maxlength="500" id="" ></textarea>
 
             <label for="">Paragraphe 1</label>
-            <textarea type="text" name="Parag1A" maxlength="1200" id="" ></textarea>
+            <textarea type="text" name="Parag1A" placeholder="max 1200 char." maxlength="1200" id="" ></textarea>
 
             <label for="">Sous Titre 1</label>
-            <textarea type="text" name="LibSsTitr1" maxlength="70" id="" ></textarea>
+            <textarea type="text" name="LibSsTitr1" placeholder="max 70 char." maxlength="70" id="" ></textarea>
 
             <label for="">Paragraphe 2</label>
-            <textarea type="text" name="Parag2A" maxlength="1200" id="" ></textarea>
+            <textarea type="text" name="Parag2A" placeholder="max 1200 char." maxlength="1200" id="" ></textarea>
 
             <label for="">Sous Titre 2</label>
-            <textarea type="text" name="LibSsTitr2" maxlength="70" id="" ></textarea>
+            <textarea type="text" name="LibSsTitr2" placeholder="max 70 char." maxlength="70" id="" ></textarea>
 
             <label for="">Paragraphe 3</label>
-            <textarea type="text" name="Parag3A" maxlength="1200" id="" ></textarea>
+            <textarea type="text" name="Parag3A" placeholder="max 1200 char." maxlength="1200" id="" ></textarea>
 
             <label for="">Conclusion</label>
-            <textarea type="text" name="LibConclA" maxlength="500" id="" ></textarea>
+            <textarea type="text" name="LibConclA" placeholder="max 500 char." maxlength="500" id="" ></textarea>
     <?php //***********************************************************************************************************************?>
 
             <legend class="legend1">Ajouter mon image</legend>

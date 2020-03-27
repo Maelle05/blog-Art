@@ -103,7 +103,7 @@
     <h3>Ajouter un Commentaire</h3>
     <form class="admin-pannel-container" action="addCom.php" name="formCom" method="post">
         <label for="">Commentaire</label>
-        <input type="text" name="LibCom" maxlength="25" id="" ><br>
+        <input type="text" name="LibCom" placeholder="max 25 char." maxlength="25" id="" ><br>
 
         <label for="">Pour l'Article</label>
         <select name="NumArt" >
