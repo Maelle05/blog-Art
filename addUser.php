@@ -97,19 +97,19 @@
     <h3>Ajouter un Utilisateur</h3>
     <form class="admin-pannel-container" action="addUser.php" name="formUser" method="post">
         <label for="">Pseudonyme</label>
-        <input type="text" name="Login" placeholder="max 25 char ." maxlength="25" id="" ><br>
+        <input type="text" name="Login" placeholder="max 30 char ." maxlength="30" id="" ><br>
 
         <label for="">Mot de passe</label>
-        <input type="text" name="Pass" placeholder="max 25 char ." maxlength="25" id="" ><br>
+        <input type="text" name="Pass" placeholder="max 15 char ." maxlength="15" id="" ><br>
 
         <label for="">Nom</label>
-        <input type="text" name="LastName" placeholder="max 25 char ." maxlength="25" id="" ><br>
+        <input type="text" name="LastName" placeholder="max 30 char ." maxlength="30" id="" ><br>
 
         <label for="">Prénom</label>
-        <input type="text" name="FirstName" placeholder="max 25 char ." maxlength="25" id="" ><br>
+        <input type="text" name="FirstName" placeholder="max 30 char ." maxlength="30" id="" ><br>
 
         <label for="">Adresse mail</label>
-        <input type="mail" name="EMail" id="" ><br>
+        <input type="mail" name="EMail" placeholder="max 50 char ." maxlength="50" id="" ><br>
 
 
 

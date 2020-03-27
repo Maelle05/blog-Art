@@ -119,7 +119,7 @@
             <input type="text" name="Lib1Lang" maxlength="25" id="" placeholder="25 char."><br>
 
             <label for="">Libellé long :</label>
-            <input type="text" name="Lib2Lang" maxlength="25" id="" placeholder="25 char."><br>
+            <input type="text" name="Lib2Lang" maxlength="45" id="" placeholder="45 char."><br>
 
             <label for="">Quel Pays :</label>
             <select name="NumPays" >

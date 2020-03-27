@@ -142,31 +142,31 @@
             <input type="hidden" name="id" value="<?= $NumArt ?>">
 
         <label for="">Titre de l'Article</label>
-        <input type="text" name="LibTitrA"  value="<?= $LibTitrA ?>" ><br>
+        <input type="text" name="LibTitrA" maxlength="70"  value="<?= $LibTitrA ?>" ><br>
 
         <label for="">Chapô</label>
-        <input type="text" name="LibChapoA" value="<?= $LibChapoA ?>" id="" ><br>
+        <input type="text" name="LibChapoA" maxlength="500" value="<?= $LibChapoA ?>" id="" ><br>
 
         <label for="">Accroche</label>
-        <input type="text" name="LibAccrochA" value="<?= $LibAccrochA ?>"  id="" ><br>
+        <input type="text" name="LibAccrochA" maxlength="500" value="<?= $LibAccrochA ?>"  id="" ><br>
 
         <label for="">Paragraphe 1</label>
-        <input type="text" name="Parag1A" value="<?= $Parag1A ?>"  id="" ><br>
+        <input type="text" name="Parag1A" maxlength="1200" value="<?= $Parag1A ?>"  id="" ><br>
 
         <label for="">Sous Titre 1</label>
-        <input type="text" name="LibSsTitr1" value="<?= $LibSsTitr1 ?>"  id="" ><br>
+        <input type="text" name="LibSsTitr1" maxlength="70" value="<?= $LibSsTitr1 ?>"  id="" ><br>
 
         <label for="">Paragraphe 2</label>
-        <input type="text" name="Parag2A" value="<?= $Parag2A ?>" id="" ><br>
+        <input type="text" name="Parag2A" maxlength="1200" value="<?= $Parag2A ?>" id="" ><br>
 
         <label for="">Sous Titre 2</label>
-        <input type="text" name="LibSsTitr2" value="<?= $LibSsTitr2 ?>"  id="" ><br>
+        <input type="text" name="LibSsTitr2" maxlength="70" value="<?= $LibSsTitr2 ?>"  id="" ><br>
 
         <label for="">Paragraphe 3</label>
-        <input type="text" name="Parag3A" value="<?= $Parag3A ?>"  id="" ><br>
+        <input type="text" name="Parag3A" maxlength="1200" value="<?= $Parag3A ?>"  id="" ><br>
 
         <label for="">Conclusion</label>
-        <input type="text" name="LibConclA" value="<?= $LibConclA ?>" id="" ><br>
+        <input type="text" name="LibConclA" maxlength="500" value="<?= $LibConclA ?>" id="" ><br>
 
         <label for="">Image URL : Nom de l'image deja upload (ex: image1.jpg)</label>
         <input type="text" name="UrlPhotA" value="<?= $UrlPhotA ?>"  id="" ><br>

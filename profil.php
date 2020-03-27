@@ -55,7 +55,7 @@ if(isset($_GET['EMail'])){
     <div class="fixed-bar">
         <div class="research-input-div">
             <form method="POST" action="">
-                <input class="research-input" type="search" name="search" placeholder="Rechercher">
+                <input class="research-input" type="search" name="search" maxlength="20" placeholder="Rechercher">
                 <button type="submit" name="rechercher" value="Rechercher"><img class="img-search" src="img/search.png"></button>
             </form>
             <hr class="horizontal-bar">

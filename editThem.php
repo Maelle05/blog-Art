@@ -92,7 +92,7 @@
 
 
         <label for="">Thématique</label>
-        <input type="text" name="LibThem" maxlength="25" id="" value="<?= $LibThem ?>" ><br>
+        <input type="text" name="LibThem" maxlength="60" id="" value="<?= $LibThem ?>" ><br>
 
         <p>Dans la langue : <?= $NumLang ?></p>
 
