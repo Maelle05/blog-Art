@@ -207,7 +207,7 @@
         <input  type="hidden" name="NumAngl" value="ANGL"  >
 
         <label for="">Angle</label>
-        <input type="text" name="LibAngl" maxlength="25" id="" ><br>
+        <input type="text" name="LibAngl" maxlength="60" placeholder="max 60 char." id="" ><br>
 
         <label for="">Quelle langue ?</label>
         <select name="NumLang" >
@@ -232,7 +232,7 @@
             <br>
 
         <label for="">Angle sous une nouvelle Langue </label>
-        <input type="text" name="LibAngl" maxlength="25" id="" ><br>
+        <input type="text" name="LibAngl" maxlength="60" placeholder="max 60 char." id="" ><br>
 
         <label for="">En quelle Langue ?</label>
         <select name="NumLang" >

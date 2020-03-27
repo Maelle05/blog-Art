@@ -143,10 +143,10 @@
     <h3>Ajouter un Nouveau Mot Clé</h3>
     <form class="admin-pannel-container" action="addMot.php" name="formMot" method="post">
 
-        <input  type="hidden" name="NumMoCle" maxlength="25" id="" value="MTCL"  >
+        <input  type="hidden" name="NumMoCle" placeholder="max 25 char." maxlength="25" id="" value="MTCL"  >
 
         <label for="">Mot Clé</label>
-        <input type="text" name="LibMoCle" maxlength="25" id="" ><br>
+        <input type="text" name="LibMoCle" placeholder="max 25 char." maxlength="25" id="" ><br>
 
         <label for="">En quelle langue ?</label>
         <select name="NumLang" >

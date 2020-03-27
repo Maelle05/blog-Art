@@ -91,7 +91,7 @@
             <input type="hidden"  name="NumMoCle" value="<?= $NumMoCle ?>">
 
         <label for="">Mot Clé</label>
-        <input type="text" name="LibMoCle" maxlength="25" id="" value="<?= $LibMoCle ?>" ><br>
+        <input type="text" name="LibMoCle" placeholder="max 25 char." maxlength="25" id="" value="<?= $LibMoCle ?>" ><br>
 
         <p>Dans la langue : <?= $NumLang ?></p>
 

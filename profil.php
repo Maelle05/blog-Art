@@ -55,7 +55,7 @@ if(isset($_GET['EMail'])){
     <div class="fixed-bar">
         <div class="research-input-div">
             <form method="POST" action="">
-                <input class="research-input" type="search" name="search" placeholder="Rechercher">
+                <input class="research-input" type="search" name="search" maxlength="20" placeholder="Rechercher">
                 <button type="submit" name="rechercher" value="Rechercher"><img class="img-search" src="img/search.png"></button>
             </form>
             <hr class="horizontal-bar">
@@ -242,9 +242,9 @@ if(isset($_GET['EMail'])){
             <a href="mdp.php"><img class="logo-footer" src="img/logo.png"></a>
             <a class="admin-link" href="mdp.php">Partie administration</a>
         </div>
-        <a href="mentions.php">MENTIONS LEGALES</a>
+        <a href="mentions.php?EMail=<?=$EMail?>">MENTIONS LEGALES</a>
         <a href="#">COOKIES</a>
-        <a href="moderation.php">CHARTE DE MODERATION</a>
+        <a href="moderation.php?EMail=<?=$EMail?>">CHARTE DE MODERATION</a>
     </footer>
 </body>
 </html>

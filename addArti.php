@@ -39,38 +39,6 @@
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             $Submit = isset($_POST['Submit']) ? $_POST['Submit'] : '';
 
-
-            if (isset($_FILES['monfichier']) AND $_FILES['monfichier']['error'] == 0) {
-                // Test si fichier pas trop gros
-                if ($_FILES['monfichier']['size'] <= 2000000) {
-                    // Test si extension autorisée
-                    $infosfile = pathinfo($_FILES['monfichier']['name']);
-                    $extension_upload = $infosfile['extension'];
-                    $extensions_OK = array('jpg', 'jpeg', 'gif', 'png');
-                    $name = $infosfile['filename'];
-                    $file = '' .$name. '.' .$extension_upload;
-                    
-                    if (in_array($extension_upload, $extensions_OK)) {
-                        // valider fichier / le stocker définitivement
-                        move_uploaded_file($_FILES['monfichier']['tmp_name'], 'uploads/' . $file);
-                        echo "<p>Upload d'une image sur le serveur :</p>";
-                        echo "<p><font color='green'>L'envoi de votre image a bien été effectué !</font><br /></p>";
-                        echo'<a href="./uploads/'.$file.' "/>Voir l\'image</a>' . "<br>";
-                    } else {
-                        echo "<p>Upload d'une image sur le serveur :</p>";                     
-                        echo "<font color='red'>L'extension du fichier n'est pas autorisée. <br /></font>";
-                        echo "<font color='red'>(Seuls les fichiers jpg, jpeg, gif, png sont acceptés.)</font> " . "<br><br>"; 
-                    }
-                } else {
-                    echo "<p>Upload d'une image sur le serveur :</p>";
-                    echo "<font color='red'>Le fichier est trop volumineux :</font> <br />";
-                    echo "<font color='red'><b>(Poids limité à 4Mo) !</b></font>" . "<br><br>";
-                }
-            } else {
-                echo "<p>Upload d'une image sur le serveur :</p>";
-                echo "<p><font color='red'>Veuillez selectionner un fichier...</font></p>"; 
-            }
-
 			if ( ((isset($_POST['LibTitrA'])) AND !empty($_POST['LibTitrA']))
                 AND ((isset($_POST['LibChapoA'])) AND !empty($_POST['LibChapoA']))
                 AND ((isset($_POST['LibAccrochA'])) AND !empty($_POST['LibAccrochA']))
@@ -95,7 +63,6 @@
                     $LibSsTitr2 = ctrlSaisies($_POST['LibSsTitr2']);
                     $Parag3A = ctrlSaisies($_POST['Parag3A']);
                     $LibConclA = ctrlSaisies($_POST['LibConclA']);
-                    $UrlPhotA = $file;
                     $Likes = 0;
                     $NumAngl = ctrlSaisies($_POST['NumAngl']);
                     $NumThem = ctrlSaisies($_POST['NumThem']);
@@ -115,6 +82,39 @@
                         $NumArt = "0" . $NumArt;
                     }
 //.........................................................................................................
+
+                    if (isset($_FILES['monfichier']) AND $_FILES['monfichier']['error'] == 0) {
+                        // Test si fichier pas trop gros
+                        if ($_FILES['monfichier']['size'] <= 2000000) {
+                            // Test si extension autorisée
+                            $infosfile = pathinfo($_FILES['monfichier']['name']);
+                            $extension_upload = $infosfile['extension'];
+                            $extensions_OK = array('jpg', 'jpeg', 'gif', 'png');
+                            $name = $infosfile['filename'];
+                            $file = 'imgArt' .$NumArt. '.' .$extension_upload;
+                            
+                            if (in_array($extension_upload, $extensions_OK)) {
+                                // valider fichier / le stocker définitivement
+                                move_uploaded_file($_FILES['monfichier']['tmp_name'], 'uploads/' . $file);
+                                echo "<p>Upload d'une image sur le serveur :</p>";
+                                echo "<p><font color='green'>L'envoi de votre image a bien été effectué !</font><br /></p>";
+                                echo'<a href="./uploads/'.$file.' "/>Voir l\'image</a>' . "<br>";
+                            } else {
+                                echo "<p>Upload d'une image sur le serveur :</p>";                     
+                                echo "<font color='red'>L'extension du fichier n'est pas autorisée. <br /></font>";
+                                echo "<font color='red'>(Seuls les fichiers jpg, jpeg, gif, png sont acceptés.)</font> " . "<br><br>"; 
+                            }
+                        } else {
+                            echo "<p>Upload d'une image sur le serveur :</p>";
+                            echo "<font color='red'>Le fichier est trop volumineux :</font> <br />";
+                            echo "<font color='red'><b>(Poids limité à 4Mo) !</b></font>" . "<br><br>";
+                        }
+                    } else {
+                        echo "<p>Upload d'une image sur le serveur :</p>";
+                        echo "<p><font color='red'>Veuillez selectionner un fichier...</font></p>"; 
+                    }
+
+//.........................................................................................................
                     $date = date("Y-m-d");
 
 
@@ -133,7 +133,7 @@
                             $stmt->bindParam(':LibSsTitr2', $LibSsTitr2);
                             $stmt->bindParam(':Parag3A', $Parag3A);
                             $stmt->bindParam(':LibConclA', $LibConclA);
-                            $stmt->bindParam(':UrlPhotA', $UrlPhotA);
+                            $stmt->bindParam(':UrlPhotA', $file);
                             $stmt->bindParam(':Likes', $Likes);
                             $stmt->bindParam(':NumAngl', $NumAngl);
                             $stmt->bindParam(':NumThem', $NumThem);
@@ -158,42 +158,42 @@
 <section class="nav-bar">
     <h1 class="admin-title">Gavé Bleu Administration</h1>
 </section>
-    
+
     <section class="admin-pannel-container">
 
         <h3>Ajouter un Nouvel Article</h3>
         <form class="admin-pannel-container"  action="addArti.php" name="formArti" method="post" enctype="multipart/form-data">
 
             <label for="">Titre de L'article</label>
-            <input type="text" name="LibTitrA"  id="" >
+            <input type="text" name="LibTitrA" placeholder="max 70 char." maxlength="70" id="" >
 
             <label for="">Chapô</label>
-            <textarea type="text" name="LibChapoA"  id="" ></textarea>
+            <textarea type="text" name="LibChapoA" placeholder="max 500 char." maxlength="500" id="" ></textarea>
 
             <label for="">Accroche</label>
-            <textarea type="text" name="LibAccrochA"  id="" ></textarea>
+            <textarea type="text" name="LibAccrochA" placeholder="max 500 char." maxlength="500" id="" ></textarea>
 
             <label for="">Paragraphe 1</label>
-            <textarea type="text" name="Parag1A"  id="" ></textarea>
+            <textarea type="text" name="Parag1A" placeholder="max 1200 char." maxlength="1200" id="" ></textarea>
 
             <label for="">Sous Titre 1</label>
-            <textarea type="text" name="LibSsTitr1"  id="" ></textarea>
+            <textarea type="text" name="LibSsTitr1" placeholder="max 70 char." maxlength="70" id="" ></textarea>
 
             <label for="">Paragraphe 2</label>
-            <textarea type="text" name="Parag2A"  id="" ></textarea>
+            <textarea type="text" name="Parag2A" placeholder="max 1200 char." maxlength="1200" id="" ></textarea>
 
             <label for="">Sous Titre 2</label>
-            <textarea type="text" name="LibSsTitr2"  id="" ></textarea>
+            <textarea type="text" name="LibSsTitr2" placeholder="max 70 char." maxlength="70" id="" ></textarea>
 
             <label for="">Paragraphe 3</label>
-            <textarea type="text" name="Parag3A"  id="" ></textarea>
+            <textarea type="text" name="Parag3A" placeholder="max 1200 char." maxlength="1200" id="" ></textarea>
 
             <label for="">Conclusion</label>
-            <textarea type="text" name="LibConclA"  id="" ></textarea>
+            <textarea type="text" name="LibConclA" placeholder="max 500 char." maxlength="500" id="" ></textarea>
     <?php //***********************************************************************************************************************?>
 
             <legend class="legend1">Ajouter mon image</legend>
-                
+
                 <input type="file" name="monfichier" id="monfichier" required="required" accept=".jpg,.gif,.png,.jpeg" size="62" maxlength="62" title="Recherchez le fichier à uploader !" autofocus="autofocus" />
               <p>
                 <?php

@@ -218,10 +218,10 @@
     <h3>Ajouter une Nouvelle Thématique</h3>
     <form class="admin-pannel-container" action="addThem.php" name="formThem" method="post">
 
-        <input  type="hidden" name="NumThem" maxlength="25" id="" value="THEM"  >
+        <input  type="hidden" name="NumThem" placeholder="max 25 char." maxlength="25" id="" value="THEM"  >
 
         <label for="">Thématique</label>
-        <input type="text" name="LibThem" maxlength="25" id="" ><br>
+        <input type="text" name="LibThem" placeholder="max 60 char." maxlength="60" id="" ><br>
 
         <label for="">Quelle langue ?</label>
         <select name="NumLang" >
@@ -246,7 +246,7 @@
             <br>
 
         <label for="">Thématique sous une nouvelle Langue </label>
-        <input type="text" name="LibThem" maxlength="25" id="" ><br>
+        <input type="text" name="LibThem" placeholder="max 60 char." maxlength="60" id="" ><br>
 
         <label for="">En quelle langue ?</label>
         <select name="NumLang" >

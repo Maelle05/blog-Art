@@ -29,7 +29,7 @@ input:focus, textarea:focus{
 }
 
 input, textarea{
-	color: #2D5284 !important; 
+	color: #2D5284 !important;
 }
 
 
@@ -140,7 +140,7 @@ option{
 
 .first-content-container{
 	width: 75%;
-	height: 100%;
+	height: auto;
 	display: flex;
 	justify-content: space-around;
 	flex-wrap: wrap;
@@ -225,11 +225,9 @@ option{
 .fixed-bar{
 	width: 25%;
 	background-color: #EFEFEF;
-	position: absolute;
+	float: right;
 	overflow: hidden;
 	margin-top: 50vh;
-	top: 0;
-	right: 0;
 	z-index: 9;
 	display: flex;
 	flex-direction: column;
@@ -248,7 +246,7 @@ option{
 }
 
 ::placeholder {
-	color: #2D5284;	
+	color: #2D5284;
 }
 
 .img-search{
@@ -267,7 +265,7 @@ option{
 	justify-content: center;
 	align-items: center;
 	margin-top: 10vh;
-	padding-bottom: 10vh; 
+	padding-bottom: 10vh;
 }
 
 .horizontal-bar{
@@ -291,7 +289,7 @@ option{
 	justify-content: space-around;
 	align-items: center;
 	margin-top: 10vh;
-	padding-bottom: 10vh; 
+	padding-bottom: 10vh;
 }
 
 .check-input-div div{
@@ -318,7 +316,7 @@ option{
 	width: 100%;
 	position: relative;
 	margin-top: 10vh;
-	padding-bottom: 10vh; 
+	padding-bottom: 10vh;
 }
 
 .les-plus-vus-container{
@@ -351,7 +349,7 @@ option{
 	justify-content: space-around;
 	height: 30vh;
 	margin-top: 10vh;
-	padding-bottom: 10vh; 
+	padding-bottom: 10vh;
 }
 
 .social-div a p{
@@ -405,6 +403,8 @@ footer{
 	width: 100%;
 	height: 10vh;
 	z-index: 101;
+	position: absolute;
+	bottom: 0;
 	background-color: #2D5284;
 }
 
@@ -559,7 +559,7 @@ footer a {
 
 
 .commentary-content *{
-	color: #2D5284;	
+	color: #2D5284;
 	padding: 10px;
 }
 
@@ -674,7 +674,7 @@ footer a {
 
 .logo-contact-container *{
 	padding: 0;
-	margin: 0;	
+	margin: 0;
 }
 
 .logo-contact-container div a{
@@ -787,7 +787,7 @@ div .send-button-inscription{
 .admin-page{
 	width: 100%;
 	height: 100vh;
-	background-color: #2D5284; 
+	background-color: #2D5284;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -813,7 +813,7 @@ div .send-button-inscription{
 	width: 100%;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;	
+	justify-content: center;
 }
 
 .admin-password{
@@ -858,7 +858,7 @@ div .send-button-inscription{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background-color: #2D5284;	
+	background-color: #2D5284;
 }
 
 .admin-pannel-container-mot-div ul li, .admin-pannel-container-mot-div p{
@@ -866,7 +866,7 @@ div .send-button-inscription{
 }
 
 .no-margin{
-	margin-top: 0; 
+	margin-top: 0;
 }
 
 .change-profile{
@@ -1035,10 +1035,11 @@ h4{
 		height: 7vh;
 	}
 
-  
+
 
   .first-content-container{
   	width: 100%;
+  	height: auto;
   }
 
   .first-container{
@@ -1134,7 +1135,7 @@ h4{
     height: 8px;
     left: 18%;
     background-color: #fff;
-    transition: .7s;  	
+    transition: .7s;
   }
 
   .menu-container{

@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 
 include 'conect.php';
@@ -6,12 +6,12 @@ include 'conect.php';
 if(isset($_SESSION['EMail']) OR $_GET['EMail']){
     if(isset($_SESSION['EMail']))
     {
-        $infoUser = $_SESSION['EMail']; 
+        $infoUser = $_SESSION['EMail'];
 
     }else{
             $infoUser = $_GET['EMail'];
     }
-    
+
     $User = $bdPdo->prepare('SELECT * FROM user WHERE EMail ="'.$infoUser.'"');
     $User->execute(
         array($infoUser)
@@ -70,7 +70,7 @@ if(isset($_SESSION['EMail']) OR $_GET['EMail']){
                     //rollBack  (annule Insert)
                 $bdPdo->rollBack();
                 }
-                ?> 
+                ?>
                     <?php
 
 //liberer le curseur
@@ -82,7 +82,7 @@ $query->closeCursor();
 }
 
 ?>
-                
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -104,7 +104,7 @@ $query->closeCursor();
             <a class="menu-container-link" href="contact.php?EMail=<?=$EMail?>">CONTACT</a>
             <a class="menu-container-link" href="disconnectUser.php">Se déconnecter</a>
         	<a class="menu-container-link" href="editUserProfil.php"><?= $Login ?></a>
-        </div>      
+        </div>
     </section>
 
     <section class="nav-bar">
@@ -115,7 +115,7 @@ $query->closeCursor();
         <a href="disconnectUser.php">Se déconnecter</a>
         <a class="active" href="editUserProfil.php"><?= $Login ?></a>
     </section>
-    
+
     <section class="first-container">
         <div class="first-container-filter">
             <h1 class="slogan">Une visite <span class="coloree">colorée</span> de Bordeaux</h1>
@@ -129,16 +129,16 @@ $query->closeCursor();
             <label class="no-margin" for="">Login</label>
             <input type="hidden" name="id" value="<?= $Login ?>">
 
-            <input class="connexion-input" type="text" name="Login" maxlength="25" id="" value="<?= $Login ?>" ><br>
+            <input class="connexion-input" type="text" name="Login" placeholder="max 30 char." maxlength="30" id="" value="<?= $Login ?>" ><br>
 
             <label class="no-margin" for="">Password</label>
-            <input class="connexion-input" type="password" name="Pass" maxlength="25" id="" value="<?= $Pass ?>" ><br>
+            <input class="connexion-input" type="password" name="Pass" placeholder="max 15 char." maxlength="15" id="" value="<?= $Pass ?>" ><br>
 
             <label class="no-margin" for="">Nom</label>
-            <input class="connexion-input" type="text" name="LastName" maxlength="25" id="" value="<?= $LastName ?>" ><br>
+            <input class="connexion-input" type="text" name="LastName" placeholder="max 30 char." maxlength="30" id="" value="<?= $LastName ?>" ><br>
 
             <label class="no-margin" for="">Prénom</label>
-            <input class="connexion-input" type="text" name="FirstName" maxlength="25" id="" value="<?= $FirstName ?>" ><br>
+            <input class="connexion-input" type="text" name="FirstName" placeholder="max 30 char." maxlength="30" id="" value="<?= $FirstName ?>" ><br>
 
             <input class="send-button" type="submit" name="Submit" value="Validé">
         </form>
