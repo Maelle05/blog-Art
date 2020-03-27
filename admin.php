@@ -24,11 +24,6 @@
     </section>
     <section class="admin-pannel-container">
         <div class="admin-part-container">
-            <h3 class="admin-h3">Les Images</h3>
-            <a href="upload.php">Ajouter une image</a> 
-            <hr class="horizontal-bar-admin">
-        </div>
-        <div class="admin-part-container">
             <h3 class="admin-h3">Les Articles</h3>
             <a href="addArti.php">Ecrire un nouvel Article</a> 
             <a href="vewArti.php">Voir tout les Articles </a> 

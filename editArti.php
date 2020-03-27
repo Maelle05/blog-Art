@@ -61,7 +61,6 @@
                 AND ((isset($_GET['LibSsTitr2'])) AND !empty($_GET['LibSsTitr2']))
                 AND ((isset($_GET['Parag3A'])) AND !empty($_GET['Parag3A']))
                 AND ((isset($_GET['LibConclA'])) AND !empty($_GET['LibConclA']))
-                AND ((isset($_GET['UrlPhotA'])) AND !empty($_GET['UrlPhotA']))
                 AND ((isset($_GET['NumAngl'])) AND !empty($_GET['NumAngl']))
                 AND ((isset($_GET['NumThem'])) AND !empty($_GET['NumThem']))
                 AND ((isset($_GET['NumLang'])) AND !empty($_GET['NumLang']))
@@ -77,10 +76,43 @@
                     $LibSsTitr2 = htmlspecialchars($_GET['LibSsTitr2']);
                     $Parag3A = htmlspecialchars($_GET['Parag3A']);
                     $LibConclA = htmlspecialchars($_GET['LibConclA']);
-                    $UrlPhotA = htmlspecialchars($_GET['UrlPhotA']);
                     $NumAngl = htmlspecialchars($_GET['NumAngl']);
                     $NumThem = htmlspecialchars($_GET['NumThem']);
                     $NumLang = htmlspecialchars($_GET['NumLang']);
+//..................................................................................................................
+
+                    if (isset($_FILES['monfichier']) AND $_FILES['monfichier']['error'] == 0) {
+                        // Test si fichier pas trop gros
+                        if ($_FILES['monfichier']['size'] <= 2000000) {
+                            // Test si extension autorisée
+                            $infosfile = pathinfo($_FILES['monfichier']['name']);
+                            $extension_upload = $infosfile['extension'];
+                            $extensions_OK = array('jpg', 'jpeg', 'gif', 'png');
+                            $name = $infosfile['filename'];
+                            $file = $UrlPhotA;
+                            
+                            if (in_array($extension_upload, $extensions_OK)) {
+                                // valider fichier / le stocker définitivement
+                                move_uploaded_file($_FILES['monfichier']['tmp_name'], 'uploads/' . $file);
+                                echo "<p>Upload d'une image sur le serveur :</p>";
+                                echo "<p><font color='green'>L'envoi de votre image a bien été effectué !</font><br /></p>";
+                                echo'<a href="./uploads/'.$file.' "/>Voir l\'image</a>' . "<br>";
+                            } else {
+                                echo "<p>Upload d'une image sur le serveur :</p>";                     
+                                echo "<font color='red'>L'extension du fichier n'est pas autorisée. <br /></font>";
+                                echo "<font color='red'>(Seuls les fichiers jpg, jpeg, gif, png sont acceptés.)</font> " . "<br><br>"; 
+                            }
+                        } else {
+                            echo "<p>Upload d'une image sur le serveur :</p>";
+                            echo "<font color='red'>Le fichier est trop volumineux :</font> <br />";
+                            echo "<font color='red'><b>(Poids limité à 4Mo) !</b></font>" . "<br><br>";
+                        }
+                    } else {
+                        echo "<p>Upload d'une image sur le serveur :</p>";
+                        echo "<p><font color='red'>Veuillez selectionner un fichier...</font></p>"; 
+                    }
+
+//.........................................................................................................
 
 
                     try{
@@ -168,8 +200,20 @@
         <label for="">Conclusion</label>
         <input type="text" name="LibConclA" value="<?= $LibConclA ?>" id="" ><br>
 
-        <label for="">Image URL : Nom de l'image deja upload (ex: image1.jpg)</label>
-        <input type="text" name="UrlPhotA" value="<?= $UrlPhotA ?>"  id="" ><br>
+        <label for="">Remplacer l'image: <?= $UrlPhotA ?></label>
+<?php //***********************************************************************************************************************?>
+
+        <legend class="legend1">Ajouter ma nouvelle image :</legend>
+            
+            <input type="file" name="monfichier" id="monfichier" required="required" accept=".jpg,.gif,.png,.jpeg" size="62" maxlength="62" title="Recherchez le fichier à uploader !" autofocus="autofocus" />
+        <p>
+            <?php
+            // Gestion extension images acceptées
+            $msgImagesOK = ">> Extension des images acceptées : .jpg, .gif, .png, .jpeg (lageur, hauteur, taille max : 80000px, 80000px, 100 000 Go)";
+            echo "<i>" . $msgImagesOK . "</i>";
+            ?>
+        </p>
+<?php //***********************************************************************************************************************?>
 
         <label for="">L'angle de L'article</label>
         <select name="NumAngl" >
