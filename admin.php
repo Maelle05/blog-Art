@@ -72,14 +72,6 @@
     <h4><a href="index.php">Voir la partie pour les visiteurs du site </a></h4>
     </section>
 
-    <footer>
-        <p class="copyright" style="text-align: center;">
-            &copy; 2020 <span>Gavé Bleu</span>. All Rights Reserved.
-            <br>
-            <a href="https://icons8.com/icon/">Icons by Icons8</a>
-		  </p>
-
-    </footer>
 </body>
 
         <?php

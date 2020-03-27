@@ -81,7 +81,7 @@
                     $NumLang = htmlspecialchars($_GET['NumLang']);
 //..................................................................................................................
 
-                    if (isset($_FILES['monfichier']) AND $_FILES['monfichier']['error'] == 0) {
+                    if (isset($_FILES['monfichier'])AND $_FILES['monfichier']['error'] == 0) {
                         // Test si fichier pas trop gros
                         if ($_FILES['monfichier']['size'] <= 2000000) {
                             // Test si extension autorisée
@@ -169,7 +169,7 @@
         ?>
 
             <h2>Modifier l'Article Numéro <?= $NumArt?> </h2>
-            <form action="editArti.php" name="formArticle" method="Get">
+            <form action="editArti.php" name="formArticle" method="Get" enctype="multipart/form-data">
 
             <input type="hidden" name="id" value="<?= $NumArt ?>">
 
