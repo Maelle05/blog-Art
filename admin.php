@@ -68,7 +68,7 @@
         <div class="admin-part-container">
             <h3 class="admin-h3">Voir les Commentaires par Article</h3>
             <a href="addCom.php">Ajouter un nouveau commentaire</a>
-            <ul>
+            <ul class="articles-list">
             <?php while($v = $Articles->fetch()){ ?>
                     <li><a href="vewCom.php? id=<?=$v['NumArt']?> "> Pour l'Article "<?= $v['LibTitrA']?>" </a></li>
             <?php }?>
