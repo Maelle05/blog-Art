@@ -2,7 +2,7 @@
     $hostBD = "localhost";
     $nomBD = "blogart20";
     $userBD = "root";
-    $passBD = "root";
+    $passBD = "";
     $bdPdo = "";
 
 
