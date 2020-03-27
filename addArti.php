@@ -92,7 +92,7 @@
                             $extensions_OK = array('jpg', 'jpeg', 'gif', 'png');
                             $name = $infosfile['filename'];
                             $file = 'imgArt' .$NumArt. '.' .$extension_upload;
-                            
+
                             if (in_array($extension_upload, $extensions_OK)) {
                                 // valider fichier / le stocker définitivement
                                 move_uploaded_file($_FILES['monfichier']['tmp_name'], 'uploads/' . $file);
@@ -100,9 +100,9 @@
                                 echo "<p><font color='green'>L'envoi de votre image a bien été effectué !</font><br /></p>";
                                 echo'<a href="./uploads/'.$file.' "/>Voir l\'image</a>' . "<br>";
                             } else {
-                                echo "<p>Upload d'une image sur le serveur :</p>";                     
+                                echo "<p>Upload d'une image sur le serveur :</p>";
                                 echo "<font color='red'>L'extension du fichier n'est pas autorisée. <br /></font>";
-                                echo "<font color='red'>(Seuls les fichiers jpg, jpeg, gif, png sont acceptés.)</font> " . "<br><br>"; 
+                                echo "<font color='red'>(Seuls les fichiers jpg, jpeg, gif, png sont acceptés.)</font> " . "<br><br>";
                             }
                         } else {
                             echo "<p>Upload d'une image sur le serveur :</p>";
@@ -111,7 +111,7 @@
                         }
                     } else {
                         echo "<p>Upload d'une image sur le serveur :</p>";
-                        echo "<p><font color='red'>Veuillez selectionner un fichier...</font></p>"; 
+                        echo "<p><font color='red'>Veuillez selectionner un fichier...</font></p>";
                     }
 
 //.........................................................................................................
@@ -168,7 +168,7 @@
             <input type="text" name="LibTitrA" placeholder="max 70 char." maxlength="70" id="" >
 
             <label for="">Chapô</label>
-            <textarea type="text" name="LibChapoA" placeholder="max 500 char." maxlength="500" id="" ></textarea>
+            <textarea type="text" name="LibChapoA" placeholder="max 500 char." maxlength="500" id=""></textarea>
 
             <label for="">Accroche</label>
             <textarea type="text" name="LibAccrochA" placeholder="max 500 char." maxlength="500" id="" ></textarea>
