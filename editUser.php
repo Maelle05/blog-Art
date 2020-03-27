@@ -99,19 +99,19 @@
         <label for="">Login</label>
         <input type="hidden" name="id" value="<?= $Login ?>">
 
-        <input type="text" name="Login" maxlength="30" id="" value="<?= $Login ?>" ><br>
+        <input type="text" name="Login" placeholder="max 30 char." maxlength="30" id="" value="<?= $Login ?>" ><br>
 
         <label for="">Password</label>
-        <input type="text" name="Pass" maxlength="15" id="" value="<?= $Pass ?>" ><br>
+        <input type="text" name="Pass" placeholder="max 15 char." maxlength="15" id="" value="<?= $Pass ?>" ><br>
 
         <label for="">Nom</label>
-        <input type="text" name="LastName" maxlength="30" id="" value="<?= $LastName ?>" ><br>
+        <input type="text" name="LastName" placeholder="max 30 char." maxlength="30" id="" value="<?= $LastName ?>" ><br>
 
         <label for="">Prénom</label>
-        <input type="text" name="FirstName" maxlength="30" id="" value="<?= $FirstName ?>" ><br>
+        <input type="text" name="FirstName" placeholder="max 30 char." maxlength="30" id="" value="<?= $FirstName ?>" ><br>
 
         <label for="">Mail</label>
-        <input type="text" name="EMail" maxlength="50" id="" value="<?= $EMail ?>" ><br>
+        <input type="text" name="EMail" placeholder="max 50 char." maxlength="50" id="" value="<?= $EMail ?>" ><br>
 
 
 

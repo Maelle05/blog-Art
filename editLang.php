@@ -125,10 +125,10 @@
                     <input type="hidden" name="id" value="<?= $NumLang ?>">
 
                     <label for="">Libellé cour :</label>
-                    <input type="text" name="Lib1Lang" id="" maxlength="25" value="<?= $Lib1Lang ?>"><br>
+                    <input type="text" name="Lib1Lang" id="" placeholder="max 25 char." maxlength="25" value="<?= $Lib1Lang ?>"><br>
 
                     <label for="">Libellé long :</label>
-                    <input type="text" name="Lib2Lang" id="" maxlength="45"  value="<?= $Lib2Lang ?>"><br>
+                    <input type="text" name="Lib2Lang" id="" placeholder="max 45 char." maxlength="45"  value="<?= $Lib2Lang ?>"><br>
 
                     <label for="">Quel Pays :</label>
                     <select name="NumPays" >

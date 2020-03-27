@@ -64,8 +64,8 @@ if(isset($_SESSION['EMail']) AND $userInfo['EMail'] == $_SESSION['EMail']){
 		<p class="chapo">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris… </p>
 
 		<div class="contact-input-container">
-			<input class="contact-input" type="mail" placeholder="Adresse mail…"  maxlength="50" name="mail">
-			<input class="contact-input" type="text" placeholder="Objet…"  maxlength="50" name="">
+			<input class="contact-input" type="mail" placeholder="Adresse mail… max 50 char."  maxlength="50" name="mail">
+			<input class="contact-input" type="text" placeholder="Objet… max 50 char."  maxlength="50" name="">
 			<textarea placeholder="Écrire un message…"></textarea>
 			<button class="send-button">Envoyer</button>
 
@@ -148,8 +148,8 @@ if(isset($_SESSION['EMail']) AND $userInfo['EMail'] == $_SESSION['EMail']){
 		<p class="chapo">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris… </p>
 
 		<div class="contact-input-container">
-			<input class="contact-input" type="mail" placeholder="Adresse mail…" maxlength="50" name="mail">
-			<input class="contact-input" type="text" placeholder="Objet…" maxlength="50" name="">
+			<input class="contact-input" type="mail" placeholder="Adresse mail… max 50 char." maxlength="50" name="mail">
+			<input class="contact-input" type="text" placeholder="Objet… max 50 char." maxlength="50" name="">
 			<textarea placeholder="Écrire un message…"></textarea>
 			<button class="send-button">Envoyer</button>
 

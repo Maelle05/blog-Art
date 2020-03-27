@@ -90,7 +90,7 @@
                             $extensions_OK = array('jpg', 'jpeg', 'gif', 'png');
                             $name = $infosfile['filename'];
                             $file = $UrlPhotA;
-                            
+
                             if (in_array($extension_upload, $extensions_OK)) {
                                 // valider fichier / le stocker définitivement
                                 move_uploaded_file($_FILES['monfichier']['tmp_name'], 'uploads/' . $file);
@@ -98,9 +98,9 @@
                                 echo "<p><font color='green'>L'envoi de votre image a bien été effectué !</font><br /></p>";
                                 echo'<a href="./uploads/'.$file.' "/>Voir l\'image</a>' . "<br>";
                             } else {
-                                echo "<p>Upload d'une image sur le serveur :</p>";                     
+                                echo "<p>Upload d'une image sur le serveur :</p>";
                                 echo "<font color='red'>L'extension du fichier n'est pas autorisée. <br /></font>";
-                                echo "<font color='red'>(Seuls les fichiers jpg, jpeg, gif, png sont acceptés.)</font> " . "<br><br>"; 
+                                echo "<font color='red'>(Seuls les fichiers jpg, jpeg, gif, png sont acceptés.)</font> " . "<br><br>";
                             }
                         } else {
                             echo "<p>Upload d'une image sur le serveur :</p>";
@@ -109,7 +109,7 @@
                         }
                     } else {
                         echo "<p>Upload d'une image sur le serveur :</p>";
-                        echo "<p><font color='red'>Veuillez selectionner un fichier...</font></p>"; 
+                        echo "<p><font color='red'>Veuillez selectionner un fichier...</font></p>";
                     }
 
 //.........................................................................................................
@@ -174,37 +174,40 @@
             <input type="hidden" name="id" value="<?= $NumArt ?>">
 
         <label for="">Titre de l'Article</label>
-        <input type="text" name="LibTitrA" maxlength="70"  value="<?= $LibTitrA ?>" ><br>
+        <input type="text" name="LibTitrA" placeholder="max 70 char." maxlength="70"  value="<?= $LibTitrA ?>" ><br>
 
         <label for="">Chapô</label>
-        <input type="text" name="LibChapoA" maxlength="500" value="<?= $LibChapoA ?>" id="" ><br>
+        <input type="text" name="LibChapoA" placeholder="max 500 char." maxlength="500" value="<?= $LibChapoA ?>" id="" ><br>
 
         <label for="">Accroche</label>
-        <input type="text" name="LibAccrochA" maxlength="500" value="<?= $LibAccrochA ?>"  id="" ><br>
+        <input type="text" name="LibAccrochA" placeholder="max 500 char." maxlength="500" value="<?= $LibAccrochA ?>"  id="" ><br>
 
         <label for="">Paragraphe 1</label>
-        <input type="text" name="Parag1A" maxlength="1200" value="<?= $Parag1A ?>"  id="" ><br>
+        <input type="text" name="Parag1A" placeholder="max 1200 char." maxlength="1200" value="<?= $Parag1A ?>"  id="" ><br>
 
         <label for="">Sous Titre 1</label>
-        <input type="text" name="LibSsTitr1" maxlength="70" value="<?= $LibSsTitr1 ?>"  id="" ><br>
+        <input type="text" name="LibSsTitr1" placeholder="max 70 char." maxlength="70" value="<?= $LibSsTitr1 ?>"  id="" ><br>
 
         <label for="">Paragraphe 2</label>
-        <input type="text" name="Parag2A" maxlength="1200" value="<?= $Parag2A ?>" id="" ><br>
+        <input type="text" name="Parag2A" placeholder="max 1200 char." maxlength="1200" value="<?= $Parag2A ?>" id="" ><br>
 
         <label for="">Sous Titre 2</label>
-        <input type="text" name="LibSsTitr2" maxlength="70" value="<?= $LibSsTitr2 ?>"  id="" ><br>
+        <input type="text" name="LibSsTitr2" placeholder="max 70 char." maxlength="70" value="<?= $LibSsTitr2 ?>"  id="" ><br>
 
         <label for="">Paragraphe 3</label>
-        <input type="text" name="Parag3A" maxlength="1200" value="<?= $Parag3A ?>"  id="" ><br>
+        <input type="text" name="Parag3A" placeholder="max 1200 char." maxlength="1200" value="<?= $Parag3A ?>"  id="" ><br>
 
         <label for="">Conclusion</label>
-        <input type="text" name="LibConclA" maxlength="500" value="<?= $LibConclA ?>" id="" ><br>
+        <input type="text" name="LibConclA" placeholder="max 500 char." maxlength="500" value="<?= $LibConclA ?>" id="" ><br>
 
+
+        <label for="">Image URL : Nom de l'image deja upload (ex: image1.jpg)</label>
+        <input type="text" name="UrlPhotA" placeholder="max 62 char." maxlength="62" value="<?= $UrlPhotA ?>"  id="" ><br>
         <label for="">Remplacer l'image: <?= $UrlPhotA ?></label>
 <?php //***********************************************************************************************************************?>
 
         <legend class="legend1">Ajouter ma nouvelle image :</legend>
-            
+
             <input type="file" name="monfichier" id="monfichier" required="required" accept=".jpg,.gif,.png,.jpeg" size="62" maxlength="62" title="Recherchez le fichier à uploader !" autofocus="autofocus" />
         <p>
             <?php

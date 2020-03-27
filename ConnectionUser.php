@@ -72,7 +72,7 @@ session_start();
     <form class="connexion-input-container" action="ConnectionUser.php" name="formUser" method="post">
 
         <label for="">Adresse Mail</label>
-        <input class="connexion-input" type="mail" maxlength="50" name="EMail" id="" >
+        <input class="connexion-input" type="mail" placeholder="max 50 char." maxlength="50" name="EMail" id="" >
 
 
         <label for="">Mot de passe</label>
