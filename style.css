@@ -995,8 +995,21 @@ h4{
 	padding: 5rem;
 }
 
+.mentions h1, .mentions h2, .mentions h3{
+	text-align: center;
+}
+
+.mentions h1{
+	font-size: 5rem;
+	padding-bottom: 5rem;
+}
+
+.mentions h2{
+	font-size: 3rem;
+	padding-bottom: 3rem;
+}
+
 .mentions h3{
-	text-align: left;
 	color: #fefefe;
 	margin-top: 5rem;
 }
