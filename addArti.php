@@ -155,77 +155,88 @@
 
 ?>
 
+<section class="nav-bar">
+    <h1 class="admin-title">Gavé Bleu Administration</h1>
+</section>
+    
+    <section class="admin-pannel-container">
 
-    <h2>Ajouter un Nouvel Article</h2>
-    <form action="addArti.php" name="formArti" method="post" enctype="multipart/form-data">
+        <h3>Ajouter un Nouvel Article</h3>
+        <form class="admin-pannel-container"  action="addArti.php" name="formArti" method="post" enctype="multipart/form-data">
 
-        <label for="">Titre de L'article</label>
-        <input type="text" name="LibTitrA"  id="" ><br>
+            <label for="">Titre de L'article</label>
+            <input type="text" name="LibTitrA"  id="" >
 
-        <label for="">Chapô</label>
-        <input type="text" name="LibChapoA"  id="" ><br>
+            <label for="">Chapô</label>
+            <textarea type="text" name="LibChapoA"  id="" ></textarea>
 
-        <label for="">Accroche</label>
-        <input type="text" name="LibAccrochA"  id="" ><br>
+            <label for="">Accroche</label>
+            <textarea type="text" name="LibAccrochA"  id="" ></textarea>
 
-        <label for="">Paragraphe 1</label>
-        <input type="text" name="Parag1A"  id="" ><br>
+            <label for="">Paragraphe 1</label>
+            <textarea type="text" name="Parag1A"  id="" ></textarea>
 
-        <label for="">Sous Titre 1</label>
-        <input type="text" name="LibSsTitr1"  id="" ><br>
+            <label for="">Sous Titre 1</label>
+            <textarea type="text" name="LibSsTitr1"  id="" ></textarea>
 
-        <label for="">Paragraphe 2</label>
-        <input type="text" name="Parag2A"  id="" ><br>
+            <label for="">Paragraphe 2</label>
+            <textarea type="text" name="Parag2A"  id="" ></textarea>
 
-        <label for="">Sous Titre 2</label>
-        <input type="text" name="LibSsTitr2"  id="" ><br>
+            <label for="">Sous Titre 2</label>
+            <textarea type="text" name="LibSsTitr2"  id="" ></textarea>
 
-        <label for="">Paragraphe 3</label>
-        <input type="text" name="Parag3A"  id="" ><br>
+            <label for="">Paragraphe 3</label>
+            <textarea type="text" name="Parag3A"  id="" ></textarea>
 
-        <label for="">Conclusion</label>
-        <input type="text" name="LibConclA"  id="" ><br>
-<?php //***********************************************************************************************************************?>
+            <label for="">Conclusion</label>
+            <textarea type="text" name="LibConclA"  id="" ></textarea>
+    <?php //***********************************************************************************************************************?>
 
-        <legend class="legend1">Ajouter mon image</legend>
-          <p>
-            <label for="uploadFile" title="Recherchez le fichier à uploader !"><b>Quel fichier ?&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="file" name="monfichier" id="monfichier" required="required" accept=".jpg,.gif,.png,.jpeg" size="62" maxlength="62" title="Recherchez le fichier à uploader !" autofocus="autofocus" />
-            <br><br>
+            <legend class="legend1">Ajouter mon image</legend>
+                
+                <input type="file" name="monfichier" id="monfichier" required="required" accept=".jpg,.gif,.png,.jpeg" size="62" maxlength="62" title="Recherchez le fichier à uploader !" autofocus="autofocus" />
+              <p>
+                <?php
+                  // Gestion extension images acceptées
+                  $msgImagesOK = ">> Extension des images acceptées : .jpg, .gif, .png, .jpeg (lageur, hauteur, taille max : 80000px, 80000px, 100 000 Go)";
+                  echo "<i>" . $msgImagesOK . "</i>";
+                ?>
+              </p>
+    <?php //***********************************************************************************************************************?>
+            <label for="">L'angle de L'article</label>
+            <select name="NumAngl" >
+                <?php while($v = $SelectAngle->fetch()){ ?>
+                        <option value="<?= $v['NumAngl']?>" ><?= $v['NumLang']?> <?= $v['LibAngl']?> </option>
+                <?php }?>
+            </select><br>
+
+            <label for="">Thématique de L'article</label>
+            <select name="NumThem" >
+                <?php while($t = $SelectTheme->fetch()){ ?>
+                        <option value="<?= $t['NumThem']?>" > <?= $t['LibThem']?> </option>
+                <?php }?>
+            </select><br>
+
+            <label for="">Langue de L'article</label>
+            <select name="NumLang" >
+                <?php while($l = $SelectLang->fetch()){ ?>
+                        <option value="<?= $l['NumLang']?>" > <?= $l['Lib1Lang']?> </option>
+                <?php }?>
+            </select><br>
+
+            <input type="submit" name="Submit" value="Validé">
+        </form>
+        <a href="admin.php?mot_de_passe=MMI21">Retour</a>
+    </section>
+
+    <footer>
+        <p class="copyright" style="text-align: center;">
+            &copy; 2020 <span>Gavé Bleu</span>. All Rights Reserved.
+            <br>
+            <a href="https://icons8.com/icon/">Icons by Icons8</a>
           </p>
-          <p>
-            <?php
-              // Gestion extension images acceptées
-              $msgImagesOK = ">> Extension des images acceptées : .jpg, .gif, .png, .jpeg (lageur, hauteur, taille max : 80000px, 80000px, 100 000 Go)";
-              echo "<i>" . $msgImagesOK . "</i>";
-            ?>
-          </p>
-<?php //***********************************************************************************************************************?>
-        <label for="">L'angle de L'article</label>
-        <select name="NumAngl" >
-            <?php while($v = $SelectAngle->fetch()){ ?>
-                    <option value="<?= $v['NumAngl']?>" ><?= $v['NumLang']?> <?= $v['LibAngl']?> </option>
-            <?php }?>
-        </select><br>
 
-        <label for="">Thématique de L'article</label>
-        <select name="NumThem" >
-            <?php while($t = $SelectTheme->fetch()){ ?>
-                    <option value="<?= $t['NumThem']?>" > <?= $t['LibThem']?> </option>
-            <?php }?>
-        </select><br>
-
-        <label for="">Langue de L'article</label>
-        <select name="NumLang" >
-            <?php while($l = $SelectLang->fetch()){ ?>
-                    <option value="<?= $l['NumLang']?>" > <?= $l['Lib1Lang']?> </option>
-            <?php }?>
-        </select><br>
-
-        <input type="submit" name="Submit" value="Validé">
-    </form>
-    <a href="admin.php?mot_de_passe=MMI21">Retour</a>
-
+    </footer>
 
 <?php include 'disconect.php';?>
 

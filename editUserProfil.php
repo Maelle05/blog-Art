@@ -121,27 +121,28 @@ $query->closeCursor();
             <h1 class="slogan">Une visite <span class="coloree">colorée</span> de Bordeaux</h1>
         </div>
     </section>
+    <section class="article-container contact-container">
+        <h3>Edition de mon Profil</h3>
+        <p class="mail-change">Mail:<?= $EMail ?></p>
+        <form class="connexion-input-container" action="editUserProfil.php" method="get">
 
-    <h1>Edition de mon Profil</h1>
-    <p>Mail:<?= $EMail ?></p>
-    <form action="editUserProfil.php" method="get">
+            <label class="no-margin" for="">Login</label>
+            <input type="hidden" name="id" value="<?= $Login ?>">
 
-        <label for="">Login</label>
-        <input type="hidden" name="id" value="<?= $Login ?>">
+            <input class="connexion-input" type="text" name="Login" maxlength="25" id="" value="<?= $Login ?>" ><br>
 
-        <input type="text" name="Login" maxlength="25" id="" value="<?= $Login ?>" ><br>
+            <label class="no-margin" for="">Password</label>
+            <input class="connexion-input" type="password" name="Pass" maxlength="25" id="" value="<?= $Pass ?>" ><br>
 
-        <label for="">Password</label>
-        <input type="password" name="Pass" maxlength="25" id="" value="<?= $Pass ?>" ><br>
+            <label class="no-margin" for="">Nom</label>
+            <input class="connexion-input" type="text" name="LastName" maxlength="25" id="" value="<?= $LastName ?>" ><br>
 
-        <label for="">Nom</label>
-        <input type="text" name="LastName" maxlength="25" id="" value="<?= $LastName ?>" ><br>
+            <label class="no-margin" for="">Prénom</label>
+            <input class="connexion-input" type="text" name="FirstName" maxlength="25" id="" value="<?= $FirstName ?>" ><br>
 
-        <label for="">Prénom</label>
-        <input type="text" name="FirstName" maxlength="25" id="" value="<?= $FirstName ?>" ><br>
-
-        <input type="submit" name="Submit" value="Validé">
-    </form>
+            <input class="send-button" type="submit" name="Submit" value="Validé">
+        </form>
+    </section>
 
 
 

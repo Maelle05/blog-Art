@@ -24,6 +24,27 @@ h3{
 	text-align: center;
 }
 
+input:focus, textarea:focus{
+	color: #2D5284;
+}
+
+input, textarea{
+	color: #2D5284 !important;
+}
+
+
+input[type='file']{
+	color: #fefefe!important;
+}
+
+select{
+	color: #2D5284!important;
+}
+
+option{
+	color: #2D5284!important;
+}
+
 
 
 .logo-header{
@@ -372,7 +393,7 @@ h3{
 
 .index-page footer{
 	position: absolute;
-	bottom: 0;
+	top: 380vh;
 }
 
 footer{
@@ -579,11 +600,9 @@ footer a {
 .submit-commentaire{
 	color: #2D5284;
 	font-size: 2rem;
-	bottom: -50px;
-	position: absolute;
-	right: -3%;
 	display: flex;
 	justify-content: center;
+
 	align-items: center;
 	width: 120px;
 	height: 40px;
@@ -593,7 +612,7 @@ footer a {
 
 .article-page footer{
 	bottom: 0%;
-	margin-top: 20vh;
+	padding-top: 20vh;
 }
 
 .add-commentary{
@@ -813,11 +832,95 @@ div .send-button-inscription{
 
 .admin-pannel-container{
 	padding-top: 15vh;
+	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	background-color: #2D5284;
 }
+
+.admin-pannel-container-mot{
+	padding-top: 15vh;
+	display: flex;
+	min-height: 50vh;
+	flex-direction: column;
+	align-items: center;
+	background-color: #2D5284;
+}
+
+.admin-pannel-container-mot *{
+	color: #fefefe;
+	margin-bottom: 3rem;
+}
+
+.admin-pannel-container-mot-div{
+	padding-top: 6vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: #2D5284;
+}
+
+.admin-pannel-container-mot-div ul li, .admin-pannel-container-mot-div p{
+	font-size: 2rem;
+}
+
+.no-margin{
+	margin-top: 0;
+}
+
+.change-profile{
+	padding-top: 15vh;
+	padding-bottom: 15vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: #2D5284;
+	min-height: 60vh;
+}
+
+.change-profile h3{
+	color: #fefefe;
+}
+
+
+.change-profile-form{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-top: 5rem;
+	color: #fefefe;
+	font-size: 2rem;
+}
+
+.mail-change{
+	color: #fefefe;
+	font-size: 2rem;
+}
+
+.admin-pannel-container-img{
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background-color: #2D5284;
+}
+
+.admin-pannel-container-img a{
+	color: #fefefe;
+}
+
+.admin-pannel-container input, .admin-pannel-container textarea, .admin-pannel-container select{
+	margin-bottom: 5rem;
+}
+
+
+.admin-h3-img{
+	color: #fefefe;
+}
+
+
 
 .admin-title{
 	font-size: 4rem;
@@ -864,6 +967,38 @@ div .send-button-inscription{
 h4{
 	margin-top: 10vh;
 	font-size: 2rem;
+}
+
+.articles-list{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.articles-list li{
+	list-style-type: none;
+}
+
+
+.admin-pannel-container-com{
+	font-size: 2rem;
+}
+
+.admin-pannel-container-com *{
+	margin-top: 2rem;
+}
+
+.mentions{
+	background-color: #2D5284;
+	color: #fefefe;
+	font-size: 2rem;
+	padding: 5rem;
+}
+
+.mentions h3{
+	text-align: left;
+	color: #fefefe;
+	margin-top: 5rem;
 }
 
 @media only screen and (max-width: 768px) {

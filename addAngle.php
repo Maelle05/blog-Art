@@ -191,8 +191,18 @@
 ?>
 
 
-    <h2>Ajouter un Angle nouveau</h2>
-    <form action="addAngle.php" name="formAngle" method="post">
+
+<section class="nav-bar">
+    <h1 class="admin-title">Gavé Bleu Administration</h1>
+</section>
+
+
+
+<section class="admin-pannel-container">
+
+
+    <h3>Ajouter un Angle nouveau</h3>
+    <form class="admin-pannel-container" action="addAngle.php" name="formAngle" method="post">
 
         <input  type="hidden" name="NumAngl" value="ANGL"  >
 
@@ -211,7 +221,7 @@
 
 
     <h2>Ajouter une Langue à un Angle existant </h2>
-    <form action="addAngle.php" name="formAngle" method="get">
+    <form class="admin-pannel-container" action="addAngle.php" name="formAngle" method="get">
 
         <label for="">Pour quel Angle ?</label>
             <select name="NumAngl" >
@@ -236,6 +246,16 @@
 
 
     <a href="admin.php?mot_de_passe=MMI21">Retour</a>
+</section>
+
+<footer>
+    <p class="copyright" style="text-align: center;">
+        &copy; 2020 <span>Gavé Bleu</span>. All Rights Reserved.
+        <br>
+        <a href="https://icons8.com/icon/">Icons by Icons8</a>
+      </p>
+
+</footer>
 
 
 <?php include 'disconect.php';?>

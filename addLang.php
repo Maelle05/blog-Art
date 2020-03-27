@@ -105,26 +105,42 @@
 ?>
 
 
-    <h2>Ajouter une langue...</h2>
-    <form action="addLang.php" name="formLangue" method="post">
-        <input type="hidden" name="id" value="">
+<section class="nav-bar">
+    <h1 class="admin-title">Gavé Bleu Administration</h1>
+</section>
 
-        <label for="">Libellé court :</label>
-        <input type="text" name="Lib1Lang" maxlength="25" id="" placeholder="25 char."><br>
+<section class="admin-pannel-container">
 
-        <label for="">Libellé long :</label>
-        <input type="text" name="Lib2Lang" maxlength="25" id="" placeholder="25 char."><br>
+        <h3>Ajouter une langue...</h3>
+        <form class="admin-pannel-container" action="addLang.php" name="formLangue" method="post">
+            <input type="hidden" name="id" value="">
 
-        <label for="">Quel Pays :</label>
-        <select name="NumPays" >
-            <?php while($v = $SelectPays->fetch()){ ?>
-                    <option value="<?= $v['numPays']?>" > <?= $v['numPays']?> <?= $v['frPays']?> </option>
-            <?php }?>
-        </select>
+            <label for="">Libellé court :</label>
+            <input type="text" name="Lib1Lang" maxlength="25" id="" placeholder="25 char."><br>
 
-        <input type="submit" name="Submit" value="Validé">
-    </form>
-    <a href="admin.php?mot_de_passe=MMI21">Retour</a>
+            <label for="">Libellé long :</label>
+            <input type="text" name="Lib2Lang" maxlength="25" id="" placeholder="25 char."><br>
+
+            <label for="">Quel Pays :</label>
+            <select name="NumPays" >
+                <?php while($v = $SelectPays->fetch()){ ?>
+                        <option value="<?= $v['numPays']?>" > <?= $v['numPays']?> <?= $v['frPays']?> </option>
+                <?php }?>
+            </select>
+
+            <input type="submit" name="Submit" value="Validé">
+        </form>
+        <a href="admin.php?mot_de_passe=MMI21">Retour</a>
+</section>
+
+<footer>
+    <p class="copyright" style="text-align: center;">
+        &copy; 2020 <span>Gavé Bleu</span>. All Rights Reserved.
+        <br>
+        <a href="https://icons8.com/icon/">Icons by Icons8</a>
+      </p>
+
+</footer>
 
 
 <?php include 'disconect.php';?>
