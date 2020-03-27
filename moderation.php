@@ -45,7 +45,7 @@ if(isset($_SESSION['EMail']) AND $userInfo['EMail'] == $_SESSION['EMail']){
         <a class="no-display" href="profil.php?EMail=<?=$EMail?>"><img class="logo-header" src="img/logo.png"></a>
         <a href="profil.php?EMail=<?=$EMail?>">Articles</a>
         <a href="about.php?EMail=<?=$EMail?>">A propos</a>
-        <a class="active" href="contact.php?EMail=<?=$EMail?>">Contact</a>
+        <a href="contact.php?EMail=<?=$EMail?>">Contact</a>
         <a href="disconnectUser.php">Se déconnecter</a>
         <a href="editUserProfil.php?EMail=<?=$EMail?>"><?= $userInfo['Login'] ?></a>
     </section>
@@ -95,7 +95,7 @@ if(isset($_SESSION['EMail']) AND $userInfo['EMail'] == $_SESSION['EMail']){
 
 	<footer class="contact-footer">
 		<div class="footer-link-admin">
-            <a href="#"><img class="logo-footer" src="img/logo.png"></a>
+            <a href="mdp.php"><img class="logo-footer" src="img/logo.png"></a>
             <a class="admin-link" href="mdp.php">Partie administration</a>
         </div>
 		<a href="mentions.php?EMail=<?=$EMail?>">MENTIONS LEGALES</a>
