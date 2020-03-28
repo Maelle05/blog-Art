@@ -155,7 +155,6 @@
                      include "disconect.php";
                 ?>
 
-           <br />
                 <?php 
                     if(isset($erreur)){ echo $erreur;}
                 ?>
