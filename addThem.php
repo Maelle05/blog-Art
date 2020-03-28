@@ -216,7 +216,8 @@
 
 
     <h3>Ajouter une Nouvelle Thématique</h3>
-    <form class="admin-pannel-container" action="addThem.php" name="formThem" method="post">
+
+    <form class="admin-pannel-container" style="padding-top: 0; min-height: 0vh;" action="addThem.php" name="formThem" method="post">
 
         <input  type="hidden" name="NumThem" placeholder="max 25 char." maxlength="25" id="" value="THEM"  >
 
@@ -226,7 +227,7 @@
         <label for="">Quelle langue ?</label>
         <select name="NumLang" >
             <?php while($v = $SelectLang->fetch()){ ?>
-                    <option value="<?= $v['NumLang']?>" > <?= $v['NumLang']?> <?= $v['Lib2Lang']?> </option>
+                    <option value="<?= $v['NumLang']?>" > <?= $v['Lib2Lang']?> </option>
             <?php }?>
         </select>
                 <br>
@@ -235,12 +236,12 @@
 
 
     <h3>Ajouter une nouvelle Langue à une Thématique</h3>
-    <form class="admin-pannel-container" action="addThem.php" name="formThem" method="get">
+    <form class="admin-pannel-container" style="padding-top: 0;"action="addThem.php" name="formThem" method="get">
 
         <label for="">Pour quelle Thématique ?</label>
             <select name="NumThem" >
                 <?php while($a = $SelectThem->fetch()){ ?>
-                        <option value="<?= $a['NumThem']?>" ><?= $a['NumLang']?><?= $a['LibThem']?> </option>
+                        <option value="<?= $a['NumThem']?>" ><?= $a['LibThem']?> </option>
                 <?php }?>
             </select>
             <br>
@@ -251,7 +252,7 @@
         <label for="">En quelle langue ?</label>
         <select name="NumLang" >
             <?php while($l = $SelectLang2->fetch()){ ?>
-                    <option value="<?= $l['NumLang']?>" > <?= $l['NumLang']?> <?= $l['Lib2Lang']?> </option>
+                    <option value="<?= $l['NumLang']?>" > <?= $l['Lib2Lang']?> </option>
             <?php }?>
         </select>
                 <br>
