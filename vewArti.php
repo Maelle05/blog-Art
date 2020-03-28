@@ -61,13 +61,18 @@
                         <td> <?= $v['LibConclA']?></td>
                         <td> <?=$v['UrlPhotA']?></td>
                         <td> <?= $v['Likes']?></td>
-                        <td> <?= $v['NumAngl']?></td>
-                        <td> <?= $v['NumThem']?></td>
-                        <td> <?= $v['NumLang']?></td>
+                        <td> <?php $SelectAngle = $bdPdo ->query('SELECT * FROM angle WHERE NumAngl = "'.$v['NumAngl'].'"');
+                        $A = $SelectAngle->fetch()?>
+                        <?=$A['LibAngl'] ?></td>
+                        <td> <?php $SelectTheme = $bdPdo ->query('SELECT * FROM thematique WHERE NumThem = "'.$v['NumThem'].'"');
+                        $T = $SelectTheme->fetch()?>
+                        <?=$T['LibThem'] ?></td>
+                        <td> <?php $SelectLang = $bdPdo ->query('SELECT * FROM Langue WHERE NumLang = "'.$v['NumLang'].'"');
+                        $L = $SelectLang->fetch()?>
+                        <?=$L['Lib2Lang']?></td>
                         <td><a href="editArti.php? id=<?=$v['NumArt']?> "><img src="https://img.icons8.com/cute-clipart/64/000000/edit.png"/> </a></td>
                         <td><a href="DeleteArti.php?NumArt=<?php echo $v['NumArt'] ?>"><img src="https://img.icons8.com/cute-clipart/64/000000/delete-forever.png"/></a></td>
-                    </tr>
-
+                    </tr>                
                 <?php }?>
             </table>
 
