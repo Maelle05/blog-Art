@@ -132,9 +132,10 @@
 
                     <label for="">Quel Pays :</label>
                     <select name="NumPays" >
-                                <option value="<?= $NumPays ?>"><?= $NumPays ?></option>
+                                <option value="<?= $NumPays ?>"><?php $SelectPays2 = $bdPdo ->query('SELECT * FROM pays WHERE NumPays = "'.$NumPays.'"');
+                        $P = $SelectPays2->fetch()?><?= $P['frPays'] ?></option>
                                 <?php while($v = $SelectPays->fetch()){ ?>
-                                        <option value="<?= $v['numPays']?>" > <?= $v['numPays']?> <?= $v['frPays']?> </option>
+                                        <option value="<?= $v['numPays']?>" > <?= $v['frPays']?> </option>
                                 <?php }?>
 
                     </select>
