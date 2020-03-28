@@ -27,6 +27,11 @@
                 $LibThem = $Thematique['LibThem'];
                 $NumLang = $Thematique['NumLang'];
 
+                $SelectLang = $bdPdo ->query('SELECT * FROM Langue WHERE NumLang = "'.$NumLang.'"');
+                $LA = $SelectLang->fetch();
+
+                $NumLang = $LA['Lib2Lang'];
+
             }else{
                 die('Cette Thématique n\'existe pas !');
             }
@@ -84,7 +89,7 @@
 
         ?>
 
-            <h2>Modifier la thématique <?= $NumThem?> </h2>
+            <h2>Modifier la thématique </h2>
             <form action="editThem.php" name="formThem" method="Get">
 
             <input type="hidden" name="id" value="<?= $NumThem ?>">

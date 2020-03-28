@@ -89,7 +89,7 @@
 
         ?>
 
-            <h2>Modifier l'Angle <?= $NumAngl?> </h2>
+            <h2>Modifier l'Angle </h2>
             <form action="editAngle.php" name="formAngle" method="Get">
 
             <input type="hidden" name="id" value="<?= $NumAngl ?>">
