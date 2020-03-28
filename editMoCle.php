@@ -27,6 +27,11 @@
                 $LibMoCle = $motcle['LibMoCle'];
                 $NumLang = $motcle['NumLang'];
 
+                $SelectLang = $bdPdo ->query('SELECT * FROM Langue WHERE NumLang = "'.$NumLang.'"');
+                $LA = $SelectLang->fetch();
+
+                $NumLang = $LA['Lib2Lang'];
+
             }else{
                 die('Ce mot clé n\'existe pas !');
             }
@@ -84,7 +89,7 @@
 
         ?>
 
-            <h2>Modifier le Mot clé numéro :<?= $NumMoCle?> </h2>
+            <h2>Modifier le Mot clé numéro</h2>
             <form action="editMoCle.php" name="formMoCle" method="get">
 
             <input type="hidden"  name="id" value="<?= $NumMoCle ?>">

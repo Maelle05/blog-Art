@@ -59,7 +59,7 @@
         <label for="">Pour quelle Article ?</label>
             <select name="NumArt" >
                 <?php while($a = $SelectArt1->fetch()){ ?>
-                        <option value="<?= $a['NumArt']?>" ><?= $a['NumArt']?> <?= $a['LibTitrA']?> </option>
+                        <option value="<?= $a['NumArt']?>" ><?= $a['LibTitrA']?> </option>
                 <?php }?>
             </select>
 

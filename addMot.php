@@ -151,7 +151,7 @@
         <label for="">En quelle langue ?</label>
         <select name="NumLang" >
             <?php while($v = $SelectLang->fetch()){ ?>
-                    <option value="<?= $v['NumLang']?>" > <?= $v['NumLang']?> <?= $v['Lib2Lang']?> </option>
+                    <option value="<?= $v['NumLang']?>" ><?= $v['Lib2Lang']?> </option>
             <?php }?>
         </select>
                 <br>

@@ -37,7 +37,11 @@
                     <tr>
                         <td><?= $v['NumMoCle']?></td>
                         <td><?= $v['LibMoCle']?></td>
-                        <td> <?= $v['NumLang']?></td>
+                        <td>
+                        <?php $SelectLang2 = $bdPdo ->query('SELECT * FROM Langue WHERE NumLang = "'.$v['NumLang'].'"');
+                        $L = $SelectLang2->fetch()?>
+                        <?=$L['Lib2Lang']?>
+                        </td>
                         <td><a href="editMoCle.php? id=<?=$v['NumMoCle']?> "><img src="https://img.icons8.com/cute-clipart/64/000000/edit.png"/> </a></td>
                         <td><a href="DeleteMoCle.php?NumMoCle=<?php echo $v['NumMoCle'] ?>"><img src="https://img.icons8.com/cute-clipart/64/000000/delete-forever.png"/></a></td>
                     </tr>
