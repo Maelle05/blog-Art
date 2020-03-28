@@ -37,7 +37,9 @@
                     <tr>
                         <td><?= $v['NumThem']?></td>
                         <td><?= $v['LibThem']?></td>
-                        <td> <?= $v['NumLang']?></td>
+                        <td><?php $SelectLang2 = $bdPdo ->query('SELECT * FROM Langue WHERE NumLang = "'.$v['NumLang'].'"');
+                        $L = $SelectLang2->fetch()?>
+                        <?=$L['Lib2Lang']?></td>
                         <td><a href="editThem.php? id=<?=$v['NumThem']?> "><img src="https://img.icons8.com/cute-clipart/64/000000/edit.png"/> </a></td>
                         <td><a href="DeleteThem.php?NumThem=<?php echo $v['NumThem'] ?>"><img src="https://img.icons8.com/cute-clipart/64/000000/delete-forever.png"/></a></td>
                     </tr>
