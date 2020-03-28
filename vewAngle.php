@@ -37,7 +37,11 @@
                     <tr>
                         <td><?= $v['NumAngl']?></td>
                         <td><?= $v['LibAngl']?></td>
-                        <td> <?= $v['NumLang']?></td>
+                        <td>
+                        <?php $SelectLang2 = $bdPdo ->query('SELECT * FROM Langue WHERE NumLang = "'.$v['NumLang'].'"');
+                        $L = $SelectLang2->fetch()?>
+                        <?=$L['Lib2Lang']?>
+                        </td>
                         <td><a href="editAngle.php? id=<?=$v['NumAngl']?> "><img src="https://img.icons8.com/cute-clipart/64/000000/edit.png"/> </a></td>
                         <td><a href="DeleteAngle.php?NumAngl=<?php echo $v['NumAngl'] ?>"><img src="https://img.icons8.com/cute-clipart/64/000000/delete-forever.png"/></a></td>
                     </tr>
