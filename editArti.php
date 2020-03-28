@@ -141,7 +141,8 @@
         <form action="editArti.php" method="get">
             <label for="">Langue de L'article</label>
                 <select name="NumLang" >
-                    <option value="<?= $NumLang ?>"><?= $NumLang ?></option>
+                    <option value="<?= $NumLang ?>"><?php $SelectLang2 = $bdPdo ->query('SELECT * FROM Langue WHERE NumLang = "'.$NumLang.'"');
+                        $LA = $SelectLang2->fetch()?><?= $LA['Lib1Lang'] ?></option>
                     <?php while($l = $SelectLang->fetch()){ ?>
                             <option value="<?= $l['NumLang']?>" > <?= $l['Lib1Lang']?> </option>
                     <?php }?>
@@ -158,7 +159,8 @@
 
         <label for="">L'angle de L'article</label>
         <select name="NumAngl" >
-        <option value="<?= $NumAngl ?>"><?= $NumAngl ?></option>
+        <option value="<?= $NumAngl ?>"><?php $SelectAngle2 = $bdPdo ->query('SELECT * FROM angle WHERE NumAngl = "'.$NumAngl.'"');
+                        $A = $SelectAngle2->fetch()?><?= $A['LibAngl'] ?></option>
             <?php while($v = $SelectAngle->fetch()){ ?>
                     <option value="<?= $v['NumAngl']?>" > <?= $v['LibAngl']?> </option>
             <?php }?>
@@ -166,7 +168,8 @@
 
         <label for="">Thématique de L'article</label>
         <select name="NumThem" >
-        <option value="<?= $NumThem ?>"><?= $NumThem ?></option>
+        <option value="<?= $NumThem ?>"><?php $SelectTheme2 = $bdPdo ->query('SELECT * FROM thematique WHERE NumThem = "'.$NumThem.'"');
+                        $TH = $SelectTheme2->fetch()?><?= $TH['LibThem'] ?></option>
             <?php while($t = $SelectTheme->fetch()){ ?>
                     <option value="<?= $t['NumThem']?>" > <?= $t['LibThem']?> </option>
             <?php }?>
