@@ -108,7 +108,7 @@
         <label for="">Pour l'Article</label>
         <select name="NumArt" >
                 <?php while($a = $SelectArt->fetch()){ ?>
-                        <option value="<?= $a['NumArt']?>" ><?= $a['NumArt']?> <?= $a['LibTitrA']?> </option>
+                        <option value="<?= $a['NumArt']?>" ><?= $a['LibTitrA']?> </option>
                 <?php }?>
             </select>
 
