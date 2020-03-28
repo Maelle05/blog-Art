@@ -228,6 +228,7 @@ option{
 	position: absolute;
 	overflow: hidden;
 	margin-top: 50vh;
+	margin-bottom: 1vh;
 	top: 0;
 	right: 0;
 	z-index: 9;
@@ -393,9 +394,13 @@ option{
 }
 
 
+.index-page{
+	position: relative;
+}
+
 .index-page footer{
-	position: absolute;
-	top: 380vh;
+	bottom: 0;
+	margin-top: 10vh;
 }
 
 footer{
@@ -619,7 +624,7 @@ textarea {
 
 .article-page footer{
 	bottom: 0%;
-	padding-top: 20vh;
+	margin-top: 20vh;
 }
 
 .add-commentary{
