@@ -40,7 +40,8 @@
                         <td><?= $v['NumLang']?></td>
                         <td><?= $v['Lib1Lang']?></td>
                         <td><?= $v['Lib2Lang']?></td>
-                        <td><?= $v['NumPays']?></td>
+                        <td><?php $SelectPays2 = $bdPdo ->query('SELECT * FROM pays WHERE NumPays = "'.$v['NumPays'].'"');
+                        $P = $SelectPays2->fetch()?><?= $P['frPays'] ?></td>
                         <td><a href="editLang.php? id=<?=$v['NumLang']?> "> <img src="https://img.icons8.com/cute-clipart/64/000000/edit.png"/> </a></td>
                         <td><a href="DeleteLang.php?NumLang=<?php echo $v['NumLang'] ?>"><img src="https://img.icons8.com/cute-clipart/64/000000/delete-forever.png"/></a></td>
                     </tr>

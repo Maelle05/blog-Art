@@ -131,7 +131,7 @@
                     <input type="text" name="Lib2Lang" id="" placeholder="max 45 char." maxlength="45"  value="<?= $Lib2Lang ?>"><br>
 
                     <label for="">Quel Pays :</label>
-                    <select name="NumPays" >
+                    <select name="NumPays" > 
                                 <option value="<?= $NumPays ?>"><?php $SelectPays2 = $bdPdo ->query('SELECT * FROM pays WHERE NumPays = "'.$NumPays.'"');
                         $P = $SelectPays2->fetch()?><?= $P['frPays'] ?></option>
                                 <?php while($v = $SelectPays->fetch()){ ?>
