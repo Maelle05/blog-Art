@@ -11,7 +11,6 @@
 
        include 'conect.php';
 
-       $SelectLang = $bdPdo ->query('SELECT * FROM Langue');
 
         if(isset($_GET['id']) AND !empty($_GET['id'])){
             $get_id= htmlspecialchars($_GET['id']);
@@ -26,6 +25,11 @@
                 $NumAngl = $Angle['NumAngl'];
                 $LibAngl = $Angle['LibAngl'];
                 $NumLang = $Angle['NumLang'];
+
+                $SelectLang = $bdPdo ->query('SELECT * FROM Langue WHERE NumLang = "'.$NumLang.'"');
+                $LA = $SelectLang->fetch();
+
+                $NumLang = $LA['Lib2Lang'];
 
             }else{
                 die('Cet Angle n\'existe pas !');
@@ -95,7 +99,7 @@
         <label for="">Angle</label>
         <input type="text" name="LibAngl" placeholder="max 60 char." maxlength="60" id="" value="<?= $LibAngl ?>" ><br>
 
-        <p>Dans la langue :<?= $NumLang ?></p>
+        <p>Dans la langue : <?= $NumLang ?></p>
 
 
 
