@@ -11,10 +11,6 @@
 
        include 'conect.php';
 
-       $SelectAngle = $bdPdo ->query('SELECT * FROM angle');
-       $SelectTheme = $bdPdo ->query('SELECT * FROM thematique');
-       $SelectLang = $bdPdo ->query('SELECT * FROM Langue');
-
         if(isset($_GET['id']) AND !empty($_GET['id'])){
             $get_id= htmlspecialchars($_GET['id']);
 
@@ -22,6 +18,7 @@
             $Article->execute(
                 array($get_id)
             );
+            
 
             if($Article->rowCount() == 1){
                 $Article =$Article->fetch();
@@ -40,6 +37,15 @@
                 $NumThem = $Article['NumThem'];
                 $NumLang = $Article['NumLang'];
 
+                if(isset($_GET['NumLang']) AND !empty($_GET['NumLang'])){
+                    $NumLang = $_GET['NumLang'];
+                }
+
+
+                $SelectAngle = $bdPdo ->query('SELECT * FROM angle WHERE NumLang = "'.$NumLang.'"');
+                $SelectTheme = $bdPdo ->query('SELECT * FROM thematique WHERE NumLang = "'.$NumLang.'"');
+                $SelectLang = $bdPdo ->query('SELECT * FROM Langue');
+
 
             }else{
                 die('Cette Article n\'existe pas !');
@@ -49,7 +55,7 @@
             die('ERREUR');
         }
 
-        if($_SERVER["REQUEST_METHOD"] == "GET"){
+        
 
 
                 if (((isset($_GET['LibTitrA'])) AND !empty($_GET['LibTitrA']))
@@ -125,7 +131,6 @@
 
 
                 }
-            }
 
 
                 include 'disconect.php';
@@ -133,17 +138,23 @@
         ?>
 
             <h2>Modifier l'Article Numéro <?= $NumArt?> </h2>
-            <form action="editArti.php" name="formArticle" method="Get" enctype="multipart/form-data">
+        <form action="editArti.php" method="get">
+            <label for="">Langue de L'article</label>
+                <select name="NumLang" >
+                    <option value="<?= $NumLang ?>"><?= $NumLang ?></option>
+                    <?php while($l = $SelectLang->fetch()){ ?>
+                            <option value="<?= $l['NumLang']?>" > <?= $l['Lib1Lang']?> </option>
+                    <?php }?>
+                </select><br>
+                <input type="hidden" name="id" value="<?= $NumArt ?>">
+                <input type="submit" value="Validé la langue">
+        </form>
+
+            <form action="editArti.php" name="formArticle" method="Get">
 
             <input type="hidden" name="id" value="<?= $NumArt ?>">
-        
-        <label for="">Langue de L'article</label>
-        <select name="NumLang" >
-            <option value="<?= $NumLang ?>"><?= $NumLang ?></option>
-            <?php while($l = $SelectLang->fetch()){ ?>
-                    <option value="<?= $l['NumLang']?>" > <?= $l['Lib1Lang']?> </option>
-            <?php }?>
-        </select><br>
+            <input type="hidden" name="NumLang" value="<?= $NumLang ?>">
+           
 
         <label for="">L'angle de L'article</label>
         <select name="NumAngl" >

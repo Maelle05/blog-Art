@@ -14,10 +14,7 @@
 
     include 'conect.php';
 
-    $SelectAngle = $bdPdo ->query('SELECT * FROM angle');
-    $SelectTheme = $bdPdo ->query('SELECT * FROM thematique');
     $SelectLang = $bdPdo ->query('SELECT * FROM Langue');
-
 
 
     // Fonction de controle des saisies du formulaire
@@ -162,14 +159,14 @@
     <section class="admin-pannel-container">
 
         <h3>Ajouter un Nouvel Article</h3>
-        <form class="admin-pannel-container"  action="addArti.php" name="formArti" method="post" enctype="multipart/form-data">
-            <label for="">Langue de L'article</label>
-                <select name="NumLang" >
-                    <?php while($l = $SelectLang->fetch()){ ?>
-                            <option value="<?= $l['NumLang']?>" > <?= $l['Lib1Lang']?> </option>
-                    <?php }?>
-                </select><br>
 
+        <?php if(isset($_GET['NumLang'])){
+            
+            $SelectAngle = $bdPdo ->query('SELECT * FROM angle WHERE NumLang = "'.$_GET['NumLang'].'"');
+            $SelectTheme = $bdPdo ->query('SELECT * FROM thematique WHERE NumLang = "'.$_GET['NumLang'].'"');      
+            $Numlangget = $_GET['NumLang'];
+            ?>
+        <form class="admin-pannel-container"  action="addArti.php?NumLang=<?=$Numlangget ?>" name="formArti" method="post" enctype="multipart/form-data">
             <label for="">L'angle de L'article</label>
                 <select name="NumAngl" >
                     <?php while($v = $SelectAngle->fetch()){ ?>
@@ -183,6 +180,8 @@
                             <option value="<?= $t['NumThem']?>" > <?= $t['LibThem']?> </option>
                     <?php }?>
                 </select><br>
+
+            <input type="hidden" name="NumLang" value="<?=$Numlangget ?>" >
 
             <label for="">Titre de L'article</label>
             <input type="text" name="LibTitrA" placeholder="max 70 char." maxlength="70" id="" >
@@ -227,6 +226,20 @@
 
             <input type="submit" name="Submit" value="Validé">
         </form>
+                    <?php }else{?>
+
+        <form class="admin-pannel-container"  action="addArti.php" method="get">
+                <label for="">Langue de L'article</label>
+                    <select name="NumLang" >
+                        <?php while($l = $SelectLang->fetch()){ ?>
+                                <option value="<?= $l['NumLang']?>" > <?= $l['Lib1Lang']?> </option>
+                        <?php }?>
+                    </select><br>
+                    <input type="submit" name="addlangue" value="Validé la langue">
+            </form>
+
+                        <?php }?>
+
         <a href="admin.php?mot_de_passe=MMI21">Retour</a>
     </section>
 
