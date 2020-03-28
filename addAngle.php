@@ -202,7 +202,7 @@
 
 
     <h3>Ajouter un Angle nouveau</h3>
-    <form class="admin-pannel-container" action="addAngle.php" name="formAngle" method="post">
+    <form class="admin-pannel-container" style="padding-top: 0; min-height: 0vh;" action="addAngle.php" name="formAngle" method="post">
 
         <input  type="hidden" name="NumAngl" value="ANGL"  >
 
@@ -212,7 +212,7 @@
         <label for="">Quelle langue ?</label>
         <select name="NumLang" >
             <?php while($v = $SelectLang->fetch()){ ?>
-                    <option value="<?= $v['NumLang']?>" > <?= $v['NumLang']?> <?= $v['Lib2Lang']?> </option>
+                    <option value="<?= $v['NumLang']?>" > <?= $v['Lib2Lang']?> </option>
             <?php }?>
         </select>
                 <br>
@@ -220,13 +220,13 @@
     </form>
 
 
-    <h2>Ajouter une Langue à un Angle existant </h2>
-    <form class="admin-pannel-container" action="addAngle.php" name="formAngle" method="get">
+    <h3>Ajouter une Langue à un Angle existant </h3>
+    <form class="admin-pannel-container" style="padding-top: 0;" action="addAngle.php" name="formAngle" method="get">
 
         <label for="">Pour quel Angle ?</label>
             <select name="NumAngl" >
                 <?php while($a = $SelectAngle->fetch()){ ?>
-                        <option value="<?= $a['NumAngl']?>" > <?= $a['NumLang']?> <?= $a['LibAngl']?> </option>
+                        <option value="<?= $a['NumAngl']?>" > <?= $a['LibAngl']?> </option>
                 <?php }?>
             </select>
             <br>
@@ -237,7 +237,7 @@
         <label for="">En quelle Langue ?</label>
         <select name="NumLang" >
             <?php while($l = $SelectLang2->fetch()){ ?>
-                    <option value="<?= $l['NumLang']?>" > <?= $l['NumLang']?> <?= $l['Lib2Lang']?> </option>
+                    <option value="<?= $l['NumLang']?>" > <?= $l['Lib2Lang']?> </option>
             <?php }?>
         </select>
                 <br>
