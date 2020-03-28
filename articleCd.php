@@ -116,6 +116,7 @@ if(isset($_SESSION['EMail'])){
             $NumArt = $Article['NumArt'];
             $DtCreA = $Article['DtCreA'];
             $LibTitrA = $Article['LibTitrA'];
+            $LibChapoA = $Article['LibChapoA'];
             $LibAccrochA = $Article['LibAccrochA'];
             $Parag1A = $Article['Parag1A'];
             $LibSsTitr1 = $Article['LibSsTitr1'];
@@ -184,6 +185,7 @@ if(isset($_SESSION['EMail'])){
         <h3><?= $LibTitrA ?> </h3>
 
             <p class="publie"><?= $DtCreA ?></p>
+            <p><?=$LibChapoA?></p>
             <p class="chapo"><?= $LibAccrochA ?></p>
             <p class="first-paragraphe"><?= $Parag1A ?></p>
             <img class="illustration" src="./uploads/<?= $UrlPhotA ?>" alt="">
