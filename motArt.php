@@ -12,7 +12,6 @@
 
         include 'conect.php';
 
-     $SelectMot = $bdPdo ->query('SELECT * FROM motcle');
      $SelectArt = $bdPdo ->query('SELECT * FROM article');
      $SelectArt1 = $bdPdo ->query('SELECT * FROM article');
      $SelectAM = $bdPdo ->query('SELECT * FROM motclearticle')
@@ -54,25 +53,36 @@
 
 <section class="admin-pannel-container-mot">
 
-    <form class="admin-pannel-container-mot" action="motArt.php" name="formMotArt" method="post">
+    <?php if(isset($_GET['NumArt'])){
+        $LangArt = $bdPdo ->query('SELECT * FROM article WHERE NumArt = "'.$_GET['NumArt'].'"');
+        $Lang = $LangArt->fetch();
+        $numeroArt = $_GET['NumArt'];
+        ?>
 
-        <label for="">Pour quelle Article ?</label>
-            <select name="NumArt" >
-                <?php while($a = $SelectArt1->fetch()){ ?>
-                        <option value="<?= $a['NumArt']?>" ><?= $a['LibTitrA']?> </option>
-                <?php }?>
-            </select>
-
+    <form class="admin-pannel-container-mot" action="motArt.php?NumArt=<?=$numeroArt?>" name="formMotArt" method="post">
 
         <label for="">Quel Mot Clé ?</label>
         <select name="NumMoCle" >
-            <?php while($l = $SelectMot->fetch()){ ?>
+            <?php $SelectMot = $bdPdo ->query('SELECT * FROM motcle WHERE NumLang = "'.$Lang['NumLang'].'" ');
+            while($l = $SelectMot->fetch()){ ?>
                     <option value="<?= $l['NumMoCle']?>" > <?= $l['LibMoCle']?> </option>
             <?php }?>
         </select>
                 <br>
         <input type="submit" name="Submit" value="Validé">
     </form>
+
+            <?php }else{?> 
+                <form action="motArt.php" method="get">
+                        <label for="">Pour quelle Article ?</label>
+                    <select name="NumArt" >
+                        <?php while($a = $SelectArt1->fetch()){ ?>
+                                <option value="<?= $a['NumArt']?>" ><?= $a['LibTitrA']?> </option>
+                        <?php }?>
+                    </select>
+                    <input type="submit" name="validation article" value="Validé l'article">
+                </form>           
+            <?php } ?> 
 
     <h2>Les Liaisons deja effectuées</h2>
 
