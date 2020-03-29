@@ -60,7 +60,7 @@
         ?>
 
     <form class="admin-pannel-container-mot" action="motArt.php?NumArt=<?=$numeroArt?>" name="formMotArt" method="post">
-
+        <input type="hidden" name="NumArt" value="<?=$numeroArt?>">
         <label for="">Quel Mot Clé ?</label>
         <select name="NumMoCle" >
             <?php $SelectMot = $bdPdo ->query('SELECT * FROM motcle WHERE NumLang = "'.$Lang['NumLang'].'" ');
